@@ -1,0 +1,32 @@
+@import '/src/App.variables.scss';
+.welcome {
+  width: $main-width;
+  height: $section-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(93, 201, 174);
+  margin: auto;
+}
+
+.welcome-img {
+  width: 600px;
+  height: 600px;
+  margin: 10px 50px;
+  border: 1px solid rgb(201, 93, 120);
+}
+
+.title {
+  font-size: 36px;
+}
+
+.links-box {
+  width: $main-width;
+  text-align: center;
+  border: 1px solid rgb(64, 53, 124);
+  margin: auto;
+}
+
+.btn {
+  margin-right: 20px;
+}
