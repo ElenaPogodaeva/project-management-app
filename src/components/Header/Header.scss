@@ -1,8 +1,23 @@
 @import '../../App.variables.scss';
 
 .header {
+  width: $main-width;
+  text-align: center;
+  border: 1px solid rgb(113, 238, 94);
+  margin: auto;
   padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  & div {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  & p {
+    margin-right: 20px;
+  }
   a {
     margin-right: 20px;
     font-size: $title-font;
@@ -12,4 +27,20 @@
       opacity: 1;
     }
   }
+}
+
+.language,
+.login,
+.sign-up {
+  margin: 0px 5px 0px 10px;
+}
+
+.language {
+  border-radius: 10px;
+}
+
+.login,
+.sign-up {
+  border: none;
+  background: none;
 }
