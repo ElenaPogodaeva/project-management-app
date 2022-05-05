@@ -13,8 +13,8 @@ const Header = () => {
           <option value="en">en</option>
           <option value="ru">ru</option>
         </select>
-        <button type="button" className="login">
-          login
+        <button type="button" className="sign-in">
+          sign-in
         </button>
         <button type="button" className="sign-up">
           sign-up
