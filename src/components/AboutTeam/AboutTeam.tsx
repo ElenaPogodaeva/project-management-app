@@ -13,7 +13,7 @@ const AboutTeam = () => {
         </div>
         <div className="member-card">
           <img src="" alt="member" className="photo" />
-          <h2 className="name">Alana</h2>
+          <h2 className="name">Aliona</h2>
           <p className="role">front-end developer</p>
           <p className="description">did a lot</p>
         </div>

@@ -34,7 +34,7 @@ const Welcome = () => {
           About app
         </button>
       </div>
-      <div className="">{isAboutApp ? <AboutApp /> : <AboutTeam />}</div>
+      {isAboutApp ? <AboutApp /> : <AboutTeam />}
     </>
   );
 };
