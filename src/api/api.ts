@@ -232,4 +232,56 @@ export default class Api {
       return error;
     }
   }
+
+  // Columns
+
+  async getColumns(boardId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns`;
+      const response = await this.createResponse(url, 'GET');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async createColumn(boardId: string, column: ICreateColumn) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns`;
+      const response = await this.createResponse(url, 'POST', column);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getColumnById(boardId: string, columnId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}`;
+      const response = await this.createResponse(url, 'GET');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async updateColumn(boardId: string, columnId: string, column: ICreateColumn) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}`;
+      const response = await this.createResponse(url, 'PUT', column);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteColumn(boardId: string, columnId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}`;
+      const response = await this.createResponse(url, 'DELETE');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
 }
