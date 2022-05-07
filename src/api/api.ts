@@ -180,4 +180,56 @@ export default class Api {
     console.log(payLoad.userId);
     return payLoad.userId;
   }
+
+  // Boards
+
+  async getBoards() {
+    try {
+      const url = `${this.baseUrl}/boards`;
+      const response = await this.createResponse(url, 'GET');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async createBoard(board: ICreateBoard) {
+    try {
+      const url = `${this.baseUrl}/boards`;
+      const response = await this.createResponse(url, 'POST', board);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getBoardById(boardId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}`;
+      const response = await this.createResponse(url, 'GET');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async updateBoard(boardId: string, board: ICreateBoard) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}`;
+      const response = await this.createResponse(url, 'PUT', board);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteBoard(boardId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}`;
+      const response = await this.createResponse(url, 'DELETE');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
 }
