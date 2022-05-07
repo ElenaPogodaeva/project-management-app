@@ -284,4 +284,56 @@ export default class Api {
       return error;
     }
   }
+
+  // Tasks
+
+  async getTasks(boardId: string, columnId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}/tasks`;
+      const response = await this.createResponse(url, 'GET');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async createTasks(boardId: string, columnId: string, task: ICreateTask) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}/tasks`;
+      const response = await this.createResponse(url, 'POST', task);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async getTaskById(boardId: string, columnId: string, taskId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
+      const response = await this.createResponse(url, 'GET');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async updateTask(boardId: string, columnId: string, taskId: string, task: IUpdateTask) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
+      const response = await this.createResponse(url, 'PUT', task);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+
+  async deleteTask(boardId: string, columnId: string, taskId: string) {
+    try {
+      const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}/tasks/${taskId}`;
+      const response = await this.createResponse(url, 'DELETE');
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
 }
