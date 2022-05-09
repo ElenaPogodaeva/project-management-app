@@ -2,12 +2,23 @@
 
 .header {
   margin: 0 auto;
-  padding: 20px;
-  max-width: $main-width;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 20px 0;
   border: 1px solid rgb(113, 238, 94);
+  transition: all 0.25s ease-out;
+
+  &.header_sticky {
+    padding: 12px 0;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    background-color: #fff;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   div {
     display: flex;
