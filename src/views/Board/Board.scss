@@ -1,4 +1,172 @@
 @import '../../App.variables.scss';
 
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  min-width: 320px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+/*--------------------*/
+
 .board {
+  padding: 10px;
+}
+.board-header {
+  padding: 10px;
+  font-size: $title-font;
+  font-weight: 700;
+}
+.column-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-gap: 10px;
+  align-items: start;
+}
+.column-item {
+  border-radius: 3px;
+  //padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: #e2e4e6;
+  max-height: calc(100vh - 100px);
+}
+.column-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+}
+.column-title-wrapper button {
+  background-color: transparent;
+}
+.column-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+.card-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+  padding: 0 10px 5px;
+  overflow-y: auto;
+}
+
+.card-list::-webkit-scrollbar {
+  width: 25px;
+}
+.card-list::-webkit-scrollbar-thumb {
+  background-color: #c4c9cc;
+  border-right: 0.6rem solid #e2e4e6;
+}
+.card-item {
+  font-weight: 400;
+  background-color: #fff;
+  padding: 10px;
+  color: #4d4d4d;
+  box-shadow: 0 1px 0 rgba(9,45,66,.25);
+  border-radius: 3px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  cursor: pointer;
+  transition: .3s;
+}
+.card-item:hover {
+  background-color: #eee;
+}
+.add-card-btn {
+  display: block;
+  font-weight: 400;
+  color: #838c91;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.add-card-btn:hover {
+  background-color: #cdd2d4;
+  color: #4d4d4d;
+  text-decoration: underline;
+}
+
+.add-column-btn {
+  display: block;
+  font-weight: 400;
+  background-color: #e2e4e6;
+  color: #4d4d4d;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: left;
+  transition: .3s;
+}
+
+.add-column-btn:hover {
+  background-color: #ccc;
 }
