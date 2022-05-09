@@ -1,24 +1,52 @@
+import { NavLink } from 'react-router-dom';
+import useActions from '../../hooks/useActions';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import './Header.scss';
 
 const Header = () => {
+  const { isAuth } = useTypedSelector((state) => state.auth);
+  const { logout } = useActions();
+
   return (
     <header className="header">
-      <p className="home">home</p>
-      <div className="">
-        <p className="edit-profile">edit-profile</p>
-        <p className="new-board">new-board</p>
-      </div>
+      <NavLink to="/" className="header__btn btn-nav btn-home">
+        home
+      </NavLink>
+
       <div>
-        <select className="language">
+        <NavLink to="/editprofile" className="header__btn btn-nav">
+          edit-profile
+        </NavLink>
+        <NavLink to="/#" className="header__btn btn-nav">
+          new-board
+        </NavLink>
+      </div>
+
+      <div>
+        <select className="header__select">
           <option value="en">en</option>
           <option value="ru">ru</option>
         </select>
-        <button type="button" className="sign-in">
-          sign-in
-        </button>
-        <button type="button" className="sign-up">
-          sign-up
-        </button>
+        {isAuth ? (
+          <button
+            type="button"
+            className="header__btn"
+            onClick={() => {
+              logout();
+            }}
+          >
+            log-out
+          </button>
+        ) : (
+          <>
+            <NavLink to="/login" className="header__btn btn-nav">
+              sign-in
+            </NavLink>
+            <NavLink to="/signup" className="header__btn btn-nav">
+              sign-up
+            </NavLink>
+          </>
+        )}
       </div>
     </header>
   );
