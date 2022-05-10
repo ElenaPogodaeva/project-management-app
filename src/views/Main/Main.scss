@@ -1,7 +1,7 @@
 @import '../../App.variables.scss';
 
 .main {
-  max-width: 1200px;
+  max-width: $main-width;
   max-height: 100vh;
   margin: 0 auto;
 
@@ -11,5 +11,6 @@
     flex-wrap: wrap;
     overflow: scroll;
     justify-content: center;
+    margin-top: 13px;
   }
 }

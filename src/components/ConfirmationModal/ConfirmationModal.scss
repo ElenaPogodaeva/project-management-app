@@ -1,0 +1,44 @@
+@import '/src/App.variables.scss';
+
+.overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.514);
+}
+
+.modal-window {
+  width: 300px;
+  height: 150px;
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+.modal-title {
+  text-align: center;
+  font-size: $title-font;
+  margin: 10px 0 0 0;
+}
+
+.btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0 20px 0;
+}
+
+.btn-success,
+.btn-fail {
+  width: 70px;
+  height: 40px;
+  font-size: $text-font;
+  margin: 0 10px;
+}
