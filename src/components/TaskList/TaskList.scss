@@ -1,0 +1,15 @@
+.card-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+  padding: 0 10px 5px;
+  overflow-y: auto;
+}
+.card-list::-webkit-scrollbar {
+  width: 25px;
+}
+.card-list::-webkit-scrollbar-thumb {
+  background-color: #c4c9cc;
+  border-right: 0.6rem solid #e2e4e6;
+}
