@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '..';
 import { ICreateColumn } from '../model/interfaces';
 
-export const addColumn = createAsyncThunk(
+const addColumn = createAsyncThunk(
   'board/addColumn',
   async (columnData: { boardId: string; column: ICreateColumn }, { rejectWithValue }) => {
     try {
@@ -14,3 +14,5 @@ export const addColumn = createAsyncThunk(
     }
   }
 );
+
+export default addColumn;

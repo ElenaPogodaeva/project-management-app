@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IColumn } from '../../model/interfaces';
-import { addColumn } from '../thunks';
+import addColumn from '../thunks';
 
 export type BoardState = {
   isLoading: boolean;
