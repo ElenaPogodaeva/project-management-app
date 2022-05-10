@@ -5,21 +5,18 @@ import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 type BoardPreviewTypes = {
   value: IBoardData;
-  key: number;
 };
 
 const BoardPreview = (props: BoardPreviewTypes) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { value, key } = props;
+  const { value } = props;
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
-    console.log('close');
   };
 
   const removeModal = (id: number) => {
-    setIsOpen(!isOpen);
-    console.log(id);
+    toggleModal();
   };
   return (
     <>
@@ -33,7 +30,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
         <p className="board-description">{value.description}</p>
       </div>
       <div className="">
-        {isOpen && <ConfirmationModal close={toggleModal} remove={removeModal} id={key} />}
+        {isOpen && <ConfirmationModal close={toggleModal} remove={removeModal} id={value.id} />}
       </div>
     </>
   );

@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 const Header = () => {
   return (
     <header className="header">
-      <p className="home">home</p>
+      <Link to="/" className="home">
+        home
+      </Link>
       <div className="">
         <p className="edit-profile">edit-profile</p>
         <p className="new-board">new-board</p>
