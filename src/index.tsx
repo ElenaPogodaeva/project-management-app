@@ -7,7 +7,7 @@ import App from './App';
 import Api from './api/api';
 import store from './redux/store';
 
-export const api = new Api();
+const api = new Api();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -19,3 +19,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+export default api;

@@ -7,44 +7,16 @@ type ColumnProps = {
   column: IColumn;
 };
 
-const tasks = [
-  {
-    id: '1',
-    title: 'Task1',
-    order: 1,
-    description: 'description',
-    userId: '1',
-    boardId: '1',
-    columnId: '1',
-  },
-  {
-    id: '2',
-    title: 'Task2',
-    order: 2,
-    description: 'description',
-    userId: '1',
-    boardId: '1',
-    columnId: '1',
-  },
-  {
-    id: '3',
-    title: 'Task3',
-    order: 3,
-    description: 'description',
-    userId: '1',
-    boardId: '1',
-    columnId: '1',
-  },
-  {
-    id: '4',
-    title: 'Task4',
-    order: 4,
-    description: 'description',
-    userId: '1',
-    boardId: '1',
-    columnId: '1',
-  },
-];
+const ITEMS_COUNT_OF_TASK_DATA = 5;
+const taskData = new Array(ITEMS_COUNT_OF_TASK_DATA).fill({}).map((_, index) => ({
+  id: `${index}`,
+  title: `Task ${index + 1}`,
+  order: index,
+  description: `description task ${index + 1}`,
+  userId: '1',
+  boardId: '1',
+  columnId: '1',
+}));
 
 const Column = ({ column }: ColumnProps) => {
   const { id, title } = column;
@@ -54,7 +26,7 @@ const Column = ({ column }: ColumnProps) => {
       <div className="column-title-wrapper">
         <h3 className="column-title">{title}</h3>
       </div>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={taskData} />
       <button type="button" className="add-card-btn">
         Add a card...
       </button>
