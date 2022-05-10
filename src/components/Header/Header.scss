@@ -1,46 +1,49 @@
 @import '../../App.variables.scss';
 
 .header {
-  width: $main-width;
-  text-align: center;
-  border: 1px solid rgb(113, 238, 94);
-  margin: auto;
+  margin: 0 auto;
   padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: 1px solid rgb(113, 238, 94);
+  transition: all 0.25s ease-out;
 
-  & div {
+  &.header_sticky {
+    padding: 12px 0;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    background-color: #fff;
+  }
+
+  .center-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  & p {
-    margin-right: 20px;
+  div {
+    display: flex;
+    column-gap: 12px;
   }
-  a {
-    margin-right: 20px;
+
+  .header__btn {
     font-size: $title-font;
-    opacity: 0.65;
+    background: none;
+    border: none;
 
-    &.active-link {
+    &.btn-home {
+      font-size: $big-font;
+    }
+
+    &.btn-nav {
+      opacity: 0.65;
+    }
+
+    &.btn-nav.active {
       opacity: 1;
     }
   }
-}
 
-.language,
-.sign-in,
-.sign-up {
-  margin: 0px 5px 0px 10px;
-}
-
-.language {
-  border-radius: 10px;
-}
-
-.sign-in,
-.sign-up {
-  border: none;
-  background: none;
+  .header__select {
+    border-radius: 10px;
+  }
 }

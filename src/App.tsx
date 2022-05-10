@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import './App.scss';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
@@ -7,18 +7,27 @@ import NotFound from './views/NotFound/NotFound';
 import Main from './views/Main/Main';
 import Board from './views/Board/Board';
 import Welcome from './views/Welcome/Welcome';
+import useTypedSelector from './hooks/useTypedSelector';
+import Login from './components/Login/Login';
+import SignUp from './components/SignUp/SignUp';
 
 const App = () => {
-  const [isAuth] = useState(false);
+  const { isAuth } = useTypedSelector((state) => state.auth);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!isAuth) navigate('/welcome');
   }, [isAuth]);
+
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<Main />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+
         <Route path="/welcome" element={<Welcome />} />
 
         <Route path="/board/:boardId" element={<Board />} />

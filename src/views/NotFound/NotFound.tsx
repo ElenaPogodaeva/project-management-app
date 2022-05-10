@@ -1,11 +1,7 @@
 import './NotFound.scss';
 
 const NotFound = () => {
-  return (
-    <section className="not-found">
-      <div className="center-container">404</div>
-    </section>
-  );
+  return <section className="not-found">404</section>;
 };
 
 export default NotFound;
