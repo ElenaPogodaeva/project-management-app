@@ -17,14 +17,12 @@ export default class Api {
   userLogin: string;
 
   token: string;
-  // tokenExpiresIn: string;
 
   constructor() {
     this.baseUrl = 'https://react-goodie.herokuapp.com';
     this.userId = localStorage.getItem('userId') as string;
     this.userLogin = localStorage.getItem('userLogin') as string;
     this.token = localStorage.getItem('token') as string;
-    // this.tokenExpiresIn = localStorage.getItem('tokenExpiresIn') as string;
   }
 
   async createResponse(
@@ -57,12 +55,6 @@ export default class Api {
       return error;
     }
   }
-
-  // async helloUser() {
-  //   const response = await fetch(`${baseUrl}`);
-  //   const content = await response.text();
-  //   return content;
-  // }
 
   // Authorization
 
@@ -106,7 +98,6 @@ export default class Api {
 
       const content = await response.json();
       this.token = content.token;
-      // this.updateStorage();
       return content;
     } catch (error) {
       return error;
@@ -157,9 +148,6 @@ export default class Api {
   }
 
   parseJwt() {
-    /*
-    const data = token.split('.')[1];
-    const decodedString = JSON.parse(atob(data)); */
     const base64Url = this.token.split('.')[1];
     if (base64Url === undefined) return null;
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
