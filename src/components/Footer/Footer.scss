@@ -1,0 +1,32 @@
+@import '../../App.variables.scss';
+
+.footer {
+  width: $main-width;
+  text-align: center;
+  border: 1px solid rgb(170, 76, 139);
+  margin: auto;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__right-container {
+  width: 150px;
+  height: 60px;
+  background-image: url(https://rs.school/images/rs_school_js.svg);
+  background-repeat: no-repeat;
+  background-size: 100px 60px;
+  background-position: right;
+  & .course-link {
+    width: 150px;
+    height: 60px;
+  }
+}

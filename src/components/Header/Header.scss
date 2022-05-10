@@ -1,0 +1,49 @@
+@import '../../App.variables.scss';
+
+.header {
+  margin: 0 auto;
+  padding: 20px 0;
+  border: 1px solid rgb(113, 238, 94);
+  transition: all 0.25s ease-out;
+
+  &.header_sticky {
+    padding: 12px 0;
+    width: 100vw;
+    position: fixed;
+    z-index: 1;
+    background-color: #fff;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  div {
+    display: flex;
+    column-gap: 12px;
+  }
+
+  .header__btn {
+    font-size: $title-font;
+    background: none;
+    border: none;
+
+    &.btn-home {
+      font-size: $big-font;
+    }
+
+    &.btn-nav {
+      opacity: 0.65;
+    }
+
+    &.btn-nav.active {
+      opacity: 1;
+    }
+  }
+
+  .header__select {
+    border-radius: 10px;
+  }
+}

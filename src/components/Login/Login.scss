@@ -1,0 +1,101 @@
+@import '../../App.variables.scss';
+
+.login-form {
+  padding: 30px 0;
+  min-height: $min-height;
+
+  .form {
+    margin: 0 auto;
+    padding: 45px 50px;
+    max-width: 28%;
+    font-size: $text-font;
+    font-weight: normal;
+    text-align: center;
+    border-radius: 8px;
+
+    .auth-complete {
+      margin-bottom: 22px;
+      color: green;
+    }
+
+    .auth-incomplete {
+      margin-bottom: 22px;
+      color: red;
+    }
+
+    .form-title {
+      margin-bottom: 22px;
+      font-size: $title-font;
+    }
+
+    .form-error {
+      margin-left: 8px;
+      position: relative;
+      bottom: 14px;
+      font-size: $subtitle-font - 5px;
+      color: red;
+
+      &.none {
+        display: none;
+      }
+    }
+
+    .form-input {
+      margin-bottom: 22px;
+      padding: 6px 12px;
+      height: 36px;
+      width: 100%;
+      display: block;
+      background-color: #fff;
+      border-radius: 8px;
+      border: 1px solid rgb(214, 214, 214);
+
+      &.input-text::placeholder {
+        font-size: $text-font;
+        opacity: 0.5;
+      }
+
+      &.input-error {
+        border-color: red;
+      }
+    }
+
+    .btn-register {
+      margin-bottom: 22px;
+      display: block;
+      font-size: $descr-font + 2px;
+      opacity: 0.85;
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      margin: 0 auto;
+      padding: 10px 22px;
+      display: block;
+      background-color: goldenrod;
+      border: none;
+      border-radius: 9px;
+
+      &:hover {
+        animation: bounce 0.8s infinite alternate;
+
+        &:disabled {
+          animation: none;
+        }
+      }
+
+      &:disabled {
+        color: rgba(0, 0, 0, 0.6);
+      }
+
+      @keyframes bounce {
+        from {
+          transform: scale(1);
+        }
+        to {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

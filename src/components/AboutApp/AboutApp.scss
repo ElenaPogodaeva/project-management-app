@@ -1,0 +1,8 @@
+@import '/src/App.variables.scss';
+
+.about-app {
+  width: $main-width;
+  height: $section-height;
+  border: 1px solid rgb(211, 230, 44);
+  margin: auto;
+}

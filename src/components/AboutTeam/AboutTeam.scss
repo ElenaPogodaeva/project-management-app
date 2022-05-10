@@ -1,0 +1,53 @@
+@import '/src/App.variables.scss';
+
+.about-team {
+  width: $main-width;
+  height: $section-height;
+  border: 1px solid rgb(38, 41, 48);
+  margin: auto;
+}
+
+.title {
+  font-size: $big-font;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+.member-card_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px 0px;
+}
+
+.member-card {
+  width: 300px;
+  height: 500px;
+  background: rgb(188, 224, 253);
+  border-radius: 80px;
+  border-top-left-radius: 2px;
+  padding: 10px;
+  margin: 20px 10px;
+}
+
+.photo {
+  width: 200px;
+  height: 200px;
+  margin: 20px 0 15px 22px;
+  border-radius: 20px;
+}
+
+.name {
+  font-size: $title-font;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 15px 0px 10px 0px;
+}
+
+.description,
+.role {
+  font-size: $text-font;
+  margin: 10px 0px;
+  text-align: center;
+}
