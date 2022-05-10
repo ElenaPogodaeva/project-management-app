@@ -1,0 +1,6 @@
+@import './App.variables.scss';
+
+.center-container {
+  max-width: $main-width;
+  margin: 0 auto;
+}
