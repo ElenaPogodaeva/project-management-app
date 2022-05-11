@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './BoardPreview.scss';
-import { IBoardData, boardData } from '../../utils/defaultBoardData';
+import { IBoard } from '../../model/interfaces';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 
 type BoardPreviewTypes = {
-  value: IBoardData;
+  value: IBoard;
 };
 
 const BoardPreview = (props: BoardPreviewTypes) => {
@@ -27,10 +27,10 @@ const BoardPreview = (props: BoardPreviewTypes) => {
             .
           </button>
         </header>
-        <p className="board-description">{value.description}</p>
+        <p className="board-description">{value.title}</p>
       </div>
       <div className="">
-        {isOpen && <ConfirmationModal close={toggleModal} remove={removeModal} id={value.id} />}
+        {isOpen && <ConfirmationModal close={toggleModal} remove={removeModal} id={+value.id} />}
       </div>
     </>
   );

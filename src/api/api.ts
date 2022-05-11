@@ -7,6 +7,7 @@ import {
   ISinginUser,
   IUpdateTask,
   IUpdateUser,
+  IBoard,
 } from '../model/interfaces';
 
 const BASE_URL = 'https://react-goodie.herokuapp.com';
@@ -30,7 +31,14 @@ export default class Api {
   async createResponse(
     url: string,
     method: string,
-    data: IUpdateUser | ICreateBoard | ICreateColumn | ICreateTask | IUpdateTask | null = null
+    data:
+      | IUpdateUser
+      | ICreateBoard
+      | IBoard
+      | ICreateColumn
+      | ICreateTask
+      | IUpdateTask
+      | null = null
   ) {
     try {
       const config: IConfig = {
@@ -165,7 +173,7 @@ export default class Api {
   async getBoards() {
     try {
       const url = `${this.baseUrl}/boards`;
-      const response = await this.createResponse(url, 'GET');
+      const response: IBoard[] = await this.createResponse(url, 'GET');
       return response;
     } catch (error) {
       return error;

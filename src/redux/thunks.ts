@@ -16,3 +16,12 @@ const addColumn = createAsyncThunk(
 );
 
 export default addColumn;
+
+export const getBoards = createAsyncThunk('board/getBoards', async () => {
+  try {
+    const response = await api.getBoards();
+    return response;
+  } catch (err) {
+    return [];
+  }
+});
