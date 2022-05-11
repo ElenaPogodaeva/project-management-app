@@ -1,35 +1,19 @@
 import ColumnList from '../../components/ColumnList/ColumnList';
 import './Board.scss';
 
-const columns = [
-  {
-    id: '1',
-    title: 'Column1',
-    order: 1,
-  },
-  {
-    id: '2',
-    title: 'Column2',
-    order: 2,
-  },
-  {
-    id: '3',
-    title: 'Column3',
-    order: 3,
-  },
-  {
-    id: '4',
-    title: 'Column4',
-    order: 4,
-  },
-];
+const ITEMS_COUNT_OF_COLUMN_DATA = 5;
+const columnData = new Array(ITEMS_COUNT_OF_COLUMN_DATA).fill({}).map((_, index) => ({
+  id: `${index}`,
+  title: `Column ${index + 1}`,
+  order: index,
+}));
 
 const Board = () => {
   return (
     <div className="board">
       <div className="center-container">
         <section className="board-header">Board title</section>
-        <ColumnList columns={columns} />
+        <ColumnList columns={columnData} />
       </div>
     </div>
   );

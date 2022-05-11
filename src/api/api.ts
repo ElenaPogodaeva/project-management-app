@@ -9,6 +9,8 @@ import {
   IUpdateUser,
 } from '../model/interfaces';
 
+const BASE_URL = 'https://react-goodie.herokuapp.com';
+
 export default class Api {
   baseUrl: string;
 
@@ -19,7 +21,7 @@ export default class Api {
   token: string;
 
   constructor() {
-    this.baseUrl = 'https://react-goodie.herokuapp.com';
+    this.baseUrl = BASE_URL;
     this.userId = localStorage.getItem('userId') as string;
     this.userLogin = localStorage.getItem('userLogin') as string;
     this.token = localStorage.getItem('token') as string;
@@ -38,7 +40,6 @@ export default class Api {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
-        // body: JSON.stringify(data),
       };
 
       if (data) {
@@ -148,19 +149,9 @@ export default class Api {
   }
 
   parseJwt() {
-    const base64Url = this.token.split('.')[1];
-    if (base64Url === undefined) return null;
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split('')
-        .map(function (c) {
-          return `%${`00${c.charCodeAt(0).toString(16)}`.slice(-2)}`;
-        })
-        .join('')
-    );
-
-    return JSON.parse(jsonPayload);
+    const data = this.token.split('.')[1];
+    const decodedString = JSON.parse(atob(data));
+    return decodedString;
   }
 
   getUserId() {
