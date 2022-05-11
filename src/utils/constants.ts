@@ -1,3 +1,3 @@
-const API_URL = 'https://react-goodie.herokuapp.com/';
+const BASE_URL = 'https://react-goodie.herokuapp.com';
 
-export { API_URL };
+export { BASE_URL };

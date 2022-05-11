@@ -8,8 +8,7 @@ import {
   IUpdateTask,
   IUpdateUser,
 } from '../model/interfaces';
-
-const BASE_URL = 'https://react-goodie.herokuapp.com';
+import { BASE_URL } from '../utils/constants';
 
 export default class Api {
   baseUrl: string;
