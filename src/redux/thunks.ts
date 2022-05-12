@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '..';
-import { ICreateColumn } from '../model/interfaces';
+import { ICreateColumn } from '../types/apiTypes';
 
 const addColumn = createAsyncThunk(
   'board/addColumn',

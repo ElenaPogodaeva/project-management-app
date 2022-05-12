@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IColumn } from '../../model/interfaces';
+import { IColumn } from '../../types/apiTypes';
 import addColumn from '../thunks';
 
 export type BoardState = {

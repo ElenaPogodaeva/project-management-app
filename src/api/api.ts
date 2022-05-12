@@ -7,7 +7,7 @@ import {
   ISinginUser,
   IUpdateTask,
   IUpdateUser,
-} from '../model/interfaces';
+} from '../types/apiTypes';
 import { BASE_URL } from '../utils/constants';
 
 export default class Api {
@@ -37,11 +37,11 @@ export default class Api {
         headers: {
           Authorization: `Bearer ${this.token}`,
           Accept: 'application/json',
-          'Content-Type': 'application/json',
         },
       };
 
       if (data) {
+        config.headers['Content-Type'] = 'application/json';
         config.body = JSON.stringify(data);
       }
       const response = await fetch(url, config);
@@ -98,6 +98,7 @@ export default class Api {
 
       const content = await response.json();
       this.token = content.token;
+      localStorage.setItem('token', this.token);
       return content;
     } catch (error) {
       return error;
@@ -110,7 +111,6 @@ export default class Api {
     try {
       const url = `${this.baseUrl}/users`;
       const response = await this.createResponse(url, 'GET');
-      console.log(response);
       return response;
     } catch (error) {
       return error;
@@ -127,9 +127,9 @@ export default class Api {
     }
   }
 
-  async updateUser(user: IUpdateUser) {
+  async updateUser(userId: string, user: IUpdateUser) {
     try {
-      const url = `${this.baseUrl}/users/${this.userId}`;
+      const url = `${this.baseUrl}/users/${userId}`;
       const response = await this.createResponse(url, 'PUT', user);
       return response;
     } catch (error) {
@@ -275,7 +275,7 @@ export default class Api {
     }
   }
 
-  async createTasks(boardId: string, columnId: string, task: ICreateTask) {
+  async createTask(boardId: string, columnId: string, task: ICreateTask) {
     try {
       const url = `${this.baseUrl}/boards/${boardId}/columns/${columnId}/tasks`;
       const response = await this.createResponse(url, 'POST', task);

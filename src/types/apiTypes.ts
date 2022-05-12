@@ -61,7 +61,7 @@ export interface IConfig {
   headers: {
     Authorization: string;
     Accept: string;
-    'Content-Type': string;
+    'Content-Type'?: string;
   };
   body?: string;
 }

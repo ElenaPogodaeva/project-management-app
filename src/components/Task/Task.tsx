@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITask } from '../../model/interfaces';
+import { ITask } from '../../types/apiTypes';
 import './Task.scss';
 
 type TaskProps = {

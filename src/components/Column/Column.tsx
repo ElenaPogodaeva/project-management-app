@@ -1,5 +1,5 @@
 import React from 'react';
-import { IColumn } from '../../model/interfaces';
+import { IColumn } from '../../types/apiTypes';
 import TaskList from '../TaskList/TaskList';
 import './Column.scss';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ITask } from '../../model/interfaces';
+import { ITask } from '../../types/apiTypes';
 import Task from '../Task/Task';
 import './TaskList.scss';
 
