@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '..';
-import { ICreateColumn } from '../model/interfaces';
+import { ICreateColumn, IBoard, ICreateBoard, ICreatedBoard } from '../model/interfaces';
+
+export interface ValidationErrors {
+  rejectValue: string;
+}
 
 const addColumn = createAsyncThunk(
   'board/addColumn',
@@ -17,11 +21,38 @@ const addColumn = createAsyncThunk(
 
 export default addColumn;
 
-export const getBoards = createAsyncThunk('board/getBoards', async () => {
-  try {
-    const response = await api.getBoards();
-    return response;
-  } catch (err) {
-    return [];
+export const getBoards = createAsyncThunk<IBoard[], null, ValidationErrors>(
+  'board/getBoards',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response: IBoard[] = (await api.getBoards()) as IBoard[];
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
   }
-});
+);
+
+export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, ValidationErrors>(
+  'board/addBoard',
+  async (BoardData, { rejectWithValue }) => {
+    try {
+      const response: ICreatedBoard = await api.createBoard(BoardData);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const removeBoard = createAsyncThunk<null, string, ValidationErrors>(
+  'board/removeBoard',
+  async (boardId, { rejectWithValue }) => {
+    try {
+      const response = await api.deleteBoard(boardId);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);

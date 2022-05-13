@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './BoardPreview.scss';
 import { IBoard } from '../../model/interfaces';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import { useAppDispatch } from '../../hooks/hooks';
+import { removeBoard } from '../../redux/features/boardsSlise';
 
 type BoardPreviewTypes = {
   value: IBoard;
@@ -10,12 +12,14 @@ type BoardPreviewTypes = {
 const BoardPreview = (props: BoardPreviewTypes) => {
   const [isOpen, setIsOpen] = useState(false);
   const { value } = props;
+  const dispatch = useAppDispatch();
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const removeModal = (id: number) => {
+  const remove = (id: string) => {
+    dispatch(removeBoard(id));
     toggleModal();
   };
   return (
@@ -27,10 +31,10 @@ const BoardPreview = (props: BoardPreviewTypes) => {
             .
           </button>
         </header>
-        <p className="board-description">{value.title}</p>
+        <p className="board-description">{value.description}</p>
       </div>
       <div className="">
-        {isOpen && <ConfirmationModal close={toggleModal} remove={removeModal} id={+value.id} />}
+        {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
       </div>
     </>
   );

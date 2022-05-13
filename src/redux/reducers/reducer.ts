@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import settingsReducer from './settingsReducer';
 import boardReducer from '../features/boardSlice';
-import boardsPreviewReducer from '../features/boardsPreviewSlise';
+import boardsPreviewReducer from '../features/boardsSlise';
 
 const rootReducer = combineReducers({
   auth: authReducer,

@@ -20,8 +20,14 @@ export interface ICreateUser {
 export interface IBoard {
   id: string;
   title: string;
+  description: string;
 }
 export interface ICreateBoard {
+  title: string;
+  description: string;
+}
+export interface ICreatedBoard {
+  id: string;
   title: string;
 }
 export interface IColumn {
@@ -64,4 +70,8 @@ export interface IConfig {
     'Content-Type': string;
   };
   body?: string;
+}
+export interface INewBoardForm {
+  title: string;
+  description: string;
 }

@@ -31,11 +31,8 @@ export const boardSlice = createSlice({
     builder.addCase(addColumn.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload as Error;
-      // state.columns = [];
     });
   },
 });
-
-// Action creators are generated for each case reducer function
 
 export default boardSlice.reducer;
