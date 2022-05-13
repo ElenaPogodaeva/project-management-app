@@ -1,13 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import api from '..';
+import { createColumn } from '../api/APIService';
 import { ICreateColumn } from '../types/apiTypes';
 
 const addColumn = createAsyncThunk(
   'board/addColumn',
-  async (columnData: { boardId: string; column: ICreateColumn }, { rejectWithValue }) => {
+  async (
+    columnData: { boardId: string; column: ICreateColumn; token: string },
+    { rejectWithValue }
+  ) => {
     try {
-      const { boardId, column } = columnData;
-      const response = await api.createColumn(boardId, column);
+      const { boardId, column, token } = columnData;
+      const response = await createColumn(boardId, column, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);
