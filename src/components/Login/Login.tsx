@@ -2,7 +2,7 @@ import './Login.scss';
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import useTypedSelector from '../../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks/hooks';
 import { ILoginFormData } from '../../types/interfaces';
 
 const Login = () => {

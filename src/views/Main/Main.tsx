@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Main.scss';
 import BoardPreview from '../../components/BoardPreview/BoardPreview';
 import BoardCreate from '../../components/BoardCreate/BoardCreate';
-import useTypedSelector from '../../hooks/useTypedSelector';
+import { useTypedSelector } from '../../hooks/hooks';
 
 const Main = () => {
   const navigate = useNavigate();
