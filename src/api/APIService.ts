@@ -43,7 +43,7 @@ async function createResponse(
     }
     return response.json();
   } catch (error) {
-    return error;
+    return Promise.reject(error);
   }
 }
 
@@ -54,102 +54,102 @@ export const createUser = (user: ICreateUser) => {
   return createResponse(url, 'POST', { data: user });
 };
 
-export async function loginUser(user: ISinginUser) {
+export const loginUser = (user: ISinginUser) => {
   const url = `${baseUrl}/signin`;
   return createResponse(url, 'POST', { data: user });
-}
+};
 
 // Users
 
-export async function getUsers(token: string) {
+export const getUsers = (token: string) => {
   const url = `${baseUrl}/users`;
   return createResponse(url, 'GET', { token });
-}
+};
 
-export function getUserById(userId: string, token: string) {
+export const getUserById = (userId: string, token: string) => {
   const url = `${baseUrl}/users/${userId}`;
   return createResponse(url, 'GET', { token });
-}
+};
 
-export function updateUser(userId: string, user: ICreateUser, token: string) {
+export const updateUser = (userId: string, user: ICreateUser, token: string) => {
   const url = `${baseUrl}/users/${userId}`;
   return createResponse(url, 'PUT', { token, data: user });
-}
+};
 
-export function deleteUser(userId: string, token: string) {
+export const deleteUser = (userId: string, token: string) => {
   const url = `${baseUrl}/users/${userId}`;
   return createResponse(url, 'DELETE', { token });
-}
+};
 
-function parseJwt(token: string) {
+const parseJwt = (token: string) => {
   const data = token.split('.')[1];
   const decodedString = JSON.parse(atob(data));
   return decodedString;
-}
+};
 
-export function getUserId(token: string) {
+export const getUserId = (token: string) => {
   const payLoad = parseJwt(token);
   return payLoad.userId;
-}
+};
 
 // Boards
 
-export function getBoards(token: string) {
+export const getBoards = (token: string) => {
   const url = `${baseUrl}/boards`;
   return createResponse(url, 'GET', { token });
-}
+};
 
-export function createBoard(board: ICreateBoard, token: string) {
+export const createBoard = (board: ICreateBoard, token: string) => {
   const url = `${baseUrl}/boards`;
   return createResponse(url, 'POST', { token, data: board });
-}
+};
 
-export function getBoardById(boardId: string, token: string) {
+export const getBoardById = (boardId: string, token: string) => {
   const url = `${baseUrl}/boards/${boardId}`;
   return createResponse(url, 'GET', { token });
-}
+};
 
-export function updateBoard(boardId: string, board: ICreateBoard, token: string) {
+export const updateBoard = (boardId: string, board: ICreateBoard, token: string) => {
   const url = `${baseUrl}/boards/${boardId}`;
   return createResponse(url, 'PUT', { token, data: board });
-}
+};
 
-export function deleteBoard(boardId: string, token: string) {
+export const deleteBoard = (boardId: string, token: string) => {
   const url = `${baseUrl}/boards/${boardId}`;
   return createResponse(url, 'DELETE', { token });
-}
+};
 
 // Columns
 
-export function getColumns(boardId: string, token: string) {
+export const getColumns = (boardId: string, token: string) => {
   const url = `${baseUrl}/boards/${boardId}/columns`;
   return createResponse(url, 'GET', { token });
-}
+};
 
-export function createColumn(boardId: string, column: ICreateColumn, token: string) {
+export const createColumn = (boardId: string, column: ICreateColumn, token: string) => {
   const url = `${baseUrl}/boards/${boardId}/columns`;
   return createResponse(url, 'POST', { token, data: column });
-}
+};
 
-export function getColumnById(boardId: string, columnId: string, token: string) {
+export const getColumnById = (boardId: string, columnId: string, token: string) => {
   const url = `${baseUrl}/boards/${boardId}/columns/${columnId}`;
   return createResponse(url, 'GET', { token });
-}
+};
 
-export function updateColumn(
+export const updateColumn = (
   boardId: string,
   columnId: string,
   column: ICreateColumn,
   token: string
-) {
+) => {
   const url = `${baseUrl}/boards/${boardId}/columns/${columnId}`;
   return createResponse(url, 'PUT', { token, data: column });
-}
+};
 
-export function deleteColumn(boardId: string, columnId: string, token: string) {
+export const deleteColumn = (boardId: string, columnId: string, token: string) => {
   const url = `${baseUrl}/boards/${boardId}/columns/${columnId}`;
   return createResponse(url, 'DELETE', { token });
-}
+};
 
 // Tasks
 
