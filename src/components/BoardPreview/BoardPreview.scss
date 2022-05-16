@@ -1,0 +1,51 @@
+@import '/src/App.variables.scss';
+
+.boardPreview {
+  width: 350px;
+  height: 300px;
+  border-radius: 15px;
+  border-bottom-left-radius: 70px;
+  border-bottom-right-radius: 70px;
+
+  margin: 20px 10px;
+  background: rgb(230, 242, 255);
+}
+
+.board-header {
+  width: 100%;
+  background: rgb(146, 154, 165);
+  height: 50px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.board-title {
+  width: fit-content;
+  font-size: $title-font;
+  margin: 0 0 10px 0;
+}
+
+.board-description {
+  font-size: $text-font;
+  margin: 30px;
+}
+
+.board-delete {
+  width: 32px;
+  height: 32px;
+  background: none;
+  background-image: url('../../../public/assets/can-trash.png');
+  background-repeat: no-repeat;
+  border: none;
+  opacity: 0.7;
+  transition: 0.3s;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}

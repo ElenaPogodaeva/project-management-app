@@ -1,3 +1,7 @@
-const API_URL = 'https://react-goodie.herokuapp.com/';
+const CONSTANTS = {
+  URLS: {
+    BASE_URL: 'https://react-goodie.herokuapp.com',
+  },
+};
 
-export { API_URL };
+export default CONSTANTS;
