@@ -59,9 +59,8 @@ export interface IUpdateTask {
 export interface IConfig {
   method: string;
   headers: {
-    Authorization: string;
-    Accept: string;
-    'Content-Type': string;
+    Authorization?: string;
+    'Content-Type'?: string;
   };
   body?: string;
 }

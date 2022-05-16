@@ -1,6 +1,6 @@
 import React from 'react';
 import Column from '../Column/Column';
-import { IColumn } from '../../model/interfaces';
+import { IColumn } from '../../types/apiTypes';
 import './ColumnList.scss';
 
 type ColumnListProps = {
