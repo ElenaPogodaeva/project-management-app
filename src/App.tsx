@@ -16,7 +16,7 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isAuth) navigate('/');
+    if (!isAuth) navigate('/welcome');
   }, [isAuth]);
 
   return (

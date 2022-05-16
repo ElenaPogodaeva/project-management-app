@@ -51,9 +51,9 @@ export default class Api {
           'Content-Type': 'application/json',
         },
       };
-
       if (data) {
         config.body = JSON.stringify(data);
+        console.log('config: ', config);
       }
       const response = await fetch(url, config);
 

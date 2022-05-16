@@ -33,9 +33,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
         </header>
         <p className="board-description">{value.description}</p>
       </div>
-      <div className="">
-        {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
-      </div>
+      {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
     </>
   );
 };

@@ -27,7 +27,6 @@ const Main = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          boards.length !== 0 &&
           boards.map((value) => <BoardPreview value={value} key={value.id} />)
         )}
         <BoardCreate />
