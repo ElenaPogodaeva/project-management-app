@@ -3,7 +3,7 @@ import './BoardPreview.scss';
 import { IBoard } from '../../model/interfaces';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import { useAppDispatch } from '../../hooks/hooks';
-import { removeBoard } from '../../redux/features/boardsSlise';
+import { removeBoard } from '../../redux/thunks';
 
 type BoardPreviewTypes = {
   value: IBoard;

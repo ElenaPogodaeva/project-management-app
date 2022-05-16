@@ -49,6 +49,7 @@ export const removeBoard = createAsyncThunk<null, string, ValidationErrors>(
   'board/removeBoard',
   async (boardId, { rejectWithValue }) => {
     try {
+      console.log(boardId);
       const response = await api.deleteBoard(boardId);
       return response;
     } catch (err) {

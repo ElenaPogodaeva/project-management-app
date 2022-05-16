@@ -20,7 +20,7 @@ export interface ICreateUser {
 export interface IBoard {
   id: string;
   title: string;
-  description: string;
+  description?: string;
 }
 export interface ICreateBoard {
   title: string;

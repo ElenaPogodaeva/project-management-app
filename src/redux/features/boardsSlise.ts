@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IBoard } from '../../model/interfaces';
+import { log } from 'console';
+import { IBoard, ICreatedBoard } from '../../model/interfaces';
 import { getBoards, addBoard, removeBoard } from '../thunks';
 
 export type boardsPreviewState = {
@@ -21,9 +22,6 @@ export const boardsSlice = createSlice({
     remove: (state, action: PayloadAction<string>) => {
       state.boards = state.boards.filter((board) => board.id !== action.payload);
       removeBoard(action.payload);
-    },
-    addBoard: (state, action: PayloadAction<IBoard>) => {
-      state.boards.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -50,6 +48,12 @@ export const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.boards = state.boards.filter((board) => board.id !== action.payload);
+        console.log(action.payload);
+      })
+      .addCase(addBoard.fulfilled, (state, action: PayloadAction<ICreatedBoard>) => {
+        state.isLoading = false;
+        state.error = null;
+        state.boards.push(action.payload);
       });
   },
 });
