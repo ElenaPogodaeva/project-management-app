@@ -24,7 +24,6 @@ export interface IBoard {
 }
 export interface ICreateBoard {
   title: string;
-  description: string;
 }
 export interface ICreatedBoard {
   id: string;
@@ -73,5 +72,4 @@ export interface IConfig {
 }
 export interface INewBoardForm {
   title: string;
-  description: string;
 }
