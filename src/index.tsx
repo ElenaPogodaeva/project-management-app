@@ -4,10 +4,7 @@ import { Provider } from 'react-redux';
 import './index.scss';
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
-import Api from './api/api';
 import store from './redux/store';
-
-const api = new Api();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -19,5 +16,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-export default api;

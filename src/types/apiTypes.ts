@@ -59,9 +59,34 @@ export interface IUpdateTask {
 export interface IConfig {
   method: string;
   headers: {
-    Authorization: string;
-    Accept: string;
-    'Content-Type': string;
+    Authorization?: string;
+    'Content-Type'?: string;
   };
   body?: string;
+}
+export interface ITaskResponse {
+  id: string;
+  title: string;
+  order: number;
+  description: string;
+  userId: string;
+  boardId: string;
+  columnId: string;
+  files: [
+    {
+      filename: string;
+      fileSize: number;
+    }
+  ];
+}
+export interface IColumnResponse {
+  id: string;
+  title: string;
+  order: number;
+  tasks: ITaskResponse[];
+}
+export interface IBoardResponse {
+  id: string;
+  title: string;
+  columns: IColumnResponse[];
 }

@@ -1,3 +1,7 @@
-const BASE_URL = 'https://react-goodie.herokuapp.com';
+const CONSTANTS = {
+  URLS: {
+    BASE_URL: 'https://react-goodie.herokuapp.com',
+  },
+};
 
-export { BASE_URL };
+export default CONSTANTS;
