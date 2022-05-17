@@ -6,7 +6,7 @@ import {
   ICreateUser,
   ISinginUser,
   IUpdateTask,
-} from '../types/apiTypes';
+} from './types';
 import CONSTANTS from '../utils/constants';
 
 const baseUrl = CONSTANTS.URLS.BASE_URL;

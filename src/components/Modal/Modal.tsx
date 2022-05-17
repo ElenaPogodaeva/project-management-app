@@ -1,0 +1,25 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions  */
+import React from 'react';
+import './Modal.scss';
+
+type ModalProps = {
+  title: string;
+  onCancel: () => void;
+  children: React.ReactNode;
+};
+
+const Modal = ({ title, onCancel, children }: ModalProps) => {
+  return (
+    <div className="modal" onClick={onCancel}>
+      <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+        <div className="modalHeader">
+          <h2 className="modalTitle">{title}</h2>
+          <div className="modalClose" onClick={onCancel} />
+        </div>
+        <div className="modalBody">{children}</div>
+      </div>
+    </div>
+  );
+};
+
+export default Modal;

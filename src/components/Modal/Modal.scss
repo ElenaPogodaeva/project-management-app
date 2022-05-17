@@ -1,0 +1,38 @@
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalHeader {
+  margin-bottom: 10px;
+}
+
+.modalContent {
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  width: 50vw;
+  position: relative;
+};
+
+.modalTitle {
+  font-weight: bold;
+}
+
+.modalClose {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top:10px;
+  right: 10px;
+  color:#000000;
+  background: url(../../../public/assets/svg/close.svg);
+  cursor: pointer;
+}
