@@ -14,4 +14,6 @@ const store = configureStore({
   devTools: isDevTools,
 });
 
+export type AppDispatch = typeof store.dispatch;
+
 export default store;
