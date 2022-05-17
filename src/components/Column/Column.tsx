@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { getUserId } from '../../api/APIService';
-import { useAppDispatch } from '../../redux/hooks';
-import { addTask, editColumn, removeColumn } from '../../redux/thunks';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { addTask, editColumn, removeColumn } from '../../redux/thunks/thunks';
 import { IColumnResponse } from '../../types/apiTypes';
 import AddColumnForm from '../AddColumnForm/AddColumnForm';
 import AddTaskForm from '../AddTaskForm/AddTaskForm';
@@ -24,7 +24,8 @@ type ColumnFormValues = {
   columnTitle: string;
 };
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTE4MTc2Yy05ZmRmLTQ1ZTktOWM2NC1lNzYwNjc4N2EyN2QiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTI3NTI4OTF9.w2E27F-1HxgqHeGppNHNO1cXWSvsxZD69HAxcfjrjL0';
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTE4MTc2Yy05ZmRmLTQ1ZTktOWM2NC1lNzYwNjc4N2EyN2QiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTI3NTI4OTF9.w2E27F-1HxgqHeGppNHNO1cXWSvsxZD69HAxcfjrjL0';
 const userId = getUserId(token);
 const boardId = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 

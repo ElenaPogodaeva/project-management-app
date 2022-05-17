@@ -6,9 +6,9 @@ import {
   getBoardById,
   updateColumn,
   updateTask,
-} from '../api/APIService';
-import { ICreateColumn, ICreateTask, IUpdateTask } from '../types/apiTypes';
-import { removeCol } from './features/boardSlice';
+} from '../../api/APIService';
+import { ICreateColumn, ICreateTask, IUpdateTask } from '../../types/apiTypes';
+import { removeCol } from '../reducers/boardSlice';
 
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import React, { useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { SubmitHandler } from 'react-hook-form';
 import { ITaskResponse } from '../../types/apiTypes';
 import AddTaskForm from '../AddTaskForm/AddTaskForm';
 import Modal from '../Modal/Modal';

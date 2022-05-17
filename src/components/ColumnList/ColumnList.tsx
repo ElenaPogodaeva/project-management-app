@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { useAppDispatch } from '../../redux/hooks';
 import { IColumnResponse } from '../../types/apiTypes';
-import { addColumn } from '../../redux/thunks';
+import { addColumn } from '../../redux/thunks/thunks';
 import Column from '../Column/Column';
 import Modal from '../Modal/Modal';
 import AddColumnForm from '../AddColumnForm/AddColumnForm';
 import './ColumnList.scss';
+import useAppDispatch from '../../hooks/useAppDispatch';
 
 type ColumnListProps = {
   boardId: string;
@@ -17,7 +17,8 @@ type FormValues = {
   columnTitle: string;
 };
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTE4MTc2Yy05ZmRmLTQ1ZTktOWM2NC1lNzYwNjc4N2EyN2QiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTI3NTI4OTF9.w2E27F-1HxgqHeGppNHNO1cXWSvsxZD69HAxcfjrjL0';
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTE4MTc2Yy05ZmRmLTQ1ZTktOWM2NC1lNzYwNjc4N2EyN2QiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTI3NTI4OTF9.w2E27F-1HxgqHeGppNHNO1cXWSvsxZD69HAxcfjrjL0';
 
 const ColumnList = ({ boardId, columns }: ColumnListProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

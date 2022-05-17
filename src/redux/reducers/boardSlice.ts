@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IColumnResponse, ITaskResponse } from '../../types/apiTypes';
-import { addColumn, addTask, editColumn, editTask, fetchBoardData } from '../thunks';
+import { addColumn, addTask, editColumn, editTask, fetchBoardData } from '../thunks/thunks';
 
 export type BoardState = {
   columns: IColumnResponse[];
