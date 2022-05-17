@@ -5,7 +5,6 @@ import { getBoards, createColumn, createBoard, deleteBoard } from '../api/apiSer
 export interface ValidationErrors {
   rejectValue: string;
 }
-
 const addColumn = createAsyncThunk(
   'board/addColumn',
   async (
