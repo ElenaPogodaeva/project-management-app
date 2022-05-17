@@ -5,14 +5,14 @@ import { addColumn, addTask, editColumn, editTask, fetchBoardData } from '../thu
 export type BoardState = {
   columns: IColumnResponse[];
   title: string;
-  isLoading: boolean;
+  status: string;
   error: string | null;
 };
 
 const initialState: BoardState = {
   columns: [],
   title: '',
-  isLoading: true,
+  status: 'idle',
   error: null,
 };
 
@@ -31,19 +31,19 @@ export const boardSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchBoardData.pending, (state) => {
-      state.isLoading = true;
+      state.status = 'loading';
       state.error = null;
     });
 
     builder.addCase(fetchBoardData.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.status = 'succeeded';
       state.error = null;
       state.title = action.payload.title;
       state.columns = action.payload.columns;
     });
 
     builder.addCase(fetchBoardData.rejected, (state, action) => {
-      state.isLoading = false;
+      state.status = 'failed';
       state.error = action.payload as string;
       state.title = '';
       state.columns = [];
