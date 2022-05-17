@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './CreateBoardModal.scss';
 import { INewBoardForm } from '../../types/apiTypes';
-import { useTypedSelector, useAppDispatch } from '../../hooks/hooks';
-import { addBoard } from '../../redux/thunks';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { addBoard } from '../../redux/thunks/thunks';
 
 type CreateBoardModalType = {
   close: () => void;

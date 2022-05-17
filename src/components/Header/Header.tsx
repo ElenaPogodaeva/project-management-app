@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import useActions from '../../hooks/useActions';
-import { useTypedSelector } from '../../hooks/hooks';
+import useActions from '../../hooks/useAppDispatch';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import './Header.scss';
 import CreateBoardModal from '../CreateBoardModal/CreateBoardModal';
 

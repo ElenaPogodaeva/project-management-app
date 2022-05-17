@@ -4,8 +4,9 @@ import './Main.scss';
 import Loading from '../../components/Loading/Loading';
 import BoardPreview from '../../components/BoardPreview/BoardPreview';
 import BoardCreate from '../../components/BoardCreate/BoardCreate';
-import { useTypedSelector, useAppDispatch } from '../../hooks/hooks';
-import { getBoardsList } from '../../redux/thunks';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { getBoardsList } from '../../redux/thunks/thunks';
 
 const Main = () => {
   const navigate = useNavigate();

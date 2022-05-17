@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ISignUpFormData } from '../../types/interfaces';
-import { useTypedSelector } from '../../hooks/hooks';
+import useTypedSelector from '../../hooks/useTypedSelector';
 
 const SignUp = () => {
   const navigate = useNavigate();

@@ -7,7 +7,7 @@ import NotFound from './views/NotFound/NotFound';
 import Main from './views/Main/Main';
 import Board from './views/Board/Board';
 import Welcome from './views/Welcome/Welcome';
-import { useTypedSelector } from './hooks/hooks';
+import useTypedSelector from './hooks/useTypedSelector';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 

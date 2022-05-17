@@ -2,8 +2,8 @@ import { useState } from 'react';
 import './BoardPreview.scss';
 import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
-import { useAppDispatch } from '../../hooks/hooks';
-import { removeBoard } from '../../redux/thunks';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { removeBoard } from '../../redux/thunks/thunks';
 
 type BoardPreviewTypes = {
   value: IBoard;
