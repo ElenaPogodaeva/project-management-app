@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import authSlice from '../../redux/reducers/authSlice';
+import { authSlice } from '../../redux/reducers/authSlice';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const { isAuth } = useTypedSelector((state) => state.auth);
-  // const { logout } = authSlice.actions;
+  const { logout } = authSlice.actions;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const Header = () => {
               type="button"
               className="header__btn"
               onClick={() => {
-                // logout();
+                dispatch(logout());
               }}
             >
               log-out

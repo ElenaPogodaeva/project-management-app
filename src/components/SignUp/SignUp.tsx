@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ISignUpFormData } from '../../types/interfaces';
 import useTypedSelector from '../../hooks/useTypedSelector';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { fetchSignUp } from '../../redux/thunks';
+import Loading from '../Loading/Loading';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -14,7 +17,8 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm<ISignUpFormData>();
-  const { isAuth } = useTypedSelector((state) => state.auth);
+  const { isLoading, isAuth } = useTypedSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isAuth) navigate('/');
@@ -25,13 +29,14 @@ const SignUp = () => {
     const login = String(getValues('login'));
     const password = String(getValues('password'));
 
-    // fetchRegisterData(login, password, mail, phone);
+    dispatch(fetchSignUp({ name, login, password }));
     reset();
   };
 
   return (
     <section className="signup-form">
       <div className="center-container">
+        {isLoading ? <Loading /> : null}
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
           <h2 className="form-title">Registration</h2>
           <input

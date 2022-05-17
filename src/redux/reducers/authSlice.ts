@@ -25,23 +25,24 @@ export const authSlice = createSlice({
     });
     builder.addCase(fetchSignUp.fulfilled, (state, action: PayloadAction<IUser>) => {
       state.isLoading = false;
+      state.error = null;
     });
     builder.addCase(fetchSignUp.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload as string;
+      state.error = action.payload as Error;
     });
     builder.addCase(fetchSignIn.pending, (state) => {
       state.isLoading = true;
     });
     builder.addCase(fetchSignIn.fulfilled, (state, action: PayloadAction<{ token: string }>) => {
       state.isLoading = false;
-      console.log(action.payload); // ##################
       state.token = action.payload.token;
       state.isAuth = true;
+      state.error = null;
     });
     builder.addCase(fetchSignIn.rejected, (state, action) => {
       state.isLoading = false;
-      state.error = action.payload as string;
+      state.error = action.payload as Error;
     });
   },
 });
