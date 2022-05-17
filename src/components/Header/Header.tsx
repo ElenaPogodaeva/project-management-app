@@ -1,15 +1,17 @@
+import './Header.scss';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import useActions from '../../hooks/useAppDispatch';
+import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import './Header.scss';
+import { authSlice } from '../../redux/reducers/authSlice';
 import CreateBoardModal from '../CreateBoardModal/CreateBoardModal';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isAuth } = useTypedSelector((state) => state.auth);
-  const { logout } = useActions();
+  const { logout } = authSlice.actions;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +42,7 @@ const Header = () => {
           </NavLink>
 
           <div>
-            <NavLink to="/editprofile" className="header__btn btn-nav">
+            <NavLink to="/edit-profile" className="header__btn btn-nav">
               edit-profile
             </NavLink>
             <NavLink to="/#" className="header__btn btn-nav" onClick={() => toggleModal()}>
@@ -58,7 +60,7 @@ const Header = () => {
                 type="button"
                 className="header__btn"
                 onClick={() => {
-                  logout();
+                  dispatch(logout());
                 }}
               >
                 log-out

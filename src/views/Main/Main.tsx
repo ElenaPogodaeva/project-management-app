@@ -1,12 +1,12 @@
+import './Main.scss';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Main.scss';
 import Loading from '../../components/Loading/Loading';
 import BoardPreview from '../../components/BoardPreview/BoardPreview';
 import BoardCreate from '../../components/BoardCreate/BoardCreate';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { getBoardsList } from '../../redux/thunks/thunks';
+import { getBoardsList } from '../../redux/thunks/boardThunks';
 
 const Main = () => {
   const navigate = useNavigate();

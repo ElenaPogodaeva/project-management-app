@@ -1,10 +1,10 @@
-
 export interface IUser {
   id: string;
   name: string;
   login: string;
 }
 export interface IUpdateUser {
+  id: string;
   name: string;
   login: string;
   password: string;

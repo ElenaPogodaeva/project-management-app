@@ -10,6 +10,7 @@ import Welcome from './views/Welcome/Welcome';
 import useTypedSelector from './hooks/useTypedSelector';
 import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
+import EditProfile from './components/EditProfile/EditProfile';
 
 const App = () => {
   const { isAuth } = useTypedSelector((state) => state.auth);
@@ -27,6 +28,8 @@ const App = () => {
 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+
+        <Route path="/edit-profile" element={<EditProfile />} />
 
         <Route path="/welcome" element={<Welcome />} />
 
