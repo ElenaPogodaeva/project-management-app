@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IBoard, ICreatedBoard } from '../../model/interfaces';
-import { getBoards, addBoard, removeBoard } from '../thunks';
+import { IBoard, ICreatedBoard } from '../../types/apiTypes';
+import { getBoardsList, addBoard, removeBoard } from '../thunks';
 
 export type boardsPreviewState = {
   isLoading: boolean;
@@ -20,19 +20,19 @@ export const boardsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getBoards.pending, (state: boardsPreviewState) => {
+      .addCase(getBoardsList.pending, (state: boardsPreviewState) => {
         state.isLoading = true;
         state.error = null;
       })
       .addCase(
-        getBoards.fulfilled,
+        getBoardsList.fulfilled,
         (state: boardsPreviewState, action: PayloadAction<IBoard[]>) => {
           state.isLoading = false;
           state.error = null;
           state.boards = action.payload;
         }
       )
-      .addCase(getBoards.rejected, (state, action) => {
+      .addCase(getBoardsList.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       })

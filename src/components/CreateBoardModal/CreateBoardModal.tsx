@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './CreateBoardModal.scss';
-import { INewBoardForm } from '../../model/interfaces';
+import { INewBoardForm } from '../../types/apiTypes';
 import { useTypedSelector, useAppDispatch } from '../../hooks/hooks';
 import { addBoard } from '../../redux/thunks';
 
