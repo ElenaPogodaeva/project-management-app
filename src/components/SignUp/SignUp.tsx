@@ -26,11 +26,7 @@ const SignUp = () => {
   }, [success, error]);
 
   const onSubmit: SubmitHandler<ISignUpFormData> = (data) => {
-    const name = String(getValues('name'));
-    const login = String(getValues('login'));
-    const password = String(getValues('password'));
-
-    dispatch(fetchSignUp({ name, login, password }));
+    dispatch(fetchSignUp(data));
     setSuccess(true);
     reset();
   };

@@ -41,17 +41,10 @@ const EditProfile = () => {
   };
 
   const onSubmit: SubmitHandler<IEditFormData> = (data) => {
-    const name = String(getValues('name'));
-    const login = String(getValues('login'));
-    const password = String(getValues('password'));
     const userId = getUserId(token as string);
     const authData = {
       userId,
-      userData: {
-        name,
-        login,
-        password,
-      },
+      userData: data,
       token: token as string,
     };
 

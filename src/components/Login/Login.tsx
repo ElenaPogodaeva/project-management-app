@@ -25,10 +25,7 @@ const Login = () => {
   }, [isAuth]);
 
   const onSubmit: SubmitHandler<ILoginFormData> = (data) => {
-    const login = String(getValues('login'));
-    const password = String(getValues('password'));
-
-    dispatch(fetchSignIn({ login, password }));
+    dispatch(fetchSignIn(data));
     reset();
   };
 
