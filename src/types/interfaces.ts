@@ -9,4 +9,10 @@ interface ISignUpFormData {
   password: string;
 }
 
-export type { ILoginFormData, ISignUpFormData };
+interface IEditFormData {
+  name: string;
+  login: string;
+  password: string;
+}
+
+export type { ILoginFormData, ISignUpFormData, IEditFormData };

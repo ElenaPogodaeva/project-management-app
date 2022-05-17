@@ -35,7 +35,7 @@ const Header = () => {
         </NavLink>
 
         <div>
-          <NavLink to="/editprofile" className="header__btn btn-nav">
+          <NavLink to="/edit-profile" className="header__btn btn-nav">
             edit-profile
           </NavLink>
           <NavLink to="/#" className="header__btn btn-nav">

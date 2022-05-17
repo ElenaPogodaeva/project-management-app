@@ -58,7 +58,7 @@ const Login = () => {
             *Required field of at least four characters
           </p>
 
-          {error ? <p className="form-error">Неверный логин или пароль</p> : null}
+          {error ? <p className="form-error">Invalid login or password</p> : null}
 
           <NavLink to="/signup" className="btn-register">
             Registration

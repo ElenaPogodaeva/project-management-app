@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser } from '../../types/apiTypes';
-import { fetchSignIn, fetchSignUp } from '../thunks';
+import { IUpdateUser, IUser } from '../../types/apiTypes';
+import { fetchDelete, fetchSignIn, fetchSignUp, fetchUpdate } from '../thunks';
 import { authState } from '../types/auth';
 
 const initialState: authState = {
@@ -20,30 +20,53 @@ export const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchSignUp.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(fetchSignUp.fulfilled, (state, action: PayloadAction<IUser>) => {
-      state.isLoading = false;
-      state.error = null;
-    });
-    builder.addCase(fetchSignUp.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload as Error;
-    });
-    builder.addCase(fetchSignIn.pending, (state) => {
-      state.isLoading = true;
-    });
-    builder.addCase(fetchSignIn.fulfilled, (state, action: PayloadAction<{ token: string }>) => {
-      state.isLoading = false;
-      state.token = action.payload.token;
-      state.isAuth = true;
-      state.error = null;
-    });
-    builder.addCase(fetchSignIn.rejected, (state, action) => {
-      state.isLoading = false;
-      state.error = action.payload as Error;
-    });
+    builder
+      .addCase(fetchSignUp.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchSignUp.fulfilled, (state, action: PayloadAction<IUser>) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchSignUp.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as Error;
+      })
+      .addCase(fetchSignIn.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchSignIn.fulfilled, (state, action: PayloadAction<{ token: string }>) => {
+        state.isLoading = false;
+        state.token = action.payload.token;
+        state.isAuth = true;
+        state.error = null;
+      })
+      .addCase(fetchSignIn.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as Error;
+      })
+      .addCase(fetchUpdate.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchUpdate.fulfilled, (state, action: PayloadAction<IUpdateUser>) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchUpdate.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as Error;
+      })
+      .addCase(fetchDelete.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchDelete.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(fetchDelete.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as Error;
+      });
   },
 });
 

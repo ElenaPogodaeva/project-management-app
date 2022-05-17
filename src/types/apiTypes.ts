@@ -17,6 +17,12 @@ export interface ICreateUser {
   login: string;
   password: string;
 }
+export interface IUpdateUser {
+  id: string;
+  login: string;
+  name: string;
+  password: string;
+}
 export interface IBoard {
   id: string;
   title: string;

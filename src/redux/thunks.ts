@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createColumn, createUser, loginUser } from '../api/APIService';
+import { createColumn, createUser, deleteUser, loginUser, updateUser } from '../api/APIService';
 import { ICreateColumn, ICreateUser, ISinginUser } from '../types/apiTypes';
 
 export const fetchSignUp = createAsyncThunk(
@@ -19,6 +19,34 @@ export const fetchSignIn = createAsyncThunk(
   async (authData: ISinginUser, { rejectWithValue }) => {
     try {
       const response = await loginUser(authData);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const fetchUpdate = createAsyncThunk(
+  'auth/update',
+  async (
+    authData: { userId: string; userData: ICreateUser; token: string },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { userId, userData, token } = authData;
+      const response = await updateUser(userId, userData, token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const fetchDelete = createAsyncThunk(
+  'auth/delete',
+  async ({ userId, token }: { userId: string; token: string }, { rejectWithValue }) => {
+    try {
+      const response = await deleteUser(userId, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);
