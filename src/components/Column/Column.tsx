@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { getUserId } from '../../api/APIService';
 import useAppDispatch from '../../hooks/useAppDispatch';
@@ -10,6 +10,11 @@ import AddTaskForm from '../AddTaskForm/AddTaskForm';
 import Modal from '../Modal/Modal';
 import TaskList from '../TaskList/TaskList';
 import './Column.scss';
+import CONSTANTS from '../../utils/constants';
+
+const token = CONSTANTS.TOKEN;
+const userId = getUserId(token);
+const boardId = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 
 type ColumnProps = {
   column: IColumnResponse;
@@ -23,11 +28,6 @@ type FormValues = {
 type ColumnFormValues = {
   columnTitle: string;
 };
-
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIxOTE4MTc2Yy05ZmRmLTQ1ZTktOWM2NC1lNzYwNjc4N2EyN2QiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTI3NTI4OTF9.w2E27F-1HxgqHeGppNHNO1cXWSvsxZD69HAxcfjrjL0';
-const userId = getUserId(token);
-const boardId = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 
 const Column = ({ column }: ColumnProps) => {
   const { id: columnId, title, tasks, order } = column;

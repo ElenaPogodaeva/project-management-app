@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import ColumnList from '../../components/ColumnList/ColumnList';
+import Loading from '../../components/Loading/Loading';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { fetchBoardData } from '../../redux/thunks/thunks';
@@ -22,7 +23,7 @@ const Board = () => {
 
   let content;
   if (status === 'loading') {
-    content = <div>Loading...</div>;
+    content = <Loading />;
   } else if (status === 'succeeded') {
     const orderedColumns = columns.slice().sort((a, b) => a.order - b.order);
 
