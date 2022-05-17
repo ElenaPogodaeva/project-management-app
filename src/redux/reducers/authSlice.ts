@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUpdateUser, IUser } from '../../types/apiTypes';
-import { fetchDelete, fetchSignIn, fetchSignUp, fetchUpdate } from '../thunks';
+import { fetchDelete, fetchSignIn, fetchSignUp, fetchUpdate } from '../thunks/authThunks';
 import { authState } from '../types/auth';
 
 const initialState: authState = {

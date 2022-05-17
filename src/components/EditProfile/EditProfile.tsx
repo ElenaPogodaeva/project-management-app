@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { IEditFormData } from '../../types/interfaces';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { fetchDelete, fetchUpdate } from '../../redux/thunks';
+import { fetchDelete, fetchUpdate } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
 import { getUserId } from '../../api/APIService';
 import { authSlice } from '../../redux/reducers/authSlice';

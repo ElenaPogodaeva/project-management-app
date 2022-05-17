@@ -1,11 +1,10 @@
 import './SignUp.scss';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ISignUpFormData } from '../../types/interfaces';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { fetchSignUp } from '../../redux/thunks';
+import { fetchSignUp } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
 
 const SignUp = () => {

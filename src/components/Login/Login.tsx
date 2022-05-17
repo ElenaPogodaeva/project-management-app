@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { ILoginFormData } from '../../types/interfaces';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { fetchSignIn } from '../../redux/thunks';
+import { fetchSignIn } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
 
 const Login = () => {
