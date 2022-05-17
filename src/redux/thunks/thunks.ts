@@ -1,11 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ICreateColumn, IBoard, ICreateBoard, ICreatedBoard } from '../../types/apiTypes';
-import { getBoards, createColumn, createBoard, deleteBoard } from '../../api/apiService';
+import { ICreateColumn, IBoard, ICreateBoard, ICreatedBoard } from '../types/apiTypes';
+import { getBoards, createColumn, createBoard, deleteBoard } from '../api/apiService';
 
 export interface ValidationErrors {
   rejectValue: string;
 }
-
 const addColumn = createAsyncThunk(
   'board/addColumn',
   async (
@@ -63,3 +62,4 @@ export const removeBoard = createAsyncThunk<
     return rejectWithValue((err as Error).message);
   }
 });
+
