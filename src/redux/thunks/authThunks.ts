@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createUser, deleteUser, loginUser, updateUser } from '../../api/APIService';
+import { createUser, deleteUser, loginUser, updateUser } from '../../api/apiService';
 import { ICreateUser, ISinginUser } from '../../types/apiTypes';
 
 export const fetchSignUp = createAsyncThunk(

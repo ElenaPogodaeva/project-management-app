@@ -7,15 +7,14 @@ import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { fetchDelete, fetchUpdate } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
-import { getUserId } from '../../api/APIService';
 import { authSlice } from '../../redux/reducers/authSlice';
+import { getUserId } from '../../api/apiService';
 
 const EditProfile = () => {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    getValues,
     reset,
     formState: { errors },
   } = useForm<IEditFormData>();

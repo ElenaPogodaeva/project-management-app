@@ -3,7 +3,7 @@ import './BoardPreview.scss';
 import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { removeBoard } from '../../redux/thunks/thunks';
+import { removeBoard } from '../../redux/thunks/boardThunks';
 
 type BoardPreviewTypes = {
   value: IBoard;
@@ -33,7 +33,9 @@ const BoardPreview = (props: BoardPreviewTypes) => {
         </header>
         <p className="board-description">{value.description}</p>
       </div>
-      {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
+      {isOpen && (
+        <ConfirmationModal close={toggleModal} remove={remove} id={parseInt(value.id, 10)} />
+      )}
     </>
   );
 };

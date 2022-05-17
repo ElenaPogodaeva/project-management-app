@@ -11,7 +11,6 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
-    getValues,
     reset,
     formState: { errors },
   } = useForm<ISignUpFormData>();

@@ -6,7 +6,7 @@ import './CreateBoardModal.scss';
 import { INewBoardForm } from '../../types/apiTypes';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { addBoard } from '../../redux/thunks/thunks';
+import { addBoard } from '../../redux/thunks/boardThunks';
 
 type CreateBoardModalType = {
   close: () => void;

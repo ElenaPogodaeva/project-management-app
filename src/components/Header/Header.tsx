@@ -33,7 +33,6 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-
   return (
     <>
       <header className={`header ${isSticky ? 'header_sticky' : ''}`}>
@@ -77,10 +76,11 @@ const Header = () => {
               </>
             )}
           </div>
-        </header>
-        {isOpen && <CreateBoardModal close={toggleModal} />}
-      </>
-    );
+        </div>
+      </header>
+      {isOpen && <CreateBoardModal close={toggleModal} />}
+    </>
+  );
 };
 
 export default Header;

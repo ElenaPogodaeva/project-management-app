@@ -13,7 +13,6 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    getValues,
     reset,
     formState: { errors },
   } = useForm<ILoginFormData>();
