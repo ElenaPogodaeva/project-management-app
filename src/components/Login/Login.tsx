@@ -4,33 +4,34 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { ILoginFormData } from '../../types/interfaces';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { fetchSignIn } from '../../redux/thunks/authThunks';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    getValues,
     reset,
     formState: { errors },
   } = useForm<ILoginFormData>();
-  const { isAuth } = useTypedSelector((state) => state.auth);
+  const { isLoading, error, isAuth } = useTypedSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isAuth) navigate('/');
   }, [isAuth]);
 
   const onSubmit: SubmitHandler<ILoginFormData> = (data) => {
-    const login = String(getValues('login'));
-    const password = String(getValues('password'));
-
-    // fetchLoginData(login, password);
+    dispatch(fetchSignIn(data));
     reset();
   };
 
   return (
     <section className="login-form">
       <div className="center-container">
+        {isLoading ? <Loading /> : null}
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
           <h2 className="form-title">Authorization</h2>
 
@@ -52,6 +53,8 @@ const Login = () => {
           <p className={`form-error ${errors.password ? null : 'none'}`}>
             *Required field of at least four characters
           </p>
+
+          {error ? <p className="form-error">Invalid login or password</p> : null}
 
           <NavLink to="/signup" className="btn-register">
             Registration

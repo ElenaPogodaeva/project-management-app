@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IBoard, ICreatedBoard } from '../../types/apiTypes';
-import { getBoardsList, addBoard, removeBoard } from '../thunks/thunks';
+import { getBoardsList, addBoard, removeBoard } from '../thunks/boardThunks';
 
 export type boardsPreviewState = {
   isLoading: boolean;

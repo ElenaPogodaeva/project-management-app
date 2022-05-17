@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { getUserId } from '../../api/APIService';
+import { getUserId } from '../../api/apiService';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { addTask, editColumn, removeColumn } from '../../redux/thunks/thunks';
 import { IColumnResponse } from '../../api/types';
 import AddColumnForm from '../AddColumnForm/AddColumnForm';
 import AddTaskForm from '../AddTaskForm/AddTaskForm';
 import Modal from '../Modal/Modal';
 import TaskList from '../TaskList/TaskList';
+import { addTask, editColumn, removeColumn } from '../../redux/thunks/boardThunks';
 import './Column.scss';
 import CONSTANTS from '../../utils/constants';
 

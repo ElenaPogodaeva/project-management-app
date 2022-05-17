@@ -1,14 +1,62 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IBoard, ICreateBoard, ICreatedBoard } from '../../types/apiTypes';
 import {
-  createColumn,
-  createTask,
-  deleteColumn,
+  getBoards,
+  createBoard,
+  deleteBoard,
   getBoardById,
+  createColumn,
   updateColumn,
+  deleteColumn,
+  createTask,
   updateTask,
-} from '../../api/APIService';
+} from '../../api/apiService';
 import { ICreateColumn, ICreateTask, IUpdateTask } from '../../api/types';
 import { removeCol } from '../reducers/boardSlice';
+
+export interface ValidationErrors {
+  rejectValue: string;
+}
+
+export const getBoardsList = createAsyncThunk<IBoard[], string, ValidationErrors>(
+  'board/getBoards',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await getBoards(token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, ValidationErrors>(
+  'board/addBoard',
+  async (BoardData: { title: string; token: string }, { rejectWithValue }) => {
+    try {
+      const { token } = BoardData;
+      const response = await createBoard(BoardData, token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const removeBoard = createAsyncThunk<
+  null,
+  { boardId: string; token: string },
+  ValidationErrors
+>('board/removeBoard', async (BoardData, { rejectWithValue }) => {
+  try {
+    const { token } = BoardData;
+    console.log(BoardData.boardId);
+    const response = await deleteBoard(BoardData.boardId, token);
+    return response;
+  } catch (err) {
+    return rejectWithValue((err as Error).message);
+  }
+});
 
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',

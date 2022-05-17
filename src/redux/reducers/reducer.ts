@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
-import settingsReducer from './settingsReducer';
+import authReducer from './authSlice';
+import settingsReducer from './settingsSlice';
 import boardReducer from './boardSlice';
 import boardsPreviewReducer from './boardsSlise';
 

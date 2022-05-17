@@ -1,23 +1,8 @@
 interface authState {
-  nickname: string | null;
+  token: string | null;
   isAuth: boolean;
+  isLoading: boolean;
+  error: Error | null;
 }
 
-// eslint-disable-next-line no-shadow
-export enum authActionType {
-  LOGIN = 'login',
-  LOGOUT = 'logout',
-}
-
-interface loginAction {
-  type: authActionType.LOGIN;
-  payload: string;
-}
-
-interface logoutAction {
-  type: authActionType.LOGOUT;
-}
-
-type authAction = loginAction | logoutAction;
-
-export type { authAction, authState };
+export type { authState };

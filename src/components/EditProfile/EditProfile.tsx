@@ -1,31 +1,53 @@
-import './SignUp.scss';
+import './EditProfile.scss';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { ISignUpFormData } from '../../types/interfaces';
+import { IEditFormData } from '../../types/interfaces';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { fetchSignUp } from '../../redux/thunks/authThunks';
+import { fetchDelete, fetchUpdate } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
+import { authSlice } from '../../redux/reducers/authSlice';
+import { getUserId } from '../../api/apiService';
 
-const SignUp = () => {
+const EditProfile = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ISignUpFormData>();
-  const { isLoading, error } = useTypedSelector((state) => state.auth);
+  } = useForm<IEditFormData>();
+  const { isLoading, error, token, isAuth } = useTypedSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const { logout } = authSlice.actions;
   const [success, setSuccess] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!isAuth) navigate('/');
     if (error) {
       setSuccess(false);
     }
-  }, [success, error]);
+    if (success) {
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }
+  }, [isAuth, success, error]);
 
-  const onSubmit: SubmitHandler<ISignUpFormData> = (data) => {
-    dispatch(fetchSignUp(data));
+  const onDelete = () => {
+    const userId = getUserId(token as string);
+  };
+
+  const onSubmit: SubmitHandler<IEditFormData> = (data) => {
+    const userId = getUserId(token as string);
+    const authData = {
+      userId,
+      userData: data,
+      token: token as string,
+    };
+
+    dispatch(fetchUpdate(authData));
     setSuccess(true);
     reset();
   };
@@ -35,8 +57,8 @@ const SignUp = () => {
       <div className="center-container">
         {isLoading ? <Loading /> : null}
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
-          {!isLoading && success ? <p className="form-complete">Account has created</p> : null}
-          <h2 className="form-title">Registration</h2>
+          {!isLoading && success ? <p className="form-complete">Changes applied</p> : null}
+          <h2 className="form-title">Edit profile</h2>
           <input
             className={`form-input input-text ${errors.login ? 'input-error' : null}`}
             placeholder="Name"
@@ -65,10 +87,20 @@ const SignUp = () => {
             *Required field of at least four characters
           </p>
 
-          {error ? <p className="form-error">Probably user is already exist</p> : null}
+          {error ? <p className="form-error">Oops! There is an error</p> : null}
 
           <button type="submit" className="btn-submit">
-            Sign up
+            Edit
+          </button>
+
+          <button
+            type="button"
+            className="btn-submit btn-delete"
+            onClick={() => {
+              onDelete();
+            }}
+          >
+            Delete user
           </button>
         </form>
       </div>
@@ -76,4 +108,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default EditProfile;

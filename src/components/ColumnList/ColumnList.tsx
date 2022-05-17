@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { IColumnResponse } from '../../api/types';
-import { addColumn } from '../../redux/thunks/thunks';
 import Column from '../Column/Column';
 import Modal from '../Modal/Modal';
 import AddColumnForm from '../AddColumnForm/AddColumnForm';
-import './ColumnList.scss';
 import useAppDispatch from '../../hooks/useAppDispatch';
+import { addColumn } from '../../redux/thunks/boardThunks';
+import './ColumnList.scss';
 import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
