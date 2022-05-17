@@ -8,10 +8,15 @@ const middlewareConfig = {
 };
 const isDevTools = process.env.NODE_ENV !== 'production';
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware(middlewareConfig),
-  devTools: isDevTools,
-});
+const setupStore = () => {
+  return configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware(middlewareConfig),
+    devTools: isDevTools,
+  });
+};
 
-export default store;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];
+
+export default setupStore;

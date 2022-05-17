@@ -1,6 +1,30 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { createColumn } from '../api/APIService';
-import { ICreateColumn } from '../types/apiTypes';
+import { createColumn, createUser, loginUser } from '../api/APIService';
+import { ICreateColumn, ICreateUser, ISinginUser } from '../types/apiTypes';
+
+export const fetchSignUp = createAsyncThunk(
+  'auth/signUp',
+  async (authData: ICreateUser, { rejectWithValue }) => {
+    try {
+      const response = await createUser(authData);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const fetchSignIn = createAsyncThunk(
+  'auth/signIn',
+  async (authData: ISinginUser, { rejectWithValue }) => {
+    try {
+      const response = await loginUser(authData);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
 
 const addColumn = createAsyncThunk(
   'board/addColumn',

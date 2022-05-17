@@ -1,13 +1,15 @@
+import './Header.scss';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import useActions from '../../hooks/useActions';
+import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import './Header.scss';
+import authSlice from '../../redux/reducers/authSlice';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const { isAuth } = useTypedSelector((state) => state.auth);
-  const { logout } = useActions();
+  // const { logout } = authSlice.actions;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +53,7 @@ const Header = () => {
               type="button"
               className="header__btn"
               onClick={() => {
-                logout();
+                // logout();
               }}
             >
               log-out

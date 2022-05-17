@@ -1,8 +1,8 @@
 import './Main.scss';
-import BoardPreview from '../../components/BoardPreview/BoardPreview';
-import { boardData } from '../../utils/defaultBoardData';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BoardPreview from '../../components/BoardPreview/BoardPreview';
+import { boardData } from '../../utils/defaultBoardData';
 import useTypedSelector from '../../hooks/useTypedSelector';
 
 const Main = () => {
