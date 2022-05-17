@@ -4,7 +4,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { getUserId } from '../../api/APIService';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { addTask, editColumn, removeColumn } from '../../redux/thunks/thunks';
-import { IColumnResponse } from '../../types/apiTypes';
+import { IColumnResponse } from '../../api/types';
 import AddColumnForm from '../AddColumnForm/AddColumnForm';
 import AddTaskForm from '../AddTaskForm/AddTaskForm';
 import Modal from '../Modal/Modal';

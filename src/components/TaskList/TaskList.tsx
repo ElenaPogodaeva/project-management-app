@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITaskResponse } from '../../types/apiTypes';
+import { ITaskResponse } from '../../api/types';
 import Task from '../Task/Task';
 import './TaskList.scss';
 

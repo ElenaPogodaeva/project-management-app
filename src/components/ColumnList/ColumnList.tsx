@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
-import { IColumnResponse } from '../../types/apiTypes';
+import { IColumnResponse } from '../../api/types';
 import { addColumn } from '../../redux/thunks/thunks';
 import Column from '../Column/Column';
 import Modal from '../Modal/Modal';
