@@ -48,11 +48,11 @@ export default class Api {
         headers: {
           Authorization: `Bearer ${this.token}`,
           Accept: 'application/json',
-          'Content-Type': 'application/json',
         },
       };
       if (data) {
         config.body = JSON.stringify(data);
+        config.headers['Content-Type'] = 'application/json';
         console.log('config: ', config);
       }
       const response = await fetch(url, config);
