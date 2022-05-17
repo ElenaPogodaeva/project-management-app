@@ -7,8 +7,53 @@ import {
   updateColumn,
   updateTask,
 } from '../../api/APIService';
-import { ICreateColumn, ICreateTask, IUpdateTask } from '../../types/apiTypes';
 import { removeCol } from '../reducers/boardSlice';
+import { ICreateColumn, ICreateTask, IUpdateTask, IBoard, ICreateBoard, ICreatedBoard } from '../../types/apiTypes';
+import { getBoards, createColumn, createBoard, deleteBoard } from '../api/apiService';
+
+export interface ValidationErrors {
+  rejectValue: string;
+}
+
+export const getBoardsList = createAsyncThunk<IBoard[], string, ValidationErrors>(
+  'board/getBoards',
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await getBoards(token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, ValidationErrors>(
+  'board/addBoard',
+  async (BoardData: { title: string; token: string }, { rejectWithValue }) => {
+    try {
+      const { token } = BoardData;
+      const response = await createBoard(BoardData, token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const removeBoard = createAsyncThunk<
+  null,
+  { boardId: string; token: string },
+  ValidationErrors
+>('board/removeBoard', async (BoardData, { rejectWithValue }) => {
+  try {
+    const { token } = BoardData;
+    console.log(BoardData.boardId);
+    const response = await deleteBoard(BoardData.boardId, token);
+    return response;
+  } catch (err) {
+    return rejectWithValue((err as Error).message);
+  }
+});
 
 export const fetchBoardData = createAsyncThunk(
   'board/fetchBoardData',
