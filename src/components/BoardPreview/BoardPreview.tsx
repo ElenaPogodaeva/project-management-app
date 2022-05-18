@@ -4,6 +4,7 @@ import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { removeBoard } from '../../redux/thunks/boardThunks';
+import CONSTANTS from '../../utils/constants';
 
 type BoardPreviewTypes = {
   value: IBoard;
@@ -19,7 +20,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
   };
 
   const remove = (id: string) => {
-    dispatch(removeBoard(id));
+    dispatch(removeBoard({ boardId: id, token: CONSTANTS.TOKEN }));
     toggleModal();
   };
   return (
@@ -34,7 +35,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
         <p className="board-description">{value.description}</p>
       </div>
       {isOpen && (
-        <ConfirmationModal close={toggleModal} remove={remove} id={parseInt(value.id, 10)} />
+        <ConfirmationModal close={toggleModal} remove={remove} id={`${parseInt(value.id, 10)}`} />
       )}
     </>
   );

@@ -7,6 +7,7 @@ import { INewBoardForm } from '../../types/apiTypes';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { addBoard } from '../../redux/thunks/boardThunks';
+import CONSTANTS from '../../utils/constants';
 
 type CreateBoardModalType = {
   close: () => void;
@@ -26,7 +27,7 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
   } = useForm<INewBoardForm>();
 
   const onSubmit: SubmitHandler<INewBoardForm> = (data) => {
-    dispatch(addBoard(data));
+    dispatch(addBoard({ title: data.title, token: CONSTANTS.TOKEN }));
     reset();
     close();
   };

@@ -32,9 +32,8 @@ const Main = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          boards.map((value) => <BoardPreview value={value} key={value.id} />)
+          (boards.map((value) => <BoardPreview value={value} key={value.id} />), (<BoardCreate />))
         )}
-        <BoardCreate />
       </div>
     </main>
   );
