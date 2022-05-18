@@ -99,9 +99,9 @@ export const getBoards = (token: string) => {
   return createResponse(url, 'GET', { token });
 };
 
-export const createBoard = (board: ICreateBoard) => {
+export const createBoard = (board: ICreateBoard, token: string) => {
   const url = `${baseUrl}/boards`;
-  return createResponse(url, 'POST', board);
+  return createResponse(url, 'POST', { token, data: board });
 };
 
 export const getBoardById = (boardId: string, token: string) => {
