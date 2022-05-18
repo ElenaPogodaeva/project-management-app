@@ -3,15 +3,13 @@ import Task from '../Task/Task';
 import './TaskList.scss';
 
 type TaskListProps = {
-  tasks: ITaskResponse[];
-  columnId: string;
+  tasks: ITask[];
 };
 
-const TaskList = ({ tasks, columnId }: TaskListProps) => {
+const TaskList = ({ tasks }: TaskListProps) => {
   return (
     <ul className="card-list">
-      {Boolean(tasks.length) &&
-        tasks.map((task) => <Task key={task.id} task={task} columnId={columnId} />)}
+      {Boolean(tasks.length) && tasks.map((task) => <Task key={task.id} task={task} />)}
     </ul>
   );
 };

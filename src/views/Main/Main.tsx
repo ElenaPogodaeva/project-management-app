@@ -1,4 +1,6 @@
 import './Main.scss';
+import BoardPreview from '../../components/BoardPreview/BoardPreview';
+import { boardData } from '../../utils/defaultBoardData';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
