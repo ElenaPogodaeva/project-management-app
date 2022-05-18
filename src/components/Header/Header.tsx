@@ -1,16 +1,20 @@
 import './Header.scss';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { authSlice } from '../../redux/reducers/authSlice';
 import CreateBoardModal from '../CreateBoardModal/CreateBoardModal';
+import { languageType } from '../../redux/types/settings';
+import { settingsSlice } from '../../redux/reducers/settingsSlice';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isAuth } = useTypedSelector((state) => state.auth);
   const { logout } = authSlice.actions;
+  const { changeLang } = settingsSlice.actions;
+  const langSelect = React.createRef<HTMLSelectElement>();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -33,6 +37,14 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+
+    const langValue = (langSelect.current as HTMLSelectElement).value;
+    const lang = langValue === languageType.EN ? languageType.EN : languageType.RU;
+    dispatch(changeLang(lang));
+  };
+
   return (
     <>
       <header className={`header ${isSticky ? 'header_sticky' : ''}`}>
@@ -51,9 +63,14 @@ const Header = () => {
           </div>
 
           <div>
-            <select className="header__select">
-              <option value="en">en</option>
-              <option value="ru">ru</option>
+            <select
+              ref={langSelect}
+              className="header__select"
+              defaultValue={languageType.EN}
+              onChange={handleSelectChange}
+            >
+              <option value={languageType.EN}>en</option>
+              <option value={languageType.RU}>ru</option>
             </select>
             {isAuth ? (
               <button

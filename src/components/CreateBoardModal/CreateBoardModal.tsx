@@ -32,6 +32,7 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
     close();
   };
 
+  /* eslint-disable */
   return ReactDOM.createPortal(
     <section className="createBoard-form" onClick={() => close()}>
       <form
@@ -55,6 +56,7 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
     </section>,
     document.getElementById('modals') as HTMLElement
   );
+  /* eslint-enable */
 };
 
 export default CreateBoardModal;

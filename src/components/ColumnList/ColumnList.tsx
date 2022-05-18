@@ -42,7 +42,7 @@ const ColumnList = ({ boardId, columns }: ColumnListProps) => {
       console.error('Failed to add the column: ', err);
     }
   };
- 
+
   return (
     <section className="column-list">
       {Boolean(columns.length) &&

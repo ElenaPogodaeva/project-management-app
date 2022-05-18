@@ -1,10 +1,9 @@
 import './Main.scss';
-import BoardPreview from '../../components/BoardPreview/BoardPreview';
-import { boardData } from '../../utils/defaultBoardData';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Loading from '../../components/Loading/Loading';
 import BoardPreview from '../../components/BoardPreview/BoardPreview';
+import { boardData } from '../../utils/defaultBoardData';
+import Loading from '../../components/Loading/Loading';
 import BoardCreate from '../../components/BoardCreate/BoardCreate';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
