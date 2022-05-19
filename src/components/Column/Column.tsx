@@ -105,7 +105,7 @@ const Column = ({ column }: ColumnProps) => {
           onClick={() => setIsDeleteColumnOpen(true)}
         />
       </div>
-      <TaskList tasks={tasks} columnId={columnId} />
+      <TaskList tasks={tasks} />
       <button type="button" className="add-card-btn" onClick={() => setIsAddTaskOpen(true)}>
         Add a card...
       </button>

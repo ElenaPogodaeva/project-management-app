@@ -26,6 +26,9 @@ export interface ICreateBoard {
   title: string;
   token: string;
 }
+export interface ICreateBoardPreview {
+  title: string;
+}
 export interface ICreatedBoard {
   id: string;
   title: string;

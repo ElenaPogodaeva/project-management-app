@@ -34,7 +34,8 @@ export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, Validation
   'board/addBoard',
   async (BoardData: ICreateBoard, { rejectWithValue }) => {
     try {
-      const response = await createBoard(BoardData);
+      const { token, title } = BoardData;
+      const response = await createBoard({ title }, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);
@@ -43,13 +44,13 @@ export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, Validation
 );
 
 export const removeBoard = createAsyncThunk<
-  null,
+  string,
   { boardId: string; token: string },
   ValidationErrors
 >('board/removeBoard', async (BoardData, { rejectWithValue }) => {
   try {
     const { token } = BoardData;
-    console.log(BoardData.boardId);
+
     const response = await deleteBoard(BoardData.boardId, token);
     return response;
   } catch (err) {

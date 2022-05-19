@@ -6,6 +6,7 @@ import {
   ICreateUser,
   ISinginUser,
   IUpdateTask,
+  ICreateBoardPreview,
 } from '../types/apiTypes';
 import CONSTANTS from '../utils/constants';
 
@@ -19,14 +20,20 @@ async function createResponse(
     data,
   }: {
     token?: string;
-    data?: ISinginUser | ICreateUser | ICreateBoard | ICreateColumn | ICreateTask | IUpdateTask;
+    data?:
+      | ISinginUser
+      | ICreateUser
+      | ICreateBoard
+      | ICreateColumn
+      | ICreateBoardPreview
+      | ICreateTask
+      | IUpdateTask;
   } = {}
 ) {
   const config: IConfig = {
     method,
     headers: {},
   };
-
   if (data) {
     config.headers['Content-Type'] = 'application/json';
     config.body = JSON.stringify(data);
@@ -35,8 +42,8 @@ async function createResponse(
     config.headers.Authorization = `Bearer ${token}`;
   }
   try {
+    console.log('data: ', config);
     const response = await fetch(url, config);
-
     if (!response.ok) {
       const error = await response.text();
       throw new Error(error);
@@ -99,9 +106,9 @@ export const getBoards = (token: string) => {
   return createResponse(url, 'GET', { token });
 };
 
-export const createBoard = (board: ICreateBoard, token: string) => {
+export const createBoard = (board: ICreateBoardPreview, token: string) => {
   const url = `${baseUrl}/boards`;
-  return createResponse(url, 'POST', { token, data: board });
+  return createResponse(url, 'POST', { data: board, token });
 };
 
 export const getBoardById = (boardId: string, token: string) => {

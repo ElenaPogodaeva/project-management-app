@@ -1,6 +1,4 @@
 import './Main.scss';
-import BoardPreview from '../../components/BoardPreview/BoardPreview';
-import { boardData } from '../../utils/defaultBoardData';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../../components/Loading/Loading';
@@ -34,8 +32,9 @@ const Main = () => {
         {isLoading ? (
           <Loading />
         ) : (
-          (boards.map((value) => <BoardPreview value={value} key={value.id} />), (<BoardCreate />))
+          boards.map((value) => <BoardPreview value={value} key={value.id} />)
         )}
+        <BoardCreate />
       </div>
     </main>
   );

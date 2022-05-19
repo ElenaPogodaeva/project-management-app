@@ -36,11 +36,15 @@ export const boardsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload as string;
       })
-      .addCase(removeBoard.fulfilled, (state, action) => {
+      .addCase(removeBoard.pending, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.boards = state.boards.filter((board) => board.id !== action.payload);
-        console.log(action.payload);
+      })
+      .addCase(removeBoard.fulfilled, (state, action: PayloadAction<string>) => {
+        state.isLoading = false;
+        state.error = null;
+        state.boards = state.boards.filter((board) => board.id !== action.payload);
       })
       .addCase(addBoard.fulfilled, (state, action: PayloadAction<ICreatedBoard>) => {
         state.isLoading = false;
