@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUpdateUser, IUser } from '../../types/apiTypes';
+import getCookieToken from '../../utils/getCookieToken';
 import { fetchDelete, fetchSignIn, fetchSignUp, fetchUpdate } from '../thunks/authThunks';
 import { authState } from '../types/auth';
 
+const cookieToken = getCookieToken();
+
 const initialState: authState = {
-  token: null,
-  isAuth: false,
+  token: cookieToken,
+  isAuth: Boolean(cookieToken),
   isLoading: false,
   error: null,
 };

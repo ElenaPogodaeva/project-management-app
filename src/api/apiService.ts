@@ -42,7 +42,7 @@ async function createResponse(
     config.headers.Authorization = `Bearer ${token}`;
   }
   try {
-    console.log('data: ', config);
+    console.log('apiService, data: ', config);
     const response = await fetch(url, config);
     if (!response.ok) {
       const error = await response.text();

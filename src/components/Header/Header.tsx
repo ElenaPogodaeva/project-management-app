@@ -1,6 +1,7 @@
 import './Header.scss';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { authSlice } from '../../redux/reducers/authSlice';
@@ -16,6 +17,7 @@ const Header = () => {
   const { changeLang } = settingsSlice.actions;
   const langSelect = React.createRef<HTMLSelectElement>();
   const dispatch = useAppDispatch();
+  const [cookies, setCookie, removeCookie] = useCookies(['goodie-token']);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +80,7 @@ const Header = () => {
                 className="header__btn"
                 onClick={() => {
                   dispatch(logout());
+                  removeCookie('goodie-token');
                 }}
               >
                 log-out

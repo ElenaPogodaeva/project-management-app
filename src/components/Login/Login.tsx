@@ -2,11 +2,13 @@ import './Login.scss';
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useCookies } from 'react-cookie';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { ILoginFormData } from '../../types/interfaces';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { fetchSignIn } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
+import CONSTANTS from '../../utils/constants';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,11 +18,17 @@ const Login = () => {
     reset,
     formState: { errors },
   } = useForm<ILoginFormData>();
-  const { isLoading, error, isAuth } = useTypedSelector((state) => state.auth);
+  const { isLoading, error, isAuth, token } = useTypedSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const [cookies, setCookie] = useCookies(['goodie-token']);
 
   useEffect(() => {
-    if (isAuth) navigate('/');
+    if (isAuth) {
+      setCookie('goodie-token', token, {
+        maxAge: CONSTANTS.TOKEN_INSPIRATION_TIME,
+      });
+      navigate('/');
+    }
   }, [isAuth]);
 
   const onSubmit: SubmitHandler<ILoginFormData> = (data) => {
