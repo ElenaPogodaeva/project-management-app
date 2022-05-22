@@ -20,13 +20,25 @@ export const boardSlice = createSlice({
   name: 'board',
   initialState,
   reducers: {
-    removeCol(
+    columnDeleted(
       state,
       action: PayloadAction<{
         columnId: string;
       }>
     ) {
-      state.columns = state.columns.filter((column) => column.id !== action.payload.columnId);
+      const { columnId } = action.payload;
+      state.columns = state.columns.filter((column) => column.id !== columnId);
+    },
+    taskDeleted(
+      state,
+      action: PayloadAction<{
+        columnId: string;
+        taskId: string;
+      }>
+    ) {
+      const { columnId, taskId } = action.payload;
+      const column = state.columns.find((item) => item.id === columnId) as IColumnResponse;
+      column.tasks = column.tasks.filter((item) => item.id !== taskId);
     },
   },
   extraReducers: (builder) => {
@@ -78,6 +90,6 @@ export const boardSlice = createSlice({
   },
 });
 
-export const { removeCol } = boardSlice.actions;
+export const { columnDeleted, taskDeleted } = boardSlice.actions;
 
 export default boardSlice.reducer;

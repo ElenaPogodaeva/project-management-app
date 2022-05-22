@@ -10,9 +10,10 @@ import {
   deleteColumn,
   createTask,
   updateTask,
+  deleteTask,
 } from '../../api/apiService';
 import { ICreateColumn, ICreateTask, IUpdateTask } from '../../api/types';
-import { removeCol } from '../reducers/boardSlice';
+import { columnDeleted, taskDeleted } from '../reducers/boardSlice';
 
 export interface ValidationErrors {
   rejectValue: string;
@@ -112,7 +113,7 @@ export const removeColumn = createAsyncThunk(
   ) => {
     try {
       const { boardId, columnId, token } = data;
-      dispatch(removeCol({ columnId }));
+      dispatch(columnDeleted({ columnId }));
       const response = await deleteColumn(boardId, columnId, token);
       return response;
     } catch (err) {
@@ -146,6 +147,23 @@ export const editTask = createAsyncThunk(
     try {
       const { boardId, columnId, taskId, task, token } = data;
       const response = await updateTask(boardId, columnId, taskId, task, token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const removeTask = createAsyncThunk(
+  'board/removeTask',
+  async (
+    data: { boardId: string; columnId: string; taskId: string; token: string },
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const { boardId, columnId, taskId, token } = data;
+      dispatch(taskDeleted({ columnId, taskId }));
+      const response = await deleteTask(boardId, columnId, taskId, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);
