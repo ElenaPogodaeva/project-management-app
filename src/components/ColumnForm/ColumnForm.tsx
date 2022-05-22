@@ -1,16 +1,16 @@
 import { useForm } from 'react-hook-form';
-import './AddColumnForm.scss';
+import './ColumnForm.scss';
 
 type ColumnFormValues = {
   columnTitle: string;
 };
 
-type AddColumnFormProps = {
+type ColumnFormProps = {
   onSubmit: (data: ColumnFormValues) => void;
   onCancel: () => void;
 };
 
-const AddColumnForm = ({ onSubmit, onCancel }: AddColumnFormProps) => {
+const ColumnForm = ({ onSubmit, onCancel }: ColumnFormProps) => {
   const {
     register,
     handleSubmit,
@@ -35,4 +35,4 @@ const AddColumnForm = ({ onSubmit, onCancel }: AddColumnFormProps) => {
   );
 };
 
-export default AddColumnForm;
+export default ColumnForm;

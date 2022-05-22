@@ -1,11 +1,10 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
-import { SubmitHandler } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { getUserId } from '../../api/apiService';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { IColumnResponse } from '../../api/types';
-import AddColumnForm from '../AddColumnForm/AddColumnForm';
-import AddTaskForm from '../AddTaskForm/AddTaskForm';
+import TaskForm from '../TaskForm/TaskForm';
 import Modal from '../Modal/Modal';
 import TaskList from '../TaskList/TaskList';
 import { addTask, editColumn, removeColumn } from '../../redux/thunks/boardThunks';
@@ -21,8 +20,8 @@ type ColumnProps = {
 };
 
 type FormValues = {
-  taskTitle: string;
-  taskDescription: string;
+  title: string;
+  description: string;
 };
 
 type ColumnFormValues = {
@@ -36,6 +35,15 @@ const Column = ({ column }: ColumnProps) => {
   const [isTitleEdit, setIsTitleEdit] = useState(false);
 
   const dispatch = useAppDispatch();
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<ColumnFormValues>({
+    defaultValues: { columnTitle: title },
+  });
 
   const onColumnFormSubmit: SubmitHandler<ColumnFormValues> = async (data) => {
     try {
@@ -52,6 +60,7 @@ const Column = ({ column }: ColumnProps) => {
 
   const onColumnFormCancel = () => {
     setIsTitleEdit(false);
+    setValue('columnTitle', title);
   };
 
   const onTaskFormSubmit: SubmitHandler<FormValues> = async (data) => {
@@ -59,9 +68,9 @@ const Column = ({ column }: ColumnProps) => {
       const taskOrder = tasks.length ? Math.max(...tasks.map((item) => item.order)) + 1 : 0;
 
       const taskData = {
-        title: data.taskTitle,
+        title: data.title,
         order: taskOrder,
-        description: data.taskDescription,
+        description: data.description,
         userId,
       };
       await dispatch(addTask({ boardId, columnId, task: taskData, token }));
@@ -92,7 +101,25 @@ const Column = ({ column }: ColumnProps) => {
     <div className="column-item">
       <div className="column-title-wrapper">
         {isTitleEdit ? (
-          <AddColumnForm onSubmit={onColumnFormSubmit} onCancel={onColumnFormCancel} />
+          <form className="column-title-form" onSubmit={handleSubmit(onColumnFormSubmit)}>
+            <input
+              type="text"
+              className="column-title-input"
+              {...register('columnTitle', { required: true })}
+              onClick={() => setIsTitleEdit(true)}
+              placeholder="Enter column title"
+              autoComplete="off"
+            />
+            <div className="column-title-btns">
+              <button type="submit" aria-label="Edit" className="column-btn check-btn" />
+              <button
+                type="button"
+                aria-label="Cancel"
+                className="column-btn cancel-btn"
+                onClick={onColumnFormCancel}
+              />
+            </div>
+          </form>
         ) : (
           <h3 className="column-title" onClick={() => setIsTitleEdit(true)}>
             {title}
@@ -101,17 +128,17 @@ const Column = ({ column }: ColumnProps) => {
         <button
           type="button"
           aria-label="Delete"
-          className="delete-btn"
+          className="column-btn delete-btn"
           onClick={() => setIsDeleteColumnOpen(true)}
         />
       </div>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} columnId={columnId} />
       <button type="button" className="add-card-btn" onClick={() => setIsAddTaskOpen(true)}>
         Add a card...
       </button>
       {isAddTaskOpen && (
         <Modal title="Add a task" onCancel={onTaskFormCancel}>
-          <AddTaskForm onSubmit={onTaskFormSubmit} onCancel={onTaskFormCancel} />
+          <TaskForm onSubmit={onTaskFormSubmit} onCancel={onTaskFormCancel} />
         </Modal>
       )}
       {isDeleteColumnOpen && (

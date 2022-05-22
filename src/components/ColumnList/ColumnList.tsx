@@ -3,7 +3,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { IColumnResponse } from '../../api/types';
 import Column from '../Column/Column';
 import Modal from '../Modal/Modal';
-import AddColumnForm from '../AddColumnForm/AddColumnForm';
+import ColumnForm from '../ColumnForm/ColumnForm';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { addColumn } from '../../redux/thunks/boardThunks';
 import './ColumnList.scss';
@@ -42,7 +42,7 @@ const ColumnList = ({ boardId, columns }: ColumnListProps) => {
       console.error('Failed to add the column: ', err);
     }
   };
- 
+
   return (
     <section className="column-list">
       {Boolean(columns.length) &&
@@ -52,7 +52,7 @@ const ColumnList = ({ boardId, columns }: ColumnListProps) => {
       </button>
       {isModalOpen && (
         <Modal title="Add a column" onCancel={onCancel}>
-          <AddColumnForm onSubmit={onSubmit} onCancel={onCancel} />
+          <ColumnForm onSubmit={onSubmit} onCancel={onCancel} />
         </Modal>
       )}
     </section>
