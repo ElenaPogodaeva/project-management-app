@@ -33,6 +33,7 @@
     @include h1;
     width: 512px;
     margin: 0px 0px 40px 15px;
+    text-align: center;
   }
 }
 
@@ -41,15 +42,56 @@
   margin: auto;
   border-bottom: 1px solid rgba(39, 39, 41, 0.178);
   text-align: right;
+  position: relative;
 
   .btn {
+    width: 120px;
+    height: 40px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
     background: none;
-    font-weight: lighter;
-    margin: 0 20px 5px 0;
-    // padding-bottom: ;
+
+    &:hover {
+      color: #7692c7;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    &:first-child:after {
+      content: '';
+      position: absolute;
+      left: 1022px;
+      bottom: 4px;
+      height: 2px;
+      width: 0;
+      background: #7692c7;
+      transition: 400ms ease all;
+    }
+
+    &:first-child:hover:after {
+      width: 95px;
+      transition: 800ms ease all;
+    }
   }
 
   .btn:last-child {
     margin-right: 150px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      right: 165px;
+      bottom: 4px;
+      height: 2px;
+      width: 0;
+      background: #7692c7;
+      transition: 400ms ease all;
+    }
+
+    &:hover:after {
+      width: 90px;
+      transition: 800ms ease all;
+    }
   }
 }

@@ -37,9 +37,7 @@ const Header = () => {
     <>
       <header className={`header ${isSticky ? 'header_sticky' : ''}`}>
         <div className="center-container">
-          <NavLink to="/" className="header__btn btn-nav btn-home">
-            home
-          </NavLink>
+          <NavLink to="/" className="header__btn btn-nav btn-home" />
 
           <div>
             <NavLink to="/edit-profile" className="header__btn btn-nav">
