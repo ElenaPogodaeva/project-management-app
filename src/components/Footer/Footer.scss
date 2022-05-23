@@ -3,36 +3,36 @@
 .footer {
   margin: 0 auto;
   padding: 10px 0;
-  border: 1px solid rgb(170, 76, 139);
+  background-color: $main-light-pink;
 
   .center-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-}
 
-.footer__left-container {
-  flex: 1;
-}
-
-.footer__center-container {
-  flex: 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.footer__right-container {
-  flex: 1;
-  width: 150px;
-  height: 60px;
-  background-image: url('https://rs.school/images/rs_school_js.svg');
-  background-repeat: no-repeat;
-  background-size: 100px 60px;
-  background-position: right;
-  & .course-link {
+  .footer__left-container {
+    flex: 1;
+  }
+  
+  .footer__center-container {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .footer__right-container {
+    flex: 1;
     width: 150px;
     height: 60px;
+    background-image: url('https://rs.school/images/rs_school_js.svg');
+    background-repeat: no-repeat;
+    background-size: 100px 60px;
+    background-position: right;
+    & .course-link {
+      width: 150px;
+      height: 60px;
+    }
   }
 }
