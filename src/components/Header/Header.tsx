@@ -15,10 +15,10 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > 60) {
         setIsSticky(true);
       }
-      if (window.scrollY < 11) {
+      if (window.scrollY < 61) {
         setIsSticky(false);
       }
     };
