@@ -26,7 +26,9 @@ const EditProfile = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (!isAuth) navigate('/');
+    if (!isAuth) {
+      navigate('/');
+  }
     if (error) {
       setSuccess(false);
     }
