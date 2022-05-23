@@ -3,51 +3,67 @@
 .about-team {
   width: $main-width;
   height: $section-height;
-  border: 1px solid rgb(38, 41, 48);
   margin: auto;
-}
 
-.title {
-  font-size: $big-font;
-  font-weight: bold;
-  text-align: center;
-  margin: 20px 0px;
-}
+  .title {
+    @include h2;
+    text-align: start;
+    margin: 80px 0 60px 120px;
+  }
 
-.member-card_container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 20px 0px;
-}
+  .member-card_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+  }
 
-.member-card {
-  width: 300px;
-  height: 500px;
-  background: rgb(188, 224, 253);
-  border-radius: 80px;
-  border-top-left-radius: 2px;
-  padding: 10px;
-  margin: 20px 10px;
-}
+  .member-column {
+    width: 350px;
+    height: 500px;
+    background: #f4f6fa;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 20px 10px;
+  }
 
-.photo {
-  width: 200px;
-  height: 200px;
-  margin: 20px 0 15px 22px;
-  border-radius: 20px;
-}
+  .member-card {
+    width: 300px;
+    background: #ffffff;
+    border-radius: 20px;
+    margin: 20px 10px;
+    padding: 10px;
+  }
 
-.name {
-  font-size: $title-font;
-  letter-spacing: 1px;
-  text-align: center;
-  margin: 15px 0px 10px 0px;
-}
+  .photo {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0 15px 22px;
+    // border-radius: 20px;
+  }
 
-.description,
-.role {
-  font-size: $text-font;
-  margin: 10px 0px;
-  text-align: center;
+  .name {
+    font-size: $title-font;
+    font-weight: bolder;
+    text-align: start;
+    // color: #ffd4a9;
+    margin: 0px 0px 0px 15px;
+  }
+
+  .role {
+    font-size: $text-font;
+    text-align: center;
+    width: fit-content;
+    background: #ffeded;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 15px 0 25px 0;
+  }
+
+  .description span {
+    font-size: $text-font;
+    margin: 15px;
+    text-align: center;
+    color: #7692c7;
+  }
 }
