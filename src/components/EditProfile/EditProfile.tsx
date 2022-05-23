@@ -24,7 +24,7 @@ const EditProfile = () => {
   const [success, setSuccess] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isAuth) navigate('/');
+    if (!isAuth) navigate('/welcome');
     if (error) {
       setSuccess(false);
     }
