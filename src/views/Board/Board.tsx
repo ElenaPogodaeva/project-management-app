@@ -9,7 +9,7 @@ import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
 
-const boardId = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+const BOARD_ID = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 
 const ITEMS_COUNT_OF_COLUMN_DATA = 5;
 const columnData = new Array(ITEMS_COUNT_OF_COLUMN_DATA).fill({}).map((_, index) => ({
