@@ -20,17 +20,8 @@ export interface ICreateUser {
 export interface IBoard {
   id: string;
   title: string;
-  description?: string;
 }
 export interface ICreateBoard {
-  title: string;
-  token: string;
-}
-export interface ICreateBoardPreview {
-  title: string;
-}
-export interface ICreatedBoard {
-  id: string;
   title: string;
 }
 export interface IColumn {
@@ -73,6 +64,29 @@ export interface IConfig {
   };
   body?: string;
 }
-export interface INewBoardForm {
+export interface ITaskResponse {
+  id: string;
   title: string;
+  order: number;
+  description: string;
+  userId: string;
+  boardId: string;
+  columnId: string;
+  files: [
+    {
+      filename: string;
+      fileSize: number;
+    }
+  ];
+}
+export interface IColumnResponse {
+  id: string;
+  title: string;
+  order: number;
+  tasks: ITaskResponse[];
+}
+export interface IBoardResponse {
+  id: string;
+  title: string;
+  columns: IColumnResponse[];
 }

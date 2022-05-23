@@ -1,21 +1,27 @@
 import { useState } from 'react';
 import './BoardPreview.scss';
-import { IBoardData, boardData } from '../../utils/defaultBoardData';
+import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
+import useAppDispatch from '../../hooks/useAppDispatch';
+import { removeBoard, getBoardsList } from '../../redux/thunks/boardThunks';
+import CONSTANTS from '../../utils/constants';
 
 type BoardPreviewTypes = {
-  value: IBoardData;
+  value: IBoard;
 };
 
 const BoardPreview = (props: BoardPreviewTypes) => {
   const [isOpen, setIsOpen] = useState(false);
   const { value } = props;
+  const dispatch = useAppDispatch();
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const removeModal = (id: number) => {
+  const remove = (id: string) => {
+    dispatch(removeBoard({ boardId: id, token: CONSTANTS.TOKEN }));
+    dispatch(getBoardsList(CONSTANTS.TOKEN));
     toggleModal();
   };
   return (
@@ -29,9 +35,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
         </header>
         <p className="board-description">{value.description}</p>
       </div>
-      <div className="">
-        {isOpen && <ConfirmationModal close={toggleModal} remove={removeModal} id={value.id} />}
-      </div>
+      {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
     </>
   );
 };

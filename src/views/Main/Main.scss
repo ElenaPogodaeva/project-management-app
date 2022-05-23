@@ -4,6 +4,7 @@
   max-width: $main-width;
   max-height: 100vh;
   margin: 0 auto;
+  padding-top: 13px;
 
   & .board-wrap {
     height: 800px;
@@ -11,6 +12,5 @@
     flex-wrap: wrap;
     overflow: scroll;
     justify-content: center;
-    margin-top: 13px;
   }
 }

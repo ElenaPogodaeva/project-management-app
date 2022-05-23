@@ -1,16 +1,17 @@
 import './ConfirmationModal.scss';
 
 type ConfirmationModalType = {
-  id: number;
+  id: string;
   close: () => void;
-  remove: (id: number) => void;
+  remove: (id: string) => void;
 };
+
 const ConfirmationModal = (props: ConfirmationModalType) => {
   const { close, remove, id } = props;
-  return (
+  return
     <div className="overlay">
       <div className="modal-window">
-        <h3 className="modal-title">Are you shore?</h3>
+        <h3 className="modal-title">Are you sure?</h3>
         <div className="btn-wrap">
           <button type="button" className="btn-success" onClick={() => remove(id)}>
             Yes
