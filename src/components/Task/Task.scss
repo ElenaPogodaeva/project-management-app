@@ -21,3 +21,27 @@
 .task-description {
   margin-bottom: 20px;
 }
+.card-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-btn {
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  filter: invert(49%) sepia(0%) saturate(1072%) hue-rotate(136deg) brightness(102%) contrast(89%);
+}
+.edit-btn {
+  background-image: url(../../../public/assets/svg/pencil.svg);
+}
+.delete-task-btn {
+  background-image: url(../../../public/assets/svg/close.svg);
+}

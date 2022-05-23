@@ -11,9 +11,7 @@
   align-items: start;
   justify-content: space-between;
   padding: 12px;
-}
-.column-title-wrapper button {
-  background-color: transparent;
+  gap: 20px;
 }
 .column-title {
   font-size: 18px;
@@ -36,12 +34,43 @@
   color: #4d4d4d;
   text-decoration: underline;
 }
-.delete-btn {
-  background-size: 20px 20px;
+.column-title-form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  background: white;
+}
+.column-title-input {
+  display: inline-block;
+  width: 80%;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  background: transparent;
+}
+.column-title-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20%;
+}
+.column-btn {
+  background-size: 16px 16px;
   background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+}
+.delete-btn {
   background-image: url(../../../public/assets/can-trash.png);
+}
+.check-btn {
+  background-image: url(../../../public/assets/svg/checkmark.svg);
+}
+.cancel-btn {
+  background-image: url(../../../public/assets/svg/cancel-circle.svg);
 }
 .btn-wrapper {
   display: flex;
