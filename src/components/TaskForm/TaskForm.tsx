@@ -48,4 +48,8 @@ const TaskForm = ({ onSubmit, onCancel, values }: TaskFormProps) => {
   );
 };
 
+TaskForm.defaultProps = {
+  values: {},
+};
+
 export default TaskForm;
