@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IColumnResponse, ITaskResponse } from '../../api/types';
+import { IUpdateTask } from '../../types/apiTypes';
 import { addColumn, addTask, editColumn, editTask, fetchBoardData } from '../thunks/boardThunks';
 
 export type BoardState = {
@@ -15,6 +16,21 @@ const initialState: BoardState = {
   status: 'idle',
   error: null,
 };
+
+function sortTasks(tasks: ITaskResponse[], currentTask: ITaskResponse, moveTo: number) {
+  const range = currentTask.order - moveTo;
+  const arrayTasksToSort = tasks.filter((task) =>
+    range < 0
+      ? task.order >= currentTask.order && task.order <= moveTo
+      : task.order <= currentTask.order && task.order >= moveTo
+  );
+
+  arrayTasksToSort.forEach((task) => {
+    if (range < 0) task.order -= 1;
+    else task.order += 1;
+  });
+  currentTask.order = moveTo;
+}
 
 export const boardSlice = createSlice({
   name: 'board',
@@ -39,6 +55,27 @@ export const boardSlice = createSlice({
       const { columnId, taskId } = action.payload;
       const column = state.columns.find((item) => item.id === columnId) as IColumnResponse;
       column.tasks = column.tasks.filter((item) => item.id !== taskId);
+    },
+    taskEdited(
+      state,
+      action: PayloadAction<{
+        columnId: string;
+        taskId: string;
+        task: IUpdateTask;
+      }>
+    ) {
+      const { columnId, taskId, task } = action.payload;
+      const column = state.columns.find((item) => item.id === columnId) as IColumnResponse;
+      const tasks = column.tasks.sort((a, b) => a.order - b.order);
+      const currentTask = column.tasks.find((item) => item.id === taskId) as ITaskResponse;
+      currentTask.title = task.title;
+      currentTask.description = task.description;
+      currentTask.userId = task.userId;
+      currentTask.boardId = task.boardId;
+
+      if (currentTask.order !== task.order) {
+        sortTasks(tasks, currentTask, task.order);
+      }
     },
   },
   extraReducers: (builder) => {
@@ -79,17 +116,9 @@ export const boardSlice = createSlice({
       const column = state.columns.find((item) => item.id === columnId);
       (column as IColumnResponse).tasks.push(action.payload);
     });
-
-    builder.addCase(editTask.fulfilled, (state, action) => {
-      const { id, columnId, title, description } = action.payload;
-      const column = state.columns.find((item) => item.id === columnId) as IColumnResponse;
-      const task = column.tasks.find((item) => item.id === id) as ITaskResponse;
-      task.title = title;
-      task.description = description;
-    });
   },
 });
 
-export const { columnDeleted, taskDeleted } = boardSlice.actions;
+export const { columnDeleted, taskDeleted, taskEdited } = boardSlice.actions;
 
 export default boardSlice.reducer;

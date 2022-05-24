@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { Droppable } from 'react-beautiful-dnd';
 import { getUserId } from '../../api/apiService';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { IColumnResponse } from '../../api/types';
@@ -13,7 +14,7 @@ import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
 const userId = getUserId(token);
-const boardId = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+const BOARD_ID = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 
 type ColumnProps = {
   column: IColumnResponse;
@@ -51,7 +52,7 @@ const Column = ({ column }: ColumnProps) => {
         title: data.columnTitle,
         order,
       };
-      await dispatch(editColumn({ boardId, columnId, column: columnData, token }));
+      await dispatch(editColumn({ boardId: BOARD_ID, columnId, column: columnData, token }));
       setIsTitleEdit(false);
     } catch (err) {
       console.error('Failed to update the column: ', err);
@@ -73,7 +74,7 @@ const Column = ({ column }: ColumnProps) => {
         description: data.description,
         userId,
       };
-      await dispatch(addTask({ boardId, columnId, task: taskData, token }));
+      await dispatch(addTask({ boardId: BOARD_ID, columnId, task: taskData, token }));
       setIsAddTaskOpen(false);
     } catch (err) {
       console.error('Failed to add the task: ', err);
@@ -86,7 +87,7 @@ const Column = ({ column }: ColumnProps) => {
 
   const onDeleteColumnClick = async () => {
     try {
-      await dispatch(removeColumn({ boardId, columnId, token }));
+      await dispatch(removeColumn({ boardId: BOARD_ID, columnId, token }));
       setIsDeleteColumnOpen(false);
     } catch (err) {
       console.error('Failed to delete the column: ', err);
@@ -132,7 +133,18 @@ const Column = ({ column }: ColumnProps) => {
           onClick={() => setIsDeleteColumnOpen(true)}
         />
       </div>
-      <TaskList tasks={tasks} columnId={columnId} />
+      <Droppable droppableId={columnId}>
+        {(provided) => (
+          <TaskList
+            innerRef={provided.innerRef}
+            {...provided.droppableProps}
+            tasks={tasks}
+            columnId={columnId}
+          >
+            {provided.placeholder}
+          </TaskList>
+        )}
+      </Droppable>
       <button type="button" className="add-card-btn" onClick={() => setIsAddTaskOpen(true)}>
         Add a card...
       </button>

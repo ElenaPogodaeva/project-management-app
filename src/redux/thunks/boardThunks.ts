@@ -13,7 +13,7 @@ import {
   deleteTask,
 } from '../../api/apiService';
 import { ICreateColumn, ICreateTask, IUpdateTask } from '../../api/types';
-import { columnDeleted, taskDeleted } from '../reducers/boardSlice';
+import { columnDeleted, taskDeleted, taskEdited } from '../reducers/boardSlice';
 
 export interface ValidationErrors {
   rejectValue: string;
@@ -142,10 +142,11 @@ export const editTask = createAsyncThunk(
   'board/editTask',
   async (
     data: { boardId: string; columnId: string; taskId: string; task: IUpdateTask; token: string },
-    { rejectWithValue }
+    { rejectWithValue, dispatch }
   ) => {
     try {
       const { boardId, columnId, taskId, task, token } = data;
+      dispatch(taskEdited({ columnId, taskId, task }));
       const response = await updateTask(boardId, columnId, taskId, task, token);
       return response;
     } catch (err) {
