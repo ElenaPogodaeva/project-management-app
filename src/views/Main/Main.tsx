@@ -7,6 +7,7 @@ import BoardCreate from '../../components/BoardCreate/BoardCreate';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { getBoardsList } from '../../redux/thunks/boardThunks';
+import CONSTANTS from '../../utils/constants';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -15,13 +16,15 @@ const Main = () => {
   const { boards, isLoading } = useTypedSelector((state) => state.boards);
 
   useEffect(() => {
-    if (!isAuth) navigate('/');
+    if (!isAuth) {
+      navigate('/');
+    }
   }, [isAuth]);
 
   useEffect(() => {
     dispatch(
       getBoardsList(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1OGM4MzU3YS0yODllLTQ3ZTgtYjI0Ni04MjdjZmY3MGUyNzkiLCJsb2dpbiI6InVzZXIwMDEiLCJpYXQiOjE2NTIzNzY3Mjl9.qSlVZp4Mazgjt003o44VrjvKpaaA8-hWZ8b_pZ8Uzas'
+        CONSTANTS.TOKEN
       )
     );
   }, []);

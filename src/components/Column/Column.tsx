@@ -14,7 +14,7 @@ import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
 const userId = getUserId(token);
-const boardId = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+const BOARD_ID = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 
 type ColumnProps = {
   column: IColumnResponse;

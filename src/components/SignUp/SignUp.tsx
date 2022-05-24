@@ -66,7 +66,7 @@ const SignUp = () => {
             *Required field of at least four characters
           </p>
 
-          {error ? <p className="form-error">Probably user is already exist</p> : null}
+          {!error && <p className="form-error">Probably user is already exist</p>}
 
           <button type="submit" className="btn-submit">
             Sign up

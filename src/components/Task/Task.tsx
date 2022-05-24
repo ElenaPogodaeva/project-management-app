@@ -37,7 +37,6 @@ const Task = ({ task, columnId }: TaskProps) => {
         boardId,
         columnId,
       };
-      console.log(taskData);
       setIsEditMode(false);
     } catch (err) {
       console.error('Failed to edit the task: ', err);
