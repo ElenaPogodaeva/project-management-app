@@ -11,22 +11,18 @@ import CONSTANTS from '../../utils/constants';
 
 const Main = () => {
   const navigate = useNavigate();
-  const { isAuth } = useTypedSelector((state) => state.auth);
+  const { isAuth, token } = useTypedSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const { boards, isLoading } = useTypedSelector((state) => state.boards);
 
   useEffect(() => {
     if (!isAuth) {
-      navigate('/');
+      navigate('/welcome');
     }
   }, [isAuth]);
 
   useEffect(() => {
-    dispatch(
-      getBoardsList(
-        CONSTANTS.TOKEN
-      )
-    );
+    dispatch(getBoardsList(token as string));
   }, []);
 
   return (

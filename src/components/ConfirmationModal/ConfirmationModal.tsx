@@ -8,7 +8,7 @@ type ConfirmationModalType = {
 
 const ConfirmationModal = (props: ConfirmationModalType) => {
   const { close, remove, id } = props;
-  return
+  return (
     <div className="overlay">
       <div className="modal-window">
         <h3 className="modal-title">Are you sure?</h3>

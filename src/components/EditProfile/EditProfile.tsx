@@ -25,8 +25,8 @@ const EditProfile = () => {
 
   useEffect(() => {
     if (!isAuth) {
-      navigate('/');
-  }
+      navigate('/welcome');
+    }
     if (error) {
       setSuccess(false);
     }
