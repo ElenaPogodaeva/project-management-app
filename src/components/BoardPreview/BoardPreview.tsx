@@ -5,8 +5,8 @@ import './BoardPreview.scss';
 import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import useAppDispatch from '../../hooks/useAppDispatch';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import { removeBoard, getBoardsList } from '../../redux/thunks/boardThunks';
-import CONSTANTS from '../../utils/constants';
 
 type BoardPreviewTypes = {
   value: IBoard;
@@ -16,6 +16,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { value } = props;
+  const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
 
   const toggleModal = () => {
@@ -27,8 +28,8 @@ const BoardPreview = (props: BoardPreviewTypes) => {
   };
 
   const remove = (id: string) => {
-    dispatch(removeBoard({ boardId: id, token: CONSTANTS.TOKEN }));
-    dispatch(getBoardsList(CONSTANTS.TOKEN));
+    dispatch(removeBoard({ boardId: id, token }));
+    dispatch(getBoardsList(token));
     toggleModal();
   };
   return (
