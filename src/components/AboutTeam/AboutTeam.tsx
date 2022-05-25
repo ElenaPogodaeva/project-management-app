@@ -9,8 +9,8 @@ const AboutTeam = () => {
           <h2 className="name">Elena</h2>
           <div className="member-column">
             <div className="member-card">
-              <img src="" alt="member" className="photo" />
-              <p className="role">Back-end developer</p>
+              <div className="photo lena" />
+              <p className="role">Front-end developer</p>
               <p className="description">
                 <span>&#10004;</span> back-end deploy
               </p>
@@ -31,7 +31,7 @@ const AboutTeam = () => {
           <h2 className="name">Aliona</h2>
           <div className="member-column">
             <div className="member-card">
-              <img src="" alt="member" className="photo" />
+              <div className="photo aliona" />
               <p className="role">Front-end developer</p>
               <p className="description">
                 <span>&#10004;</span> Authorization
@@ -53,7 +53,7 @@ const AboutTeam = () => {
           <h2 className="name">Anastasiya</h2>
           <div className="member-column">
             <div className="member-card">
-              <img src="" alt="member" className="photo" />
+              <div className="photo nastya" />
               <p className="role">Team lead</p>
               <p className="description">
                 <span>&#10004;</span> welcome page

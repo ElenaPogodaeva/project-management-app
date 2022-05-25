@@ -64,7 +64,7 @@ const Column = ({ column }: ColumnProps) => {
         description: data.taskDescription,
         userId,
       };
-      await dispatch(addTask({ boardId, columnId, task: taskData, token }));
+      await dispatch(addTask({ boardId: BOARD_ID, columnId, task: taskData, token }));
       setIsAddTaskOpen(false);
     } catch (err) {
       console.error('Failed to add the task: ', err);
@@ -77,7 +77,7 @@ const Column = ({ column }: ColumnProps) => {
 
   const onDeleteColumnClick = async () => {
     try {
-      await dispatch(removeColumn({ boardId, columnId, token }));
+      await dispatch(removeColumn({ boardId: BOARD_ID, columnId, token }));
       setIsDeleteColumnOpen(false);
     } catch (err) {
       console.error('Failed to delete the column: ', err);

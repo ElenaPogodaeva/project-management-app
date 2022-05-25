@@ -47,66 +47,19 @@
     }
 
     &.btn-nav {
-      color: 0.8;
-      // &:hover {
-      //   color: rgb(39, 39, 41);
-      //   background: transparent;
-      //   box-shadow: none;
-      // }
-
-      &:first-child:after {
-        content: '';
-        position: absolute;
-        left: 0px;
-        bottom: -2px;
-        height: 2px;
-        width: 0;
-        background: rgb(39, 39, 41);
-        transition: 400ms ease all;
-      }
-
-      &:first-child:hover:after {
-        width: 100px;
-        transition: 800ms ease all;
-      }
-
-      &:nth-child(2):after {
-        content: '';
-        position: absolute;
-        left: 0px;
-        bottom: -2px;
-        height: 2px;
-        width: 0;
-        background: rgb(39, 39, 41);
-        transition: 400ms ease all;
-      }
-
-      &:nth-child(2):hover:after {
-        width: 65px;
-        transition: 800ms ease all;
-      }
-
-      &:last-child:after {
-        content: '';
-        position: absolute;
-        left: 0px;
-        bottom: -2px;
-        height: 2px;
-        width: 0;
-        background: rgb(39, 39, 41);
-        transition: 400ms ease all;
-      }
-
-      &:last-child:hover:after {
-        width: 100px;
-        transition: 800ms ease all;
+      opacity: 0.8;
+      text-transform: uppercase;
+      transition: 0.3s;
+      &:hover {
+        color: #7692c7;
+        background: transparent;
+        box-shadow: none;
       }
     }
 
     &.btn-nav.active {
       opacity: 1;
     }
-
   }
 
   .header__select {
