@@ -2,10 +2,11 @@ import './AboutApp.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import CONSTANTS from '../../utils/constants';
 
 const AboutApp = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000, offset: 200 });
+    AOS.init({ duration: CONSTANTS.ANIMATION_DURATION, offset: CONSTANTS.ANIMATION_OFFSET });
   }, []);
 
   return (
