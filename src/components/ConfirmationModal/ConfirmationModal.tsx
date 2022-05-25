@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import './ConfirmationModal.scss';
 
 type ConfirmationModalType = {
@@ -9,7 +8,7 @@ type ConfirmationModalType = {
 
 const ConfirmationModal = (props: ConfirmationModalType) => {
   const { close, remove, id } = props;
-  return ReactDOM.createPortal(
+  return (
     <div className="overlay">
       <div className="modal-window">
         <h3 className="modal-title">Are you sure?</h3>
@@ -22,8 +21,7 @@ const ConfirmationModal = (props: ConfirmationModalType) => {
           </button>
         </div>
       </div>
-    </div>,
-    document.getElementById('modals') as HTMLElement
+    </div>
   );
 };
 

@@ -24,7 +24,9 @@ const EditProfile = () => {
   const [success, setSuccess] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!isAuth) navigate('/welcome');
+    if (!isAuth) {
+      navigate('/welcome');
+    }
     if (error) {
       setSuccess(false);
     }
@@ -55,7 +57,7 @@ const EditProfile = () => {
   return (
     <section className="signup-form">
       <div className="center-container">
-        {isLoading ? <Loading /> : null}
+        {!isLoading && <Loading />}
         <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>
           {!isLoading && success ? <p className="form-complete">Changes applied</p> : null}
           <h2 className="form-title">Edit profile</h2>
