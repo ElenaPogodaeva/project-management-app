@@ -21,6 +21,9 @@ export const authSlice = createSlice({
       state.token = null;
       state.isAuth = false;
     },
+    emptyError(state) {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder

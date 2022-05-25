@@ -7,6 +7,7 @@ import useTypedSelector from '../../hooks/useTypedSelector';
 import { authSlice } from '../../redux/reducers/authSlice';
 import CreateBoardModal from '../CreateBoardModal/CreateBoardModal';
 import { settingsSlice } from '../../redux/reducers/settingsSlice';
+import CONSTANTS from '../../utils/constants';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -15,13 +16,14 @@ const Header = () => {
   const { logout } = authSlice.actions;
   const dispatch = useAppDispatch();
   const [cookies, setCookie, removeCookie] = useCookies(['goodie-token']);
+  const { STICKY_HEIGHT, NOT_STICKY_HEIGHT } = CONSTANTS.HEADER;
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
+      if (window.scrollY > STICKY_HEIGHT) {
         setIsSticky(true);
       }
-      if (window.scrollY < 11) {
+      if (window.scrollY < NOT_STICKY_HEIGHT) {
         setIsSticky(false);
       }
     };
@@ -55,7 +57,7 @@ const Header = () => {
             {isAuth ? (
               <button
                 type="button"
-                className="header__btn"
+                className="header__btn btn-nav"
                 onClick={() => {
                   dispatch(logout());
                   removeCookie('goodie-token');

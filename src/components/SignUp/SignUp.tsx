@@ -7,6 +7,7 @@ import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { fetchSignUp, fetchSignIn } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
+import { authSlice } from '../../redux/reducers/authSlice';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -17,17 +18,23 @@ const SignUp = () => {
     formState: { errors },
   } = useForm<ISignUpFormData>();
   const { isLoading, error, isAuth } = useTypedSelector((state) => state.auth);
+  const { emptyError } = authSlice.actions;
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (isAuth) navigate('/');
+    return () => {
+      if (error) dispatch(emptyError());
+    };
   }, [isAuth]);
 
   const onSubmit: SubmitHandler<ISignUpFormData> = (data) => {
     dispatch(fetchSignUp(data));
     const { login, password } = data;
     setTimeout(() => {
-      dispatch(fetchSignIn({ login, password }));
+      if (isAuth) {
+        dispatch(fetchSignIn({ login, password }));
+      }
     }, 500);
     reset();
   };
@@ -66,7 +73,7 @@ const SignUp = () => {
             *Required field of at least four characters
           </p>
 
-          {!error && <p className="form-error">Probably user is already exist</p>}
+          {error && <p className="form-error">Probably user is already exist</p>}
 
           <button type="submit" className="btn-submit">
             Sign up

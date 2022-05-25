@@ -9,6 +9,7 @@ import useAppDispatch from '../../hooks/useAppDispatch';
 import { fetchSignIn } from '../../redux/thunks/authThunks';
 import Loading from '../Loading/Loading';
 import CONSTANTS from '../../utils/constants';
+import { authSlice } from '../../redux/reducers/authSlice';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const Login = () => {
   } = useForm<ILoginFormData>();
   const { isLoading, error, isAuth, token } = useTypedSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  const { emptyError } = authSlice.actions;
   const [cookies, setCookie] = useCookies(['goodie-token']);
 
   useEffect(() => {
@@ -29,6 +31,9 @@ const Login = () => {
       });
       navigate('/');
     }
+    return () => {
+      if (error) dispatch(emptyError());
+    };
   }, [isAuth]);
 
   const onSubmit: SubmitHandler<ILoginFormData> = (data) => {
