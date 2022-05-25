@@ -1,5 +1,5 @@
 import './Header.scss';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import useAppDispatch from '../../hooks/useAppDispatch';
@@ -7,15 +7,12 @@ import useTypedSelector from '../../hooks/useTypedSelector';
 import { authSlice } from '../../redux/reducers/authSlice';
 import CreateBoardModal from '../CreateBoardModal/CreateBoardModal';
 import { settingsSlice } from '../../redux/reducers/settingsSlice';
-import { languageType } from '../../redux/types/settings';
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const { isAuth } = useTypedSelector((state) => state.auth);
   const { logout } = authSlice.actions;
-  const { changeLang } = settingsSlice.actions;
-  const langSelect = React.createRef<HTMLSelectElement>();
   const dispatch = useAppDispatch();
   const [cookies, setCookie, removeCookie] = useCookies(['goodie-token']);
 
@@ -39,21 +36,11 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSelectChange = (e: React.FormEvent<HTMLSelectElement>) => {
-    e.preventDefault();
-
-    const langValue = (langSelect.current as HTMLSelectElement).value;
-    const lang = langValue === languageType.EN ? languageType.EN : languageType.RU;
-    dispatch(changeLang(lang));
-  };
-
   return (
     <>
       <header className={`header ${isSticky ? 'header_sticky' : ''}`}>
         <div className="center-container">
-          <NavLink to="/" className="header__btn btn-nav btn-home">
-            home
-          </NavLink>
+          <NavLink to="/" className="header__btn  btn-home" />
 
           <div>
             <NavLink to="/edit-profile" className="header__btn btn-nav">
@@ -65,15 +52,6 @@ const Header = () => {
           </div>
 
           <div>
-            <select
-              ref={langSelect}
-              className="header__select"
-              defaultValue={languageType.EN}
-              onChange={handleSelectChange}
-            >
-              <option value={languageType.EN}>en</option>
-              <option value={languageType.RU}>ru</option>
-            </select>
             {isAuth ? (
               <button
                 type="button"

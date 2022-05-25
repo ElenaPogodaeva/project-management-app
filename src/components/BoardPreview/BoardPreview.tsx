@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './BoardPreview.scss';
 import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
@@ -11,6 +13,7 @@ type BoardPreviewTypes = {
 };
 
 const BoardPreview = (props: BoardPreviewTypes) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { value } = props;
   const token = useTypedSelector((state) => state.auth.token) as string;
@@ -18,6 +21,10 @@ const BoardPreview = (props: BoardPreviewTypes) => {
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
+  };
+
+  const goToBoardPage = () => {
+    navigate(`/board/:${value.id}`);
   };
 
   const remove = (id: string) => {
@@ -34,7 +41,9 @@ const BoardPreview = (props: BoardPreviewTypes) => {
             .
           </button>
         </header>
-        <p className="board-description">{value.description}</p>
+        <p className="board-description" onClick={goToBoardPage}>
+          {value.description}
+        </p>
       </div>
       {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
     </>
