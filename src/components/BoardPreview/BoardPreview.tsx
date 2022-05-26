@@ -1,27 +1,35 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './BoardPreview.scss';
 import { IBoard } from '../../types/apiTypes';
 import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
 import useAppDispatch from '../../hooks/useAppDispatch';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import { removeBoard, getBoardsList } from '../../redux/thunks/boardThunks';
-import CONSTANTS from '../../utils/constants';
 
 type BoardPreviewTypes = {
   value: IBoard;
 };
 
 const BoardPreview = (props: BoardPreviewTypes) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const { value } = props;
+  const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
+  const goToBoardPage = () => {
+    navigate(`/board/:${value.id}`);
+  };
+
   const remove = (id: string) => {
-    dispatch(removeBoard({ boardId: id, token: CONSTANTS.TOKEN }));
-    dispatch(getBoardsList(CONSTANTS.TOKEN));
+    dispatch(removeBoard({ boardId: id, token }));
+    dispatch(getBoardsList(token));
     toggleModal();
   };
   return (
@@ -33,7 +41,9 @@ const BoardPreview = (props: BoardPreviewTypes) => {
             .
           </button>
         </header>
-        <p className="board-description">{value.description}</p>
+        <p className="board-description" onClick={goToBoardPage}>
+          {value.description}
+        </p>
       </div>
       {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
     </>

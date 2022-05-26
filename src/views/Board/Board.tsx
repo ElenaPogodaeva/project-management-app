@@ -24,7 +24,7 @@ const Board = () => {
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchBoardData({ boardId, token }));
+      dispatch(fetchBoardData({ boardId: BOARD_ID, token }));
     }
   }, [status, dispatch]);
 
@@ -37,7 +37,7 @@ const Board = () => {
     content = (
       <>
         <section className="board-page-header">{title}</section>
-        <ColumnList boardId={boardId} columns={orderedColumns} />
+        <ColumnList boardId={BOARD_ID} columns={orderedColumns} />
       </>
     );
   } else if (status === 'failed') {
