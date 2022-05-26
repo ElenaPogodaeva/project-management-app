@@ -13,7 +13,14 @@ const ConfirmationModal = (props: ConfirmationModalType) => {
       <div className="modal-window">
         <h3 className="modal-title">Are you sure?</h3>
         <div className="btn-wrap">
-          <button type="button" className="btn-success" onClick={() => remove(id)}>
+          <button
+            type="button"
+            className="btn-success"
+            onClick={() => {
+              remove(id);
+              close();
+            }}
+          >
             Yes
           </button>
           <button type="button" className="btn-fail" onClick={() => close()}>
