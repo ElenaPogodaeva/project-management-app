@@ -27,6 +27,9 @@ const Main = () => {
 
   return (
     <main className="main">
+      <div className="img-box">
+        <h2 className="title">Your boards</h2>
+      </div>
       <div className="board-wrap">
         {isLoading ? (
           <Loading />

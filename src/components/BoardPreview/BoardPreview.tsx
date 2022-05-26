@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BoardPreview.scss';
@@ -42,7 +41,9 @@ const BoardPreview = (props: BoardPreviewTypes) => {
           </button>
         </header>
         <p className="board-description" onClick={goToBoardPage}>
-          {value.description}
+          {/* {value.description} */}
+          Builds the app for production to the build folder. It correctly bundles React in
+          production mode and optimizes the build for the best performance.
         </p>
       </div>
       {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
