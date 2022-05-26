@@ -66,14 +66,39 @@ export const boardSlice = createSlice({
     ) {
       const { columnId, taskId, task } = action.payload;
       const column = state.columns.find((item) => item.id === columnId) as IColumnResponse;
-      const tasks = column.tasks.sort((a, b) => a.order - b.order);
+      const { tasks } = column; // .sort((a, b) => a.order - b.order);
+
       const currentTask = column.tasks.find((item) => item.id === taskId) as ITaskResponse;
       currentTask.title = task.title;
       currentTask.description = task.description;
       currentTask.userId = task.userId;
       currentTask.boardId = task.boardId;
 
+      if (columnId !== task.columnId) {
+        const otherColumn = state.columns.find(
+          (item) => item.id === task.columnId
+        ) as IColumnResponse;
+        const tasksInOtherColumn = otherColumn.tasks;
+        tasksInOtherColumn.forEach((item) => {
+          if (task.order <= item.order) {
+            item.order += 1;
+          }
+        });
+        tasks.forEach((item) => {
+          if (currentTask.order < item.order) {
+            item.order -= 1;
+          }
+        });
+        currentTask.order = task.order;
+        currentTask.columnId = task.columnId;
+        column.tasks = column.tasks.filter((item) => item.id !== taskId);
+        tasksInOtherColumn.push({ ...task, id: taskId });
+        return;
+      }
+
       if (currentTask.order !== task.order) {
+        // tasks.splice(currentTask.order - 1, 1);
+        // tasks.splice(task.order - 1, 0, currentTask);
         sortTasks(tasks, currentTask, task.order);
       }
     },
@@ -112,7 +137,7 @@ export const boardSlice = createSlice({
     builder.addCase(addTask.fulfilled, (state, action) => {
       const { columnId } = action.payload;
       state.error = null;
-      action.payload.files = [];
+      // action.payload.files = [];
       const column = state.columns.find((item) => item.id === columnId);
       (column as IColumnResponse).tasks.push(action.payload);
     });

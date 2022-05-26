@@ -12,7 +12,7 @@ import { getUserId } from '../../api/apiService';
 
 const token = CONSTANTS.TOKEN;
 
-const BOARD_ID = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3'; // c1db418b-279d-42a3-97e0-ba3c4b770969';
 const userId = getUserId(token);
 
 const ITEMS_COUNT_OF_COLUMN_DATA = 5;
@@ -43,24 +43,34 @@ const Board = () => {
       return;
     }
 
-    const column = columns.find((item) => item.id === source.droppableId) as IColumnResponse;
+    const start = columns.find((item) => item.id === source.droppableId) as IColumnResponse;
 
-    const tasks = Array.from(column.tasks);
+    const finish = columns.find((item) => item.id === destination.droppableId) as IColumnResponse;
+
+    console.log('startColumn', start);
+    console.log('finishColumn', finish);
+    const tasks = Array.from(start.tasks);
 
     const task = tasks.find((item) => item.id === draggableId) as ITaskResponse;
 
-    try {
-      const taskData = {
-        title: task.title,
-        order: destination.index + 1,
-        description: task.description,
-        userId,
-        boardId: BOARD_ID,
-        columnId: column.id,
-      };
+    const taskData = {
+      title: task.title,
+      order: destination.index + 1,
+      description: task.description,
+      userId,
+      boardId: BOARD_ID,
+      columnId: start === finish ? start.id : finish.id,
+    };
 
+    try {
       await dispatch(
-        editTask({ boardId: BOARD_ID, columnId: column.id, taskId: task.id, task: taskData, token })
+        editTask({
+          boardId: BOARD_ID,
+          columnId: start.id,
+          taskId: task.id,
+          task: taskData,
+          token,
+        })
       );
     } catch (err) {
       console.error('Failed to edit the task: ', err);
