@@ -48,7 +48,15 @@ const Header = () => {
             <NavLink to="/edit-profile" className="header__btn btn-nav">
               edit-profile
             </NavLink>
-            <NavLink to="/#" className="header__btn btn-nav" onClick={() => toggleModal()}>
+            <NavLink
+              to="/#"
+              className="header__btn btn-nav"
+              onClick={() => {
+                if (isAuth) {
+                  toggleModal();
+                }
+              }}
+            >
               new-board
             </NavLink>
           </div>
