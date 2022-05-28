@@ -1,5 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IBoard, ICreateBoard, ICreatedBoard } from '../../types/apiTypes';
+import {
+  IBoard,
+  ICreateBoard,
+  ICreatedBoard,
+  ICreateColumn,
+  ICreateTask,
+  IUpdateTask,
+  IUpdateColumn,
+} from '../../types/apiTypes';
 import {
   getBoards,
   createBoard,
@@ -12,8 +20,8 @@ import {
   updateTask,
   deleteTask,
 } from '../../api/apiService';
-import { ICreateColumn, ICreateTask, IUpdateTask } from '../../api/types';
-import { columnDeleted, taskDeleted, taskEdited } from '../reducers/boardSlice';
+
+import { columnDeleted, columnEdited, taskDeleted, taskEdited } from '../reducers/boardSlice';
 
 export interface ValidationErrors {
   rejectValue: string;
@@ -92,11 +100,12 @@ export const addColumn = createAsyncThunk(
 export const editColumn = createAsyncThunk(
   'board/editColumn',
   async (
-    data: { boardId: string; columnId: string; column: ICreateColumn; token: string },
-    { rejectWithValue }
+    data: { boardId: string; columnId: string; column: IUpdateColumn; token: string },
+    { rejectWithValue, dispatch }
   ) => {
     try {
       const { boardId, columnId, column, token } = data;
+      dispatch(columnEdited({ columnId, column }));
       const response = await updateColumn(boardId, columnId, column, token);
       return response;
     } catch (err) {

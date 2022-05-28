@@ -4,7 +4,7 @@ import ColumnList from '../../components/ColumnList/ColumnList';
 import Loading from '../../components/Loading/Loading';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import { editTask, fetchBoardData } from '../../redux/thunks/boardThunks';
+import { editColumn, editTask, fetchBoardData } from '../../redux/thunks/boardThunks';
 import './Board.scss';
 import CONSTANTS from '../../utils/constants';
 import { IColumnResponse, ITaskResponse } from '../../api/types';
@@ -33,7 +33,7 @@ const Board = () => {
   }, [status, dispatch]);
 
   const onDragEnd = async (result: DropResult) => {
-    const { destination, source, draggableId } = result;
+    const { destination, source, draggableId, type } = result;
 
     if (!destination) {
       return;
@@ -43,12 +43,31 @@ const Board = () => {
       return;
     }
 
+    if (type === 'column') {
+      const column = columns.find((item) => item.id === draggableId) as IColumnResponse;
+      const columnData = {
+        title: column.title,
+        order: destination.index + 1,
+      };
+
+      try {
+        await dispatch(
+          editColumn({
+            boardId: BOARD_ID,
+            columnId: column.id,
+            column: columnData,
+            token,
+          })
+        );
+      } catch (err) {
+        console.error('Failed to edit the column: ', err);
+      }
+      return;
+    }
     const start = columns.find((item) => item.id === source.droppableId) as IColumnResponse;
 
     const finish = columns.find((item) => item.id === destination.droppableId) as IColumnResponse;
 
-    console.log('startColumn', start);
-    console.log('finishColumn', finish);
     const tasks = Array.from(start.tasks);
 
     const task = tasks.find((item) => item.id === draggableId) as ITaskResponse;
