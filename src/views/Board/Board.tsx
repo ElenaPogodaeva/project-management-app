@@ -9,7 +9,7 @@ import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
 
-const BOARD_ID = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3';
 
 const ITEMS_COUNT_OF_COLUMN_DATA = 5;
 const columnData = new Array(ITEMS_COUNT_OF_COLUMN_DATA).fill({}).map((_, index) => ({
@@ -36,18 +36,14 @@ const Board = () => {
 
     content = (
       <>
-        <section className="board-page-header">{title}</section>
+        <h2 className="board-page-header">{title}</h2>
         <ColumnList boardId={BOARD_ID} columns={orderedColumns} />
       </>
     );
   } else if (status === 'failed') {
     content = <div>{error}</div>;
   }
-  return (
-    <div className="board-page">
-      <div className="center-container">{content}</div>
-    </div>
-  );
+  return <section className="board-page">{content}</section>;
 };
 
 export default Board;

@@ -1,4 +1,7 @@
+@import '../../App.variables.scss';
+
 .column-list {
+  height: 72vh;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   grid-gap: 10px;
@@ -6,25 +9,33 @@
   grid-auto-flow: column;
   grid-auto-columns: minmax(260px, 1fr);
   overflow: scroll;
+  background: linear-gradient(70deg, $main-light-blue, $main-light-pink);
+  box-shadow: 3px 3px 3px rgba(9, 45, 66, 0.25);
+  border-radius: 25px;
+  padding: 25px;
+
+  .add-column-btn {
+    display: block;
+    font-size: $descr-font;
+    background: $main-light-blue;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
+    cursor: pointer;
+    text-align: left;
+    transition: 0.3s;
+
+    &:hover {
+      font-weight: bold;
+      color: $main-light-orange;
+      background: $main-blue;
+    }
+  }
 }
 .column-list::-webkit-scrollbar {
   height: 25px;
 }
 .column-list::-webkit-scrollbar-thumb {
-  background-color: #c4c9cc;
+  background-color: #e8ecf8;
   border-top: 0.6rem solid #fff;
-}
-.add-column-btn {
-  display: block;
-  font-weight: 400;
-  background-color: #e2e4e6;
-  color: #4d4d4d;
-  padding: 10px;
-  border-radius: 3px;
-  cursor: pointer;
-  text-align: left;
-  transition: .3s;
-}
-.add-column-btn:hover {
-  background-color: #ccc;
 }

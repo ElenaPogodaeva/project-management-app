@@ -48,7 +48,7 @@ const ColumnList = ({ boardId, columns }: ColumnListProps) => {
       {Boolean(columns.length) &&
         columns.map((column) => <Column key={column.id} column={column} />)}
       <button type="button" className="add-column-btn" onClick={() => setIsModalOpen(true)}>
-        Add a column...
+        &#10010; Add a column
       </button>
       {isModalOpen && (
         <Modal title="Add a column" onCancel={onCancel}>

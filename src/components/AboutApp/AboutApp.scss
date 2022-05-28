@@ -31,7 +31,7 @@
   & h3 {
     @include h3;
     text-align: center;
-    color: #7692c7;
+    color: $main-blue;
   }
 
   & article:nth-child(2) h3 {

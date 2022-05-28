@@ -8,6 +8,7 @@
   left: 0;
   z-index: 2;
   background: rgba(0, 0, 0, 0.514);
+  margin: 0 !important;
 
   .form {
     width: 250px;
@@ -23,9 +24,10 @@
     font-size: $text-font;
     font-weight: normal;
     text-align: center;
+    margin: 0 !important;
 
     .form-complete {
-      margin-bottom: 22px;
+      margin-bottom: 22px !important;
       animation: transfusion 0.8s infinite alternate;
 
       @keyframes transfusion {
@@ -39,12 +41,12 @@
     }
 
     .form-title {
-      margin-bottom: 32px;
+      margin: 0 0 32px 0 !important;
       font-size: $title-font;
     }
 
     .form-error {
-      margin-left: 8px;
+      margin-left: 8px !important;
       position: relative;
       bottom: 14px;
       font-size: $subtitle-font - 5px;
@@ -56,7 +58,7 @@
     }
 
     .form-input {
-      margin-bottom: 22px;
+      margin: 0 0 22px 0 !important;
       padding: 6px 12px;
       height: 36px;
       width: 100%;
@@ -68,15 +70,17 @@
       &.input-text::placeholder {
         font-size: $text-font;
         opacity: 0.5;
+        margin: 0 !important;
       }
 
       &.input-error {
         border-color: red;
+        margin: 0 !important;
       }
     }
 
     .btn-submit {
-      margin: 0 auto;
+      margin: 0 auto !important;
       padding: 10px 22px;
       display: block;
       background-color: goldenrod;

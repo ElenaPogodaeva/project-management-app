@@ -41,9 +41,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
           </button>
         </header>
         <p className="board-description" onClick={goToBoardPage}>
-          {/* {value.description} */}
-          Builds the app for production to the build folder. It correctly bundles React in
-          production mode and optimizes the build for the best performance.
+          {value.description}
         </p>
       </div>
       {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}

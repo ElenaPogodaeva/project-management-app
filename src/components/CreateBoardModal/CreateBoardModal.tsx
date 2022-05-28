@@ -34,12 +34,14 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
   } = useForm<INewBoardForm>();
 
   const onSubmit: SubmitHandler<INewBoardForm> = (data) => {
-    dispatch(addBoard({ title: data.title, token: CONSTANTS.TOKEN }));
+    dispatch(
+      addBoard({ title: data.title, description: data.description, token: CONSTANTS.TOKEN })
+    );
     reset();
     close();
   };
 
-  return ReactDOM.createPortal(
+  return (
     <section className="createBoard-form" onClick={() => close()}>
       <form
         action="#"
@@ -55,12 +57,17 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
           name="title"
         />
         <p className={`form-error ${errors.title ? null : 'none'}`}>*Required field</p>
+        <input
+          className={`form-input input-text ${errors.description ? 'input-error' : null}`}
+          placeholder="Description"
+          {...register('description', { required: false })}
+          name="description"
+        />
         <button type="submit" className="btn-submit">
           Create board
         </button>
       </form>
-    </section>,
-    document.getElementById('modals') as HTMLElement
+    </section>
   );
 };
 

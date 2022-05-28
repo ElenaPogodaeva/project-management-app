@@ -47,13 +47,14 @@
   .btn {
     width: 120px;
     height: 40px;
+    font-size: $text-font;
     line-height: 42px;
     padding: 0;
     border: none;
     background: none;
 
     &:hover {
-      color: #7692c7;
+      color: $main-blue;
       background: transparent;
       box-shadow: none;
     }
@@ -65,7 +66,7 @@
       bottom: 4px;
       height: 2px;
       width: 0;
-      background: #7692c7;
+      background: $main-blue;
       transition: 400ms ease all;
     }
 
@@ -85,7 +86,7 @@
       bottom: 4px;
       height: 2px;
       width: 0;
-      background: #7692c7;
+      background: $main-blue;
       transition: 400ms ease all;
     }
 
