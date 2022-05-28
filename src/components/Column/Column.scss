@@ -1,5 +1,6 @@
 @import '/src/App.variables.scss';
 .column-item {
+  min-width: 260px;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
