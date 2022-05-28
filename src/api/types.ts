@@ -70,14 +70,6 @@ export interface ITaskResponse {
   order: number;
   description: string;
   userId: string;
-  boardId: string;
-  columnId: string;
-  files: [
-    {
-      filename: string;
-      fileSize: number;
-    }
-  ];
 }
 export interface IColumnResponse {
   id: string;
