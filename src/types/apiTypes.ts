@@ -40,6 +40,9 @@ export interface IColumn {
 }
 export interface ICreateColumn {
   title: string;
+}
+export interface IUpdateColumn {
+  title: string;
   order: number;
 }
 export interface ITask {
@@ -53,7 +56,6 @@ export interface ITask {
 }
 export interface ICreateTask {
   title: string;
-  order: number;
   description: string;
   userId: string;
 }
