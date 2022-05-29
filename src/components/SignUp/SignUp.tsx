@@ -29,13 +29,12 @@ const SignUp = () => {
   }, [isAuth]);
 
   const onSubmit: SubmitHandler<ISignUpFormData> = (data) => {
-    dispatch(fetchSignUp(data));
-    const { login, password } = data;
-    setTimeout(() => {
-      if (isAuth) {
+    dispatch(fetchSignUp(data)).then((res) => {
+      const { login, password } = data;
+      if (res.type === 'auth/signUp/fulfilled') {
         dispatch(fetchSignIn({ login, password }));
       }
-    }, 500);
+    });
     reset();
   };
 

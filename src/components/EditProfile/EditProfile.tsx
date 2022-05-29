@@ -63,7 +63,7 @@ const EditProfile = () => {
 
   return (
     <>
-      <section className="signup-form">
+      <section className="edit-profile-form">
         <div className="center-container">
           {isLoading ? <Loading /> : null}
           <form action="#" className="form" onSubmit={handleSubmit(onSubmit)}>

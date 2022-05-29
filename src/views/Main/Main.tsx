@@ -18,12 +18,10 @@ const Main = () => {
   useEffect(() => {
     if (!isAuth) {
       navigate('/welcome');
+    } else {
+      dispatch(getBoardsList(token as string));
     }
   }, [isAuth]);
-
-  useEffect(() => {
-    dispatch(getBoardsList(token as string));
-  }, []);
 
   return (
     <main className="main">

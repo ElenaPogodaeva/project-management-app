@@ -6,13 +6,14 @@ $big-font: 36px;
 $font-family: 'Montserrat', sans-serif;
 $font-color: rgb(39, 39, 41);
 
-$min-height: 80.2vh;
 $main-width: 1400px;
 $section-height: 700px;
 $bg-light-color: rgb(255, 255, 255);
+$main-blue: #7692c7;
 $main-light-blue: #e9f0ff;
 $main-light-pink: #ffeded;
-$main-light-yellow: #FCF3EA;
+$main-light-yellow: #fcf3ea;
+$main-light-orange: #ffd4a9;
 
 @mixin font {
   font-family: $font-family;

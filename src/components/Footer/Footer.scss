@@ -79,6 +79,13 @@
     }
   }
 
+  @media screen and (max-width: 650px) {
+    .footer__center-container {
+      flex-direction: column;
+      row-gap: 6px;
+    }
+  }
+
   .footer__right-container {
     flex: 1;
     width: 150px;
@@ -91,5 +98,18 @@
       width: 150px;
       height: 60px;
     }
+  }
+
+  @media screen and (max-width: 420px) {
+    .footer__right-container {
+      background-size: 70px 45px;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
