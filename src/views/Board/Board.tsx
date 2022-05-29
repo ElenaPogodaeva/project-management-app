@@ -1,34 +1,25 @@
 import { useEffect } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 import ColumnList from '../../components/ColumnList/ColumnList';
 import Loading from '../../components/Loading/Loading';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { editColumn, editTask, fetchBoardData } from '../../redux/thunks/boardThunks';
 import './Board.scss';
-import CONSTANTS from '../../utils/constants';
 import { IColumnResponse, ITaskResponse } from '../../api/types';
 import { getUserId } from '../../api/apiService';
 
-const token = CONSTANTS.TOKEN;
-
-const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3'; // c1db418b-279d-42a3-97e0-ba3c4b770969';
-const userId = getUserId(token);
-
-// const ITEMS_COUNT_OF_COLUMN_DATA = 5;
-// const columnData = new Array(ITEMS_COUNT_OF_COLUMN_DATA).fill({}).map((_, index) => ({
-//   id: `${index}`,
-//   title: `Column ${index + 1}`,
-//   order: index,
-// }));
-
 const Board = () => {
   const { title, columns, status, error } = useTypedSelector((state) => state.board);
+  const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
+  const userId = getUserId(token);
+  const boardId = useParams().boardId as string;
 
   useEffect(() => {
     if (status === 'idle') {
-      dispatch(fetchBoardData({ boardId: BOARD_ID, token }));
+      dispatch(fetchBoardData({ boardId, token }));
     }
   }, [status, dispatch]);
 
@@ -53,7 +44,7 @@ const Board = () => {
       try {
         await dispatch(
           editColumn({
-            boardId: BOARD_ID,
+            boardId,
             columnId: column.id,
             column: columnData,
             token,
@@ -77,14 +68,14 @@ const Board = () => {
       order: destination.index + 1,
       description: task.description,
       userId,
-      boardId: BOARD_ID,
+      boardId,
       columnId: start === finish ? start.id : finish.id,
     };
 
     try {
       await dispatch(
         editTask({
-          boardId: BOARD_ID,
+          boardId,
           columnId: start.id,
           taskId: task.id,
           task: taskData,
@@ -105,7 +96,7 @@ const Board = () => {
     content = (
       <>
         <section className="board-page-header">{title}</section>
-        <ColumnList boardId={BOARD_ID} columns={orderedColumns} />
+        <ColumnList columns={orderedColumns} />
       </>
     );
   } else if (status === 'failed') {

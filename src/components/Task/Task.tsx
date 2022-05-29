@@ -2,16 +2,14 @@
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { Draggable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 import { ITaskResponse } from '../../api/types';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { editTask, removeTask } from '../../redux/thunks/boardThunks';
 import TaskForm from '../TaskForm/TaskForm';
 import Modal from '../Modal/Modal';
 import './Task.scss';
-import CONSTANTS from '../../utils/constants';
-
-const token = CONSTANTS.TOKEN;
-const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3';
+import useTypedSelector from '../../hooks/useTypedSelector';
 
 type TaskProps = {
   task: ITaskResponse;
@@ -30,11 +28,13 @@ const Task = ({ task, columnId, index }: TaskProps) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
+  const token = useTypedSelector((state) => state.auth.token) as string;
+  const boardId = useParams().boardId as string;
   const dispatch = useAppDispatch();
 
   const onDelete = async () => {
     try {
-      await dispatch(removeTask({ boardId: BOARD_ID, columnId, taskId, token }));
+      await dispatch(removeTask({ boardId, columnId, taskId, token }));
       setIsDeleteOpen(false);
     } catch (err) {
       console.error('Failed to delete the task: ', err);
@@ -48,10 +48,10 @@ const Task = ({ task, columnId, index }: TaskProps) => {
         order,
         description: data.description,
         userId,
-        boardId: BOARD_ID,
+        boardId,
         columnId,
       };
-      await dispatch(editTask({ boardId: BOARD_ID, columnId, taskId, task: taskData, token }));
+      await dispatch(editTask({ boardId, columnId, taskId, task: taskData, token }));
       setIsEditOpen(false);
     } catch (err) {
       console.error('Failed to edit the task: ', err);

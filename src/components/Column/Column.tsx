@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Draggable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 import { getUserId } from '../../api/apiService';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { IColumnResponse } from '../../api/types';
@@ -10,12 +11,7 @@ import Modal from '../Modal/Modal';
 import TaskList from '../TaskList/TaskList';
 import { addTask, editColumn, removeColumn } from '../../redux/thunks/boardThunks';
 import './Column.scss';
-import CONSTANTS from '../../utils/constants';
-
-const token = CONSTANTS.TOKEN;
-const userId = getUserId(token);
-
-const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3'; // 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+import useTypedSelector from '../../hooks/useTypedSelector';
 
 type ColumnProps = {
   column: IColumnResponse;
@@ -37,7 +33,10 @@ const Column = ({ column, index }: ColumnProps) => {
   const [isDeleteColumnOpen, setIsDeleteColumnOpen] = useState(false);
   const [isTitleEdit, setIsTitleEdit] = useState(false);
   console.log(tasks);
+  const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
+  const boardId = useParams().boardId as string;
+  const userId = getUserId(token);
 
   const {
     register,
@@ -54,7 +53,7 @@ const Column = ({ column, index }: ColumnProps) => {
         title: data.columnTitle,
         order,
       };
-      await dispatch(editColumn({ boardId: BOARD_ID, columnId, column: columnData, token }));
+      await dispatch(editColumn({ boardId, columnId, column: columnData, token }));
       setIsTitleEdit(false);
     } catch (err) {
       console.error('Failed to update the column: ', err);
@@ -73,7 +72,7 @@ const Column = ({ column, index }: ColumnProps) => {
         description: data.description,
         userId,
       };
-      await dispatch(addTask({ boardId: BOARD_ID, columnId, task: taskData, token }));
+      await dispatch(addTask({ boardId, columnId, task: taskData, token }));
       setIsAddTaskOpen(false);
     } catch (err) {
       console.error('Failed to add the task: ', err);
@@ -86,7 +85,7 @@ const Column = ({ column, index }: ColumnProps) => {
 
   const onDeleteColumnClick = async () => {
     try {
-      await dispatch(removeColumn({ boardId: BOARD_ID, columnId, token }));
+      await dispatch(removeColumn({ boardId, columnId, token }));
       setIsDeleteColumnOpen(false);
     } catch (err) {
       console.error('Failed to delete the column: ', err);

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { Droppable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 import { IColumnResponse } from '../../api/types';
 import Column from '../Column/Column';
 import Modal from '../Modal/Modal';
@@ -8,12 +9,9 @@ import ColumnForm from '../ColumnForm/ColumnForm';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { addColumn } from '../../redux/thunks/boardThunks';
 import './ColumnList.scss';
-import CONSTANTS from '../../utils/constants';
-
-const token = CONSTANTS.TOKEN;
+import useTypedSelector from '../../hooks/useTypedSelector';
 
 type ColumnListProps = {
-  boardId: string;
   columns: IColumnResponse[];
 };
 
@@ -21,10 +19,11 @@ type FormValues = {
   columnTitle: string;
 };
 
-const ColumnList = ({ boardId, columns }: ColumnListProps) => {
+const ColumnList = ({ columns }: ColumnListProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
+  const boardId = useParams().boardId as string;
 
   const onCancel = () => {
     setIsModalOpen(false);
