@@ -44,7 +44,7 @@ const Header = () => {
         <div className="center-container">
           <NavLink to="/" className="header__btn  btn-home" />
 
-          <div>
+          <div className="header__flex-cont">
             <NavLink to="/edit-profile" className="header__btn btn-nav">
               edit-profile
             </NavLink>
@@ -61,7 +61,7 @@ const Header = () => {
             </NavLink>
           </div>
 
-          <div>
+          <div className="header__flex-cont">
             {isAuth ? (
               <button
                 type="button"
