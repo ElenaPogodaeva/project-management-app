@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IColumnResponse, ITaskResponse } from '../../api/types';
+import { IColumnResponse, ITaskResponse } from '../../types/board';
 import { IUpdateColumn, IUpdateTask } from '../../types/apiTypes';
 import { addColumn, addTask, fetchBoardData } from '../thunks/boardThunks';
 

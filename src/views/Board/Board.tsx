@@ -7,7 +7,7 @@ import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { editColumn, editTask, fetchBoardData } from '../../redux/thunks/boardThunks';
 import './Board.scss';
-import { IColumnResponse, ITaskResponse } from '../../api/types';
+import { IColumnResponse, ITaskResponse } from '../../types/board';
 import { getUserId } from '../../api/apiService';
 
 const Board = () => {

@@ -5,7 +5,7 @@ import { Draggable } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
 import { getUserId } from '../../api/apiService';
 import useAppDispatch from '../../hooks/useAppDispatch';
-import { IColumnResponse } from '../../api/types';
+import { IColumnResponse } from '../../types/board';
 import TaskForm from '../TaskForm/TaskForm';
 import Modal from '../Modal/Modal';
 import TaskList from '../TaskList/TaskList';
@@ -32,18 +32,13 @@ const Column = ({ column, index }: ColumnProps) => {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [isDeleteColumnOpen, setIsDeleteColumnOpen] = useState(false);
   const [isTitleEdit, setIsTitleEdit] = useState(false);
-  console.log(tasks);
+
   const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
   const boardId = useParams().boardId as string;
   const userId = getUserId(token);
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<ColumnFormValues>({
+  const { register, handleSubmit, setValue } = useForm<ColumnFormValues>({
     defaultValues: { columnTitle: title },
   });
 
@@ -147,8 +142,8 @@ const Column = ({ column, index }: ColumnProps) => {
         </Modal>
       )}
       {isDeleteColumnOpen && (
-        <Modal title="Confirm" onCancel={onDeleteColumnCancel}>
-          <h3 className="confirm-title">Delete column?</h3>
+        <Modal title="" onCancel={onDeleteColumnCancel}>
+          <h3 className="confirm-title">Are you sure?</h3>
           <div className="btn-wrapper">
             <button type="button" className="modal-btn" onClick={onDeleteColumnClick}>
               Yes

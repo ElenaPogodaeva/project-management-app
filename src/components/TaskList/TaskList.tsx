@@ -1,5 +1,5 @@
 import { Droppable } from 'react-beautiful-dnd';
-import { ITaskResponse } from '../../api/types';
+import { ITaskResponse } from '../../types/board';
 import Task from '../Task/Task';
 import './TaskList.scss';
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { Droppable } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
-import { IColumnResponse } from '../../api/types';
+import { IColumnResponse } from '../../types/board';
 import Column from '../Column/Column';
 import Modal from '../Modal/Modal';
 import ColumnForm from '../ColumnForm/ColumnForm';

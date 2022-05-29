@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { Draggable } from 'react-beautiful-dnd';
 import { useParams } from 'react-router-dom';
-import { ITaskResponse } from '../../api/types';
+import { ITaskResponse } from '../../types/board';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { editTask, removeTask } from '../../redux/thunks/boardThunks';
 import TaskForm from '../TaskForm/TaskForm';
@@ -98,8 +98,8 @@ const Task = ({ task, columnId, index }: TaskProps) => {
         </Modal>
       )}
       {isDeleteOpen && (
-        <Modal title="Confirm" onCancel={() => setIsDeleteOpen(false)}>
-          <h3 className="confirm-title">Delete task?</h3>
+        <Modal title="" onCancel={() => setIsDeleteOpen(false)}>
+          <h3 className="confirm-title">Are you sure?</h3>
           <div className="btn-wrapper">
             <button type="button" className="modal-btn" onClick={onDelete}>
               Yes
