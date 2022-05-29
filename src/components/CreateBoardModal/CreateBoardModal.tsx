@@ -17,7 +17,14 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const boards = useTypedSelector((state) => state.boards.boards);
+  const { isAuth } = useTypedSelector((state) => state.auth);
   const { close } = props;
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate('/welcome');
+    }
+  }, [isAuth]);
 
   const {
     register,

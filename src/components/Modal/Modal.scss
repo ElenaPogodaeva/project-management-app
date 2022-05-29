@@ -21,7 +21,7 @@
   background: white;
   width: 50vw;
   position: relative;
-};
+}
 
 .modalTitle {
   font-weight: bold;
@@ -31,9 +31,9 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  top:10px;
+  top: 10px;
   right: 10px;
-  color:#000000;
-  background: url(../../../public/assets/svg/close.svg);
+  color: #000000;
+  background: url(../.././assets/close.svg);
   cursor: pointer;
 }

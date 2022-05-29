@@ -2,7 +2,44 @@
 
 .about-app {
   width: $main-width;
-  height: $section-height;
-  border: 1px solid rgb(211, 230, 44);
   margin: auto;
+
+  .title {
+    @include h2;
+    text-align: start;
+    margin: 80px 0 0 120px;
+  }
+
+  .about-app__card {
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $main-width;
+    margin: 50px 0;
+  }
+
+  .card-img {
+    width: 600px;
+    height: 500px;
+  }
+
+  & article {
+    width: 600px;
+  }
+
+  & h3 {
+    @include h3;
+    text-align: center;
+    color: #7692c7;
+  }
+
+  & article:nth-child(2) h3 {
+    color: #ffd4a9;
+  }
+
+  .description {
+    margin-top: 40px;
+    line-height: 25px;
+  }
 }

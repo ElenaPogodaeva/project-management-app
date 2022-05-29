@@ -11,7 +11,7 @@ import './Task.scss';
 import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
-const BOARD_ID = 'c1db418b-279d-42a3-97e0-ba3c4b770969';
+const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3';
 
 type TaskProps = {
   task: ITaskResponse;

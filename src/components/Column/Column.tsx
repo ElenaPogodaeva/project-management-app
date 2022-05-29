@@ -14,6 +14,7 @@ import CONSTANTS from '../../utils/constants';
 
 const token = CONSTANTS.TOKEN;
 const userId = getUserId(token);
+
 const BOARD_ID = 'acb08d97-3a89-4b9d-ab46-87c0e618d5b3'; // 'c1db418b-279d-42a3-97e0-ba3c4b770969';
 
 type ColumnProps = {
