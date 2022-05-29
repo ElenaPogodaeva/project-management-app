@@ -9,6 +9,10 @@
   transition: 0.5s;
   margin: 20px 0px !important;
 
+  @media (max-width: 1024px) {
+    width: 400px;
+  }
+
   .add-board {
     transition: 0.5s;
 

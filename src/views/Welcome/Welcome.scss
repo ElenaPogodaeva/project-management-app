@@ -7,9 +7,18 @@
   align-items: center;
   margin: auto;
 
+  @media (max-width: 1024px) {
+    width: 1000px;
+    height: 500px;
+  }
+
   .title-blok {
     align-self: flex-start;
     margin: 90px 0 0 0;
+
+    @media (max-width: 1024px) {
+      margin: 60px 0 0 0;
+    }
 
     & p {
       @include font;
@@ -17,6 +26,11 @@
       font-style: italic;
       width: 400px;
       margin: 0 0 0 170px;
+
+      @media (max-width: 1024px) {
+        width: 400px;
+        margin: 0 0 0 95px;
+      }
     }
   }
 
@@ -27,6 +41,12 @@
     background-position: center;
     width: 700px;
     height: 600px;
+
+    @media (max-width: 1024px) {
+      background-size: 510px, 500px;
+      width: 510px;
+      height: 500px;
+    }
   }
 
   .title {
@@ -34,6 +54,11 @@
     width: 512px;
     margin: 0px 0px 40px 15px;
     text-align: center;
+
+    @media (max-width: 1024px) {
+      @include h2;
+      width: 400px;
+    }
   }
 }
 
@@ -43,6 +68,10 @@
   border-bottom: 1px solid rgba(39, 39, 41, 0.178);
   text-align: right;
   position: relative;
+
+  @media (max-width: 1024px) {
+    width: 1000px;
+  }
 
   .btn {
     width: 120px;
@@ -78,6 +107,10 @@
 
   .btn:last-child {
     margin-right: 150px;
+
+    @media (max-width: 1024px) {
+      margin-right: 90px;
+    }
 
     &:after {
       content: '';
