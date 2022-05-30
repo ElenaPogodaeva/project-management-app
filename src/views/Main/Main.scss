@@ -28,10 +28,18 @@
 
     & :nth-child(odd) {
       margin-right: 150px;
+
+      @media (max-width: 1024px) {
+        margin-right: 55px;
+      }
     }
 
     & :nth-child(2n) {
       margin-left: 150px;
+
+      @media (max-width: 1024px) {
+        margin-left: 55px;
+      }
     }
   }
 

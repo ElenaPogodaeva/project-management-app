@@ -1,11 +1,12 @@
 @import '/src/App.variables.scss';
 
 .column-item {
-  border-radius: 6px;
+  max-height: calc(100vh - 200px);
+  max-width: 265px;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
-  max-height: 100vh - 200px;
+  border-radius: 6px;
   padding: 0 0 10px 0;
 
   .column-title-wrapper {
