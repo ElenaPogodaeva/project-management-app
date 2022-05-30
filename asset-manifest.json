@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.47ef9f69.css",
+    "main.js": "/static/js/main.07d7df5d.js",
+    "static/media/welcome-img.png": "/static/media/welcome-img.65c796ff997ec6e467ca.png",
+    "static/media/main-screen.PNG": "/static/media/main-screen.e4e980d01ed12bb64531.PNG",
+    "static/media/avatar-Aliona.png": "/static/media/avatar-Aliona.c4582834494af4441e70.png",
+    "static/media/avatar-Lena.png": "/static/media/avatar-Lena.8015967b56a0857e9f1f.png",
+    "static/media/drag-n-drop-screen.PNG": "/static/media/drag-n-drop-screen.d887390726de64e3dd90.PNG",
+    "static/media/board-screen.PNG": "/static/media/board-screen.312574c64b5c6874a869.PNG",
+    "static/media/main-img.png": "/static/media/main-img.ea4b7f02cbd87bddf97d.png",
+    "static/media/avatar-Nastya.png": "/static/media/avatar-Nastya.6c96c251c6692ae9f4b5.png",
+    "index.html": "/index.html",
+    "main.47ef9f69.css.map": "/static/css/main.47ef9f69.css.map",
+    "main.07d7df5d.js.map": "/static/js/main.07d7df5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.47ef9f69.css",
+    "static/js/main.07d7df5d.js"
+  ]
+}
