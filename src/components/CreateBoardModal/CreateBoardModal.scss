@@ -11,8 +11,8 @@
   margin: 0 !important;
 
   .form {
-    width: 250px;
-    height: 300px;
+    width: 400px;
+    height: 220px;
     background: rgb(255, 255, 255);
     border-radius: 20px;
     position: absolute;
@@ -21,6 +21,7 @@
     z-index: 3;
     transform: translate(-50%, -50%);
     padding: 20px;
+    padding-top: 24px;
     font-size: $text-font;
     font-weight: normal;
     text-align: center;
@@ -58,17 +59,19 @@
     }
 
     .form-input {
-      margin: 0 0 22px 0 !important;
-      padding: 6px 12px;
+      margin: 0 auto;
+      margin-bottom: 24px;
+      padding: 20px 18px;
       height: 36px;
-      width: 100%;
+      width: 90%;
       display: block;
+      @include font;
       background-color: #fff;
       border-radius: 8px;
-      border: 1px solid rgb(214, 214, 214);
+      border: 1px solid $main-blue;
 
       &.input-text::placeholder {
-        font-size: $text-font;
+        @include font;
         opacity: 0.5;
         margin: 0 !important;
       }
@@ -83,9 +86,13 @@
       margin: 0 auto !important;
       padding: 10px 22px;
       display: block;
-      background-color: goldenrod;
+      @include font;
+      font-size: $text-font + 4px;
+      font-weight: bold;
+      color: #fff;
+      background-color: $main-light-orange;
       border: none;
-      border-radius: 9px;
+      border-radius: 10px;
 
       &:hover {
         animation: bounce 0.8s infinite alternate;
@@ -107,6 +114,22 @@
           transform: scale(1.05);
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .form {
+      width: 300px;
+      height: 220px;
+      padding: 14px;
+      padding-top: 24px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .form {
+      padding: 10px;
+      padding-top: 24px;
     }
   }
 }
