@@ -53,7 +53,7 @@
     color: $main-blue;
 
     @media (max-width: 1024px) {
-      font-size: calc($title-font + 6px);
+      font-size: $title-font + 6px;
     }
   }
 

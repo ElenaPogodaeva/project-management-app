@@ -18,6 +18,7 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
   const dispatch = useAppDispatch();
   const boards = useTypedSelector((state) => state.boards.boards);
   const { isAuth } = useTypedSelector((state) => state.auth);
+  const token = useTypedSelector((state) => state.auth.token) as string;
   const { close } = props;
 
   useEffect(() => {
@@ -34,9 +35,7 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
   } = useForm<INewBoardForm>();
 
   const onSubmit: SubmitHandler<INewBoardForm> = (data) => {
-    dispatch(
-      addBoard({ title: data.title, description: data.description, token: CONSTANTS.TOKEN })
-    );
+    dispatch(addBoard({ title: data.title, description: data.description, token }));
     reset();
     close();
   };

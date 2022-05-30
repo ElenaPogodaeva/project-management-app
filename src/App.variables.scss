@@ -25,14 +25,14 @@ $main-light-orange: #ffd4a9;
 }
 
 @mixin h1 {
-  font-size: calc($big-font * 2.5);
+  font-size: $big-font * 2.5;
   font-weight: bold;
   letter-spacing: -4px;
   line-height: 85px;
 }
 
 @mixin h2 {
-  font-size: calc($big-font * 1.5);
+  font-size: $big-font * 1.5;
   font-weight: bold;
   letter-spacing: -2px;
 }

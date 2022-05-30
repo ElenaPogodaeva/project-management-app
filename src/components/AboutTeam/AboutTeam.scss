@@ -126,7 +126,7 @@
   }
   .description {
     @media (max-width: 1024px) {
-      font-size: calc($descr-font + 2px);
+      font-size: $descr-font + 2px;
     }
   }
 }
