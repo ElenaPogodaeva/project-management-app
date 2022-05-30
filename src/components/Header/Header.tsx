@@ -6,7 +6,6 @@ import useAppDispatch from '../../hooks/useAppDispatch';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import { authSlice } from '../../redux/reducers/authSlice';
 import CreateBoardModal from '../CreateBoardModal/CreateBoardModal';
-import { settingsSlice } from '../../redux/reducers/settingsSlice';
 import CONSTANTS from '../../utils/constants';
 
 const Header = () => {

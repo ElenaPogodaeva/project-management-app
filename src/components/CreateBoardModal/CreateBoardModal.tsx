@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import './CreateBoardModal.scss';
@@ -7,7 +6,6 @@ import { INewBoardForm } from '../../types/apiTypes';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { addBoard } from '../../redux/thunks/boardThunks';
-import CONSTANTS from '../../utils/constants';
 
 type CreateBoardModalType = {
   close: () => void;
@@ -16,7 +14,6 @@ type CreateBoardModalType = {
 const CreateBoardModal = (props: CreateBoardModalType) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const boards = useTypedSelector((state) => state.boards.boards);
   const { isAuth } = useTypedSelector((state) => state.auth);
   const token = useTypedSelector((state) => state.auth.token) as string;
   const { close } = props;
@@ -52,6 +49,7 @@ const CreateBoardModal = (props: CreateBoardModalType) => {
         <input
           className={`form-input input-text ${errors.title ? 'input-error' : null}`}
           placeholder="Title"
+          autoFocus
           {...register('title', { required: true })}
           name="title"
         />

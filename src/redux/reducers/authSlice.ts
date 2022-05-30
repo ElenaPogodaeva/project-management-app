@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IUpdateUser, IUser } from '../../types/apiTypes';
 import getCookieToken from '../../utils/getCookieToken';
 import { fetchDelete, fetchSignIn, fetchSignUp, fetchUpdate } from '../thunks/authThunks';
-import { authState } from '../types/auth';
+import authState from '../types/auth';
 
 const cookieToken = getCookieToken();
 

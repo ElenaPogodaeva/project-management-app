@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Draggable } from 'react-beautiful-dnd';
@@ -103,6 +102,7 @@ const Column = ({ column, index }: ColumnProps) => {
                     type="text"
                     className="column-title-input"
                     {...register('columnTitle', { required: true })}
+                    autoFocus
                     onClick={() => setIsTitleEdit(true)}
                     placeholder="Enter column title"
                     autoComplete="off"

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { Draggable } from 'react-beautiful-dnd';

@@ -48,6 +48,7 @@ const SignUp = () => {
             className={`form-input input-text ${errors.login ? 'input-error' : null}`}
             placeholder="Name"
             {...register('name', { required: true, minLength: 3 })}
+            autoFocus
           />
           <p className={`form-error ${errors.login ? null : 'none'}`}>
             *Required field of at least three characters

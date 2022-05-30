@@ -32,6 +32,7 @@ const TaskForm = ({ onSubmit, onCancel, values }: TaskFormProps) => {
         {...register('title', { required: true })}
         placeholder="Enter task title"
         autoComplete="off"
+        autoFocus
       />
       {errors?.description && <span className="formError">* task description should be fill</span>}
       <textarea
