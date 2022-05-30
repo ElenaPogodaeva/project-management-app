@@ -10,7 +10,8 @@
   transition: 0.5s;
 
   @media (max-width: 1024px) {
-    width: 400px;
+    width: 380px;
+    height: 140px;
   }
 
   &:hover {
@@ -36,6 +37,10 @@
   color: $main-blue;
   letter-spacing: -1px;
   margin: 15px 0 10px 10px;
+
+  @media (max-width: 1024px) {
+    text-transform: none;
+  }
 }
 
 .board-description {

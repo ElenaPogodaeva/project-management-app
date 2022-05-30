@@ -1,14 +1,14 @@
 @import '/src/App.variables.scss';
 
 .column-item {
-  min-width: 260px;
+  max-width: 265px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   max-height: calc(100vh - 230px);
   padding: 0 0 10px 0;
-
+  min-width: 260px;
   .column-title-wrapper {
     display: flex;
     align-items: start;

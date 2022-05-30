@@ -82,7 +82,9 @@ const Task = ({ task, columnId, index }: TaskProps) => {
                   aria-label="Delete"
                   className="card-btn delete-task-btn"
                   onClick={() => setIsDeleteOpen(true)}
-                />
+                >
+                  &#10006;
+                </button>
               </div>
             </div>
           </li>
