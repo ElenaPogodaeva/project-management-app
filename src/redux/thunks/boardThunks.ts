@@ -61,6 +61,9 @@ export const removeBoard = createAsyncThunk<
     const { token } = BoardData;
 
     const response = await deleteBoard(BoardData.boardId, token);
+    if (response.ok) {
+      return BoardData.boardId;
+    }
     return response;
   } catch (err) {
     return rejectWithValue((err as Error).message);
