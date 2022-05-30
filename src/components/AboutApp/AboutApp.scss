@@ -43,6 +43,30 @@
     }
   }
 
+  .card-img__main,
+  .card-img__board,
+  .card-img__dragNdrop {
+    background-size: 600px, 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @media (max-width: 1024px) {
+      background-size: 400px, 300px;
+    }
+  }
+
+  .card-img__main {
+    background-image: url(../../assets/main-screen.PNG);
+  }
+
+  .card-img__board {
+    background-image: url(../../assets/board-screen.PNG);
+  }
+
+  .card-img__dragNdrop {
+    background-image: url(../../assets/drag-n-drop-screen.PNG);
+  }
+
   & article {
     width: 600px;
   }

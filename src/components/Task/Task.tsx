@@ -76,7 +76,9 @@ const Task = ({ task, columnId, index }: TaskProps) => {
                   aria-label="Edit"
                   className="card-btn edit-btn"
                   onClick={() => setIsEditOpen(true)}
-                />
+                >
+                  &#9998;
+                </button>
                 <button
                   type="button"
                   aria-label="Delete"

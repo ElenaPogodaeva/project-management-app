@@ -33,16 +33,21 @@ const BoardPreview = (props: BoardPreviewTypes) => {
   };
   return (
     <>
-      <div className="boardPreview">
+      <div className="boardPreview" onClick={goToBoardPage}>
         <header className="board-header">
           <h2 className="board-title">{value.title}</h2>
-          <button type="button" className="board-delete" onClick={() => toggleModal()}>
+          <button
+            type="button"
+            className="board-delete"
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleModal();
+            }}
+          >
             .
           </button>
         </header>
-        <p className="board-description" onClick={goToBoardPage}>
-          {value.description}
-        </p>
+        <p className="board-description">{value.description}</p>
       </div>
       {isOpen && <ConfirmationModal close={toggleModal} remove={remove} id={value.id} />}
     </>

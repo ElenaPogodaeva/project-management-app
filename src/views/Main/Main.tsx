@@ -7,7 +7,6 @@ import BoardCreate from '../../components/BoardCreate/BoardCreate';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { getBoardsList } from '../../redux/thunks/boardThunks';
-import CONSTANTS from '../../utils/constants';
 
 const Main = () => {
   const navigate = useNavigate();

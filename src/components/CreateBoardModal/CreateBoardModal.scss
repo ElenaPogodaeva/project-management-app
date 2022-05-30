@@ -1,7 +1,7 @@
 @import '../../App.variables.scss';
 
 .createBoard-form {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
@@ -69,11 +69,11 @@
       background-color: #fff;
       border-radius: 8px;
       border: 1px solid $main-blue;
+      margin: 0 0 25px 20px !important;
 
       &.input-text::placeholder {
         @include font;
         opacity: 0.5;
-        margin: 0 !important;
       }
 
       &.input-error {
@@ -89,12 +89,14 @@
       @include font;
       font-size: $text-font + 4px;
       font-weight: bold;
-      color: #fff;
-      background-color: $main-light-orange;
-      border: none;
+      color: $main-light-orange;
+      background-color: #fff;
+      border: 2px solid $main-light-orange;
       border-radius: 10px;
 
       &:hover {
+        color: #fff;
+        background-color: $main-light-orange;
         animation: bounce 0.8s infinite alternate;
 
         &:disabled {

@@ -13,7 +13,7 @@ const AboutApp = () => {
     <section className="about-app">
       <h1 className="title">About App</h1>
       <div className="about-app__card" data-aos="fade-up">
-        <img src="" alt="" className="card-img" />
+        <i className="card-img card-img__main" />
         <article>
           <h3>Your new project organizer</h3>
           <p className="description">
@@ -30,10 +30,10 @@ const AboutApp = () => {
             them to another position. You can also add as many columns as you need
           </p>
         </article>
-        <img src="" alt="" className="card-img" />
+        <i className="card-img card-img__board" />
       </div>
       <div className="about-app__card" data-aos="fade-up">
-        <img src="" alt="" className="card-img" />
+        <i className="card-img card-img__dragNdrop" />
         <article>
           <h3>Details</h3>
           <p className="description">

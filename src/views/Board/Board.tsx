@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ColumnList from '../../components/ColumnList/ColumnList';
 import Loading from '../../components/Loading/Loading';
 import useAppDispatch from '../../hooks/useAppDispatch';
@@ -11,15 +11,21 @@ import { IColumnResponse, ITaskResponse } from '../../types/board';
 import { getUserId } from '../../api/apiService';
 
 const Board = () => {
+  const navigate = useNavigate();
   const { title, columns, status, error } = useTypedSelector((state) => state.board);
+  const { isAuth } = useTypedSelector((state) => state.auth);
   const token = useTypedSelector((state) => state.auth.token) as string;
   const dispatch = useAppDispatch();
   const userId = getUserId(token);
   const boardId = useParams().boardId as string;
 
   useEffect(() => {
-    dispatch(fetchBoardData({ boardId, token }));
-  }, []);
+    if (!isAuth) {
+      navigate('/welcome');
+    } else {
+      dispatch(fetchBoardData({ boardId, token }));
+    }
+  }, [isAuth]);
 
   const onDragEnd = async (result: DropResult) => {
     const { destination, source, draggableId, type } = result;

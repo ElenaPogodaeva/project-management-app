@@ -108,13 +108,17 @@ const Column = ({ column, index }: ColumnProps) => {
                     autoComplete="off"
                   />
                   <div className="column-title-btns">
-                    <button type="submit" aria-label="Edit" className="column-btn check-btn" />
+                    <button type="submit" aria-label="Edit" className="column-btn check-btn">
+                      &#10004;
+                    </button>
                     <button
                       type="button"
                       aria-label="Cancel"
                       className="column-btn cancel-btn"
                       onClick={onColumnFormCancel}
-                    />
+                    >
+                      &#10008;
+                    </button>
                   </div>
                 </form>
               ) : (
