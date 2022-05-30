@@ -34,7 +34,7 @@ const App = () => {
 
           <Route path="/welcome" element={<Welcome />} />
 
-          <Route path="/board/:boardId" element={<Board />} />
+          <Route path={isAuth ? '/board/:boardId' : '/welcome'} element={<Board />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
