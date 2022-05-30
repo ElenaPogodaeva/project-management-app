@@ -45,12 +45,11 @@
   gap: 10px;
 }
 .card-btn {
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
   width: 16px;
   height: 16px;
   background-color: transparent;
-  opacity: 0.6;
+  font-size: $text-font;
+  opacity: 0.7;
 }
 .edit-btn {
   margin-bottom: 7px;

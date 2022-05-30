@@ -8,7 +8,11 @@
   background-color: #ffffff;
   max-height: calc(100vh - 230px);
   padding: 0 0 10px 0;
-  min-width: 260px;
+
+  @media (max-width: 1024px) {
+    max-width: 220px;
+  }
+
   .column-title-wrapper {
     display: flex;
     align-items: start;
@@ -36,7 +40,12 @@
     text-align: left;
     cursor: pointer;
     transition: 0.3s;
-    margin: 0 auto;
+    margin: 0 10px;
+
+    @media (max-width: 1024px) {
+      width: 200px;
+      margin: 0 10px;
+    }
   }
 
   .add-card-btn:hover {

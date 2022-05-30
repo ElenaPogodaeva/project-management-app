@@ -2,7 +2,7 @@
 
 .main {
   max-width: $main-width;
-  max-height: 100vh;
+  // max-height: 100vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,6 +25,10 @@
     flex-wrap: wrap;
     overflow: scroll;
     justify-content: center;
+
+    @media (max-width: 1024px) {
+      height: 700px;
+    }
 
     & :nth-child(odd) {
       margin-right: 150px;

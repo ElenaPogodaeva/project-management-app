@@ -12,12 +12,13 @@
   padding: 25px;
 
   @media (max-width: 1024px) {
-    height: 70vh;
+    height: 65vh;
+    width: 920px;
+    margin: 0 50px;
   }
 
   .add-column-btn {
     min-width: 260px;
-
     display: block;
     font-size: $descr-font;
     background: $main-light-blue;
@@ -27,6 +28,10 @@
     cursor: pointer;
     text-align: left;
     transition: 0.3s;
+
+    @media (max-width: 1024px) {
+      min-width: 200px;
+    }
 
     &:hover {
       font-weight: bold;

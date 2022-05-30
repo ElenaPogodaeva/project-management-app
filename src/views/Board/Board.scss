@@ -75,10 +75,19 @@ h6 {
   max-width: $main-width;
   height: 81vh;
   margin: 0 auto;
+  @media (max-width: 1024px) {
+    max-width: 1000px;
+    height: 65vh;
+  }
 
   .board-page-header {
     @include h3;
     width: fit-content;
     margin: 35px 0 15px 45px;
+
+    @media (max-width: 1024px) {
+      font-size: $title-font + 4px;
+      margin: 20px 0 10px 95px;
+    }
   }
 }
