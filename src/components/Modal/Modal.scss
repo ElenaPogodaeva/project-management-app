@@ -1,3 +1,5 @@
+@import '/src/App.variables.scss';
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -15,15 +17,16 @@
 }
 
 .modalContent {
+  width: 400px;
   padding: 20px;
-  border-radius: 12px;
-  background: white;
-  width: 50vw;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
   position: relative;
 }
 
 .modalTitle {
-  font-weight: bold;
+  font-size: $title-font;
+  margin: 0 0 15px 0;
 }
 
 .modalClose {
@@ -32,7 +35,5 @@
   height: 20px;
   top: 10px;
   right: 10px;
-  color: #000000;
-  background: url(../.././assets/svg/close.svg);
   cursor: pointer;
 }

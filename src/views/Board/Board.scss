@@ -72,11 +72,13 @@ h6 {
 }
 
 .board-page {
-  padding: 10px;
-}
+  max-width: $main-width;
+  height: 81vh;
+  margin: 0 auto;
 
-.board-page-header {
-  padding: 10px;
-  font-size: $title-font;
-  font-weight: 700;
+  .board-page-header {
+    @include h3;
+    width: fit-content;
+    margin: 35px 0 15px 45px;
+  }
 }

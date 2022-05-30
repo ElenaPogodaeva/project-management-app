@@ -94,9 +94,9 @@ const Column = ({ column }: ColumnProps) => {
         {isTitleEdit ? (
           <AddColumnForm onSubmit={onColumnFormSubmit} onCancel={onColumnFormCancel} />
         ) : (
-          <h3 className="column-title" onClick={() => setIsTitleEdit(true)}>
+          <h5 className="column-title" onClick={() => setIsTitleEdit(true)}>
             {title}
-          </h3>
+          </h5>
         )}
         <button
           type="button"
@@ -107,7 +107,7 @@ const Column = ({ column }: ColumnProps) => {
       </div>
       <TaskList tasks={tasks} />
       <button type="button" className="add-card-btn" onClick={() => setIsAddTaskOpen(true)}>
-        Add a card...
+        &#10010; Add a card
       </button>
       {isAddTaskOpen && (
         <Modal title="Add a task" onCancel={onTaskFormCancel}>

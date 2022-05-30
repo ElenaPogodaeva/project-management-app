@@ -34,8 +34,8 @@ export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, Validation
   'board/addBoard',
   async (BoardData: ICreateBoard, { rejectWithValue }) => {
     try {
-      const { token, title } = BoardData;
-      const response = await createBoard({ title }, token);
+      const { token, title, description } = BoardData;
+      const response = await createBoard({ title, description }, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);

@@ -24,7 +24,7 @@
 
     & a {
       &:hover {
-        color: #7692c7;
+        color: $main-blue;
         background: transparent;
         box-shadow: none;
       }
@@ -36,7 +36,7 @@
         bottom: -2px;
         height: 2px;
         width: 0;
-        background: #7692c7;
+        background: $main-blue;
         transition: 400ms ease all;
       }
 
@@ -52,7 +52,7 @@
         bottom: -2px;
         height: 2px;
         width: 0;
-        background: #7692c7;
+        background: $main-blue;
         transition: 400ms ease all;
       }
 
@@ -68,7 +68,7 @@
         bottom: -2px;
         height: 2px;
         width: 0;
-        background: #7692c7;
+        background: $main-blue;
         transition: 400ms ease all;
       }
 
