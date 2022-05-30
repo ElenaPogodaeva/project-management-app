@@ -18,10 +18,8 @@ const Board = () => {
   const boardId = useParams().boardId as string;
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchBoardData({ boardId, token }));
-    }
-  }, [status, dispatch]);
+    dispatch(fetchBoardData({ boardId, token }));
+  }, []);
 
   const onDragEnd = async (result: DropResult) => {
     const { destination, source, draggableId, type } = result;
@@ -96,7 +94,9 @@ const Board = () => {
     content = (
       <>
         <h2 className="board-page-header">{title}</h2>
-        <ColumnList columns={orderedColumns} />
+        <DragDropContext onDragEnd={onDragEnd}>
+          <ColumnList columns={orderedColumns} />
+        </DragDropContext>
       </>
     );
   } else if (status === 'failed') {
@@ -104,11 +104,9 @@ const Board = () => {
   }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className="board-page">
-        <div className="center-container">{content}</div>
-      </div>
-    </DragDropContext>
+    <div className="board-page">
+      <div className="center-container">{content}</div>
+    </div>
   );
 };
 
