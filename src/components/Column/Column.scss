@@ -1,11 +1,12 @@
 @import '/src/App.variables.scss';
 
 .column-item {
+  min-width: 260px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  max-height: 100vh - 200px;
+  max-height: calc(100vh - 230px);
   padding: 0 0 10px 0;
 
   .column-title-wrapper {
@@ -116,11 +117,11 @@
     width: 90%;
     padding: 10px;
     border-radius: 4px;
-    background: white;
+    background: #e9f0ff;
   }
   .column-title-input {
     display: inline-block;
-    width: 80%;
+    width: 150px;
     font-size: 18px;
     font-weight: 600;
     color: #333;

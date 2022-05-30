@@ -2,12 +2,9 @@
 
 .column-list {
   height: 72vh;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  grid-gap: 10px;
-  align-items: start;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(260px, 1fr);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   overflow: scroll;
   background: linear-gradient(70deg, $main-light-blue, $main-light-pink);
   box-shadow: 3px 3px 3px rgba(9, 45, 66, 0.25);
@@ -19,6 +16,8 @@
   }
 
   .add-column-btn {
+    min-width: 260px;
+
     display: block;
     font-size: $descr-font;
     background: $main-light-blue;
@@ -43,11 +42,11 @@
   overflow: visible;
 }
 .column-list::-webkit-scrollbar {
-  height: 25px;
+  height: 20px;
 }
 .column-list::-webkit-scrollbar-thumb {
   background-color: #e8ecf8;
-  border-top: 0.6rem solid #fff;
+  border-top: 0.5rem solid #fff;
 }
 .add-column-btn {
   min-width: 260px;
