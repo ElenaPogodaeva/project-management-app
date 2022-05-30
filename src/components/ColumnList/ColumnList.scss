@@ -36,10 +36,31 @@
     }
   }
 }
+.column-list-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  overflow: visible;
+}
 .column-list::-webkit-scrollbar {
   height: 25px;
 }
 .column-list::-webkit-scrollbar-thumb {
   background-color: #e8ecf8;
   border-top: 0.6rem solid #fff;
+}
+.add-column-btn {
+  min-width: 260px;
+  display: block;
+  font-weight: 400;
+  background-color: #e2e4e6;
+  color: #4d4d4d;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.3s;
+}
+.add-column-btn:hover {
+  background-color: #ccc;
 }

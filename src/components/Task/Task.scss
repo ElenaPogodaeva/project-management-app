@@ -34,3 +34,27 @@
   height: 50px;
   margin-bottom: 20px;
 }
+.card-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-btn {
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  opacity: 0.6;
+}
+.edit-btn {
+  background-image: url(../../assets/pencil.svg);
+}
+.delete-task-btn {
+  background-image: url(../../assets/close.svg);
+}

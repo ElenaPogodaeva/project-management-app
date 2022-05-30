@@ -21,22 +21,18 @@
     opacity: 0.5;
   }
 }
-
 .formText {
   height: 80px;
 }
-
 .formError {
   color: red;
 }
-
 .btnWrapper {
   display: flex;
   gap: 20px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
-
 .formBtn {
   margin: 0 auto;
   padding: 8px 22px;

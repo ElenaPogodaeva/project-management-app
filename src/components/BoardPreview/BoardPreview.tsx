@@ -23,7 +23,7 @@ const BoardPreview = (props: BoardPreviewTypes) => {
   };
 
   const goToBoardPage = () => {
-    navigate(`/board/:${value.id}`);
+    navigate(`/board/${value.id}`);
   };
 
   const remove = (id: string) => {

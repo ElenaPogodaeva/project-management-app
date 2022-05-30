@@ -1,38 +1,42 @@
 import { useForm } from 'react-hook-form';
 
 type TaskFormValues = {
-  taskTitle: string;
-  taskDescription: string;
+  title: string;
+  description: string;
 };
 
-type AddTaskFormProps = {
+type TaskFormProps = {
   onSubmit: (data: TaskFormValues) => void;
   onCancel: () => void;
+  values?: {
+    title: string;
+    description: string;
+  };
 };
 
-const AddTaskForm = ({ onSubmit, onCancel }: AddTaskFormProps) => {
+const TaskForm = ({ onSubmit, onCancel, values }: TaskFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TaskFormValues>();
+  } = useForm<TaskFormValues>({
+    defaultValues: { title: values?.title, description: values?.description },
+  });
 
   return (
     <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      {errors?.taskTitle && <span className="formError">* task title should be fill</span>}
+      {errors?.title && <span className="formError">* task title should be fill</span>}
       <input
         type="text"
         className="formInput"
-        {...register('taskTitle', { required: true })}
+        {...register('title', { required: true })}
         placeholder="Enter task title"
         autoComplete="off"
       />
-      {errors?.taskDescription && (
-        <span className="formError">* task description should be fill</span>
-      )}
+      {errors?.description && <span className="formError">* task description should be fill</span>}
       <textarea
         className="formText"
-        {...register('taskDescription', { required: true })}
+        {...register('description', { required: true })}
         placeholder="Enter task description"
         autoComplete="off"
       />
@@ -44,4 +48,8 @@ const AddTaskForm = ({ onSubmit, onCancel }: AddTaskFormProps) => {
   );
 };
 
-export default AddTaskForm;
+TaskForm.defaultProps = {
+  values: {},
+};
+
+export default TaskForm;
